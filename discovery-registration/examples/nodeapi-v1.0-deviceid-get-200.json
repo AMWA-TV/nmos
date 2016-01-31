@@ -1,0 +1,9 @@
+{
+    "receivers": [],
+    "label": "pipeline 1 default device",
+    "version": "1441703338:962976113",
+    "id": "67c25159-ce25-4000-a66c-f31fff890265",
+    "type": "urn:x-nmos:device:pipeline",
+    "senders": [],
+    "node_id": "3b8be755-08ff-452b-b217-c9151eb21193"
+}

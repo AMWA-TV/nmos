@@ -15,10 +15,9 @@ Please read the [NMOS Technical Overview](NMOS Technical Overview.pdf)
 ## Repository contents
 
 * README.md -- This file
-* [NMOS Technical Overview.pdf](NMOS Technical Overview.pdf) -- high-level technical overview of the NMOS data model and API specifications
-* [discovery-registration/](discovery-registration/) -- RAML specifications and documentation for Registration, Query and Node APIs
-* [in-stream-identity/](in-stream-identity/) -- RFC-style specification for RTP mapping, including in-stream signalling of identity
-* [examples/](examples/) -- supporting example packet capture and SDP files
+* [NMOS Technical Overview.pdf](NMOS Technical Overview.pdf) -- High-level technical overview of the NMOS data model and API specifications
+* [discovery-registration/](discovery-registration/) -- Specifications, documentation, and examples for discovery and registration: NMOS Registration, Query and Node APIs
+* [in-stream-identity/](in-stream-identity/) -- Specifications, documentation, and examples for in-stream signalling of identity for video, audio and time-related data Flows: carriage over RTP
 
 ## Licenses and disclaimers
 

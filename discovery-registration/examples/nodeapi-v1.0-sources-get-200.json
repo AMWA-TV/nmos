@@ -1,0 +1,77 @@
+[
+    {
+        "description": "Capture Card Source Video", 
+        "tags": {
+            "host": [
+                "host1"
+            ]
+        }, 
+        "format": "urn:x-nmos:format:video", 
+        "caps": {}, 
+        "version": "1441703336:902850419", 
+        "parents": [], 
+        "label": "CaptureCardSourceVideo", 
+        "id": "4569cea2-ab63-4f97-8dd1-bad4669ea5e4", 
+        "device_id": "9126cc2f-4c26-4c9b-a6cd-93c4381c9be5"
+    }, 
+    {
+        "description": "Capture Card Source Audio", 
+        "tags": {
+            "host": [
+                "host1"
+            ]
+        }, 
+        "format": "urn:x-nmos:format:audio", 
+        "caps": {}, 
+        "version": "1441703336:912670314", 
+        "parents": [], 
+        "label": "CaptureCardSourceAudio", 
+        "id": "fc97ab0f-b51b-4129-9385-dcaf30f9482b", 
+        "device_id": "9126cc2f-4c26-4c9b-a6cd-93c4381c9be5"
+    }, 
+    {
+        "description": "Capture Card Source Audio", 
+        "tags": {
+            "host": [
+                "host1"
+            ]
+        }, 
+        "format": "urn:x-nmos:format:audio", 
+        "caps": {}, 
+        "version": "1441704614:174935325", 
+        "parents": [], 
+        "label": "CaptureCardSourceAudio", 
+        "id": "9738780e-141f-4e19-8601-a157dc855aa2", 
+        "device_id": "9126cc2f-4c26-4c9b-a6cd-93c4381c9be5"
+    }, 
+    {
+        "description": "Capture Card Source Video", 
+        "tags": {
+            "host": [
+                "host1"
+            ]
+        }, 
+        "format": "urn:x-nmos:format:video", 
+        "caps": {}, 
+        "version": "1441704614:163285887", 
+        "parents": [], 
+        "label": "CaptureCardSourceVideo", 
+        "id": "02c46999-d532-4c52-905f-2e368a2af6cb", 
+        "device_id": "9126cc2f-4c26-4c9b-a6cd-93c4381c9be5"
+    },
+    {
+        "description": "Capture Card Source VANC", 
+        "tags": {
+            "host": [
+                "host1"
+            ]
+        }, 
+        "format": "urn:x-nmos:format:data", 
+        "caps": {}, 
+        "version": "1453880605:374934072", 
+        "parents": [], 
+        "label": "Capture Card Source VANC", 
+        "id": "0e635152-e501-4d4e-bb87-9f3fe05eb79a", 
+        "device_id": "9126cc2f-4c26-4c9b-a6cd-93c4381c9be5"
+    }
+]

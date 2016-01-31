@@ -1,0 +1,30 @@
+{
+    "version": "1441700172:318426300", 
+    "hostname": "host1", 
+    "caps": {}, 
+    "href": "http://172.29.80.65:12345/", 
+    "services": [
+        {
+            "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/", 
+            "type": "urn:x-nmos:service:pipelinemanager"
+        }, 
+        {
+            "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/status/", 
+            "type": "urn:x-nmos:service:status"
+        }, 
+        {
+            "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/tally/", 
+            "type": "urn:x-nmos:service:tally"
+        }, 
+        {
+            "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/mdnsbridge/", 
+            "type": "urn:x-nmos:service:mdnsbridge"
+        }, 
+        {
+            "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/storequery/", 
+            "type": "urn:x-nmos:service:storequery"
+        }
+    ], 
+    "label": "host1", 
+    "id": "3b8be755-08ff-452b-b217-c9151eb21193"
+}

@@ -1,0 +1,8 @@
+{
+    "max_update_rate_ms": 100, 
+    "resource_path": "/nodes", 
+    "params": {}, 
+    "persist": false, 
+    "ws_href": "ws://172.29.80.52:8870/ws/?uid=7c903667-7113-4a8f-8865-1c63f9070a9e", 
+    "id": "7c903667-7113-4a8f-8865-1c63f9070a9e"
+}

@@ -1,0 +1,205 @@
+#%RAML 0.8
+
+title: Query
+baseUri: http://example.api.com/x-nmos/{version}/query
+version: v1.0
+mediaType: application/json
+schemas:
+  - Node: !include schemas/node.json
+    Nodes: !include schemas/nodes.json
+    Device: !include schemas/device.json
+    Devices: !include schemas/devices.json
+    Source: !include schemas/source.json
+    Sources: !include schemas/sources.json
+    Flow: !include schemas/flow.json
+    Flows: !include schemas/flows.json
+    Sender: !include schemas/sender.json
+    Senders: !include schemas/senders.json
+    Receiver: !include schemas/receiver.json
+    Receivers: !include schemas/receivers.json
+documentation:
+  - title: Overview
+    content: |
+      The Query API is exposed by NMOS discovery Nodes. It is used to expose the contents of the (distributed) registry to all Nodes on the network. In smaller deployments where no such registry is available, Nodes with their own control capabilities fall back to interrogating Nodes directly using the Peer to Peer specification. This is a Read Only API.
+
+      Attributes defined as 'Optional' MUST be returned by the Query API if they exist within the registry. The presence declaration relates more to whether it is required for them to be registered at the Registration API side, or presented via the Node API.
+  - title: mDNS Advertisement
+    content: |
+      Query APIs MUST produce an mDNS advertisement of the type \_nmos-query.\_tcp
+
+      The mDNS advertisement MUST include a TXT record with key 'pri' and an integer value. Values 0 to 99 correspond to an active NMOS Query API (zero being the highest priority). Values 100+ are reserved for development work to avoid colliding with a live system.
+
+      The IP address and port of the query API MUST be identified via the mDNS advertisement, with the HTTP path then being resolved via the standard NMOS API path documentation.
+/:
+  displayName: Base
+  get:
+    description: List of paths available from this API
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-base-get-200.json
+/nodes:
+  displayName: Nodes
+  get:
+    description: List Nodes
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-nodes-get-200.json
+          schema: Nodes
+  /{nodeId}:
+    get:
+      description: Get a single Node
+      responses:
+        200:
+          body:
+            example: !include examples/queryapi-v1.0-nodeid-get-200.json
+            schema: Node
+        404:
+/sources:
+  displayName: Sources
+  get:
+    description: List Sources
+    queryParameters:
+      device_id:
+      label:
+      description:
+      format:
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-sources-get-200.json
+          schema: Sources
+  /{sourceId}:
+    get:
+      description: Get a single Source
+      responses:
+        200:
+          body:
+            example: !include examples/queryapi-v1.0-sourceid-get-200.json
+            schema: Source
+        404:
+/flows:
+  displayName: Flows
+  get:
+    description: List Flows
+    queryParameters:
+      source_id:
+      label:
+      description:
+      format:
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-flows-get-200.json
+          schema: Flows
+  /{flowId}:
+    get:
+      description: Get a single Flow
+      responses:
+        200:
+          body:
+            example: !include examples/queryapi-v1.0-flowid-get-200.json
+            schema: Flow
+        404:
+/devices:
+  displayName: Devices
+  get:
+    description: List Devices
+    queryParameters:
+      node_id:
+      label:
+      description:
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-devices-get-200.json
+          schema: Devices
+  /{deviceId}:
+    get:
+      description: Get a single Device
+      responses:
+        200:
+          body:
+            example: !include examples/queryapi-v1.0-deviceid-get-200.json
+            schema: Device
+        404:
+/senders:
+  displayName: Senders
+  get:
+    description: List Senders
+    queryParameters:
+      flow_id:
+      label:
+      description:
+      transport:
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-senders-get-200.json
+          schema: Senders
+  /{senderId}:
+    get:
+      description: Get a single Sender
+      responses:
+        200:
+          body:
+            example: !include examples/queryapi-v1.0-senderid-get-200.json
+            schema: Sender
+        404:
+/receivers:
+  displayName: Receivers
+  get:
+    description: List Receivers
+    queryParameters:
+      label:
+      description:
+      format:
+      transport:
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-receivers-get-200.json
+          schema: Receivers
+  /{receiverId}:
+    get:
+      description: Get a single Receiver
+      responses:
+        200:
+          body:
+            example: !include examples/queryapi-v1.0-receiverid-get-200.json
+            schema: Receiver
+        404:
+/subscriptions:
+  displayName: Subscriptions
+  post:
+    description: Create a websocket subscription to an API resource
+    body:
+      example: !include examples/queryapi-v1.0-subscriptions-post-request.json
+      schema: !include schemas/queryapi-v1.0-subscriptions-post-request.json
+    responses:
+      201:
+        body:
+          example: !include examples/queryapi-v1.0-subscriptions-post-200.json
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-subscriptions-post-200.json
+  get:
+    description: List active connections to websockets providing real-time updates on resource changes
+    responses:
+      200:
+        body:
+          example: !include examples/queryapi-v1.0-subscriptions-get-200.json
+  /{subscriptionId}:
+    get:
+      description: Get a single subscription
+      responses:
+        200:
+          body:
+            example: !include examples/queryapi-v1.0-subscriptionid-get-200.json
+        404:
+    delete:
+      description: Delete a single subscription
+      responses:
+        204:
+        404:

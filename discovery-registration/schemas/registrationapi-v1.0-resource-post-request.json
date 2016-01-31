@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Register a new resource or update an existing resource",
+  "title": "Resource registration",
+  "required": [
+    "type",
+    "data"
+  ],
+  "properties": {
+    "type": {
+      "description": "Singular form of the resource type to be registered (e.g. node, source, flow etc)",
+      "type": "string"
+    },
+    "data": {
+      "description": "Object containing the full representation of the Node, Source, Flow, Device etc.",
+      "type": "object",
+      "anyOf": [
+        {"$ref": "node.json"},
+        {"$ref": "device.json"},
+        {"$ref": "source.json"},
+        {"$ref": "flow.json"},
+        {"$ref": "sender.json"},
+        {"$ref": "receiver.json"}
+      ]
+    }
+  }
+}

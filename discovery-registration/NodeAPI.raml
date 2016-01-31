@@ -1,0 +1,171 @@
+#%RAML 0.8
+
+title: Node
+baseUri: http://example.api.com/x-nmos/{version}/node
+version: v1.0
+mediaType: application/json
+schemas:
+  - Node: !include schemas/node.json
+    Nodes: !include schemas/nodes.json
+    Device: !include schemas/device.json
+    Devices: !include schemas/devices.json
+    Source: !include schemas/source.json
+    Sources: !include schemas/sources.json
+    Flow: !include schemas/flow.json
+    Flows: !include schemas/flows.json
+    Sender: !include schemas/sender.json
+    Senders: !include schemas/senders.json
+    SenderTarget: !include schemas/sender-target.json
+    Receiver: !include schemas/receiver.json
+    Receivers: !include schemas/receivers.json
+documentation:
+  - title: Overview
+    content: |
+      The Node API is exposed by each NMOS Node in a system, regardless of whether it is possible for that Node to provide NMOS resources such as Flows, Sources etc. Data exposed by the Node API is used to populate the (distributed) registry via the Registration API. In smaller deployments the Node API is fetched from directly as required by Nodes which implement the Peer to Peer specification.
+  - title: mDNS Advertisement
+    content: |
+      Node APIs MUST produce an mDNS advertisement of the type \_nmos-node.\_tcp
+
+      The IP address and port of the Node API MUST be identified via the mDNS advertisement, with the HTTP path then being resolved via the standard NMOS API path documentation.
+
+      When a Node is unable to locate or successfully register with a Registration API it MUST additionally advertise the following mDNS TXT records as part of its Node advertisement. If a Node is successfully registered with a Registration API it MUST withdraw advertisements of these TXT records.
+
+      | **TXT Record Name** | **Corresponding Node API Resource** |
+      |---------------------|-------------------------------------|
+      | ver\_slf            | self                                |
+      | ver\_src            | sources                             |
+      | ver\_flw            | flows                               |
+      | ver\_dvc            | devices                             |
+      | ver\_snd            | senders                             |
+      | ver\_rcv            | receivers                           |
+
+      The value of each of the above should be an unsigned 8-bit integer initialised to '0'. This integer MUST be incremented and mDNS TXT record updated whenever a change is made to the corresponding HTTP API resource on the Node. The integer must wrap back to a value of '0' after reaching a maximum value of '255' (MAX_UINT8_T).
+
+      For example, the 'ver_src' TXT record must be created when the Node first advertises itself via mDNS. If the data held within the HTTP resource for /sources is added to, removed from or edited, then the 'ver_src' text record must be modified (value incremented).
+  - title: Receiver Subscriptions
+    content: |
+      A PUT request to /receivers/{receiverId}/target will modify which Sender a Receiver is subscribed to.
+
+      In order to 'subscribe' a Receiver to a Sender, a PUT request should be made to this resource containing a full Sender object.
+      In order to 'unsubscribe' a Receiver from a Sender, an empty object '{}' should be used in this PUT request.
+      In both cases the target resource should respond with a 202 code (accepted) on success, and a response body matching the request body.
+
+      The Receiver's subscription object contains a 'sender_id' attribute which must be updated once a Receiver has successfully requested, parsed and actioned a change to the manifest_href is it connected to.
+/:
+  displayName: Base
+  get:
+    description: List of paths available from this API
+    responses:
+      200:
+        body:
+          example: !include examples/nodeapi-v1.0-base-get-200.json
+/self:
+  displayName: Self
+  get:
+    description: Get information about this Node
+    responses:
+      200:
+        body:
+          example: !include examples/nodeapi-v1.0-self-get-200.json
+          schema: Node
+/sources:
+  displayName: Sources
+  get:
+    description: List Sources
+    responses:
+      200:
+        body:
+          example: !include examples/nodeapi-v1.0-sources-get-200.json
+          schema: Sources
+  /{sourceId}:
+    get:
+      description: Get a single Source
+      responses:
+        200:
+          body:
+            example: !include examples/nodeapi-v1.0-sourceid-get-200.json
+            schema: Source
+        404:
+/flows:
+  displayName: Flows
+  get:
+    description: List Flows
+    responses:
+      200:
+        body:
+          example: !include examples/nodeapi-v1.0-flows-get-200.json
+          schema: Flows
+  /{flowId}:
+    get:
+      description: Get a single Flow
+      responses:
+        200:
+          body:
+            example: !include examples/nodeapi-v1.0-flowid-get-200.json
+            schema: Flow
+        404:
+/devices:
+  displayName: Devices
+  get:
+    description: List Devices
+    responses:
+      200:
+        body:
+          example: !include examples/nodeapi-v1.0-devices-get-200.json
+          schema: Devices
+  /{deviceId}:
+    get:
+      description: Get a single Device
+      responses:
+        200:
+          body:
+            example: !include examples/nodeapi-v1.0-deviceid-get-200.json
+            schema: Device
+        404:
+/senders:
+  displayName: Senders
+  get:
+    description: List Senders
+    responses:
+      200:
+        body:
+          example: !include examples/nodeapi-v1.0-senders-get-200.json
+          schema: Senders
+  /{senderId}:
+    get:
+      description: Get a single Sender
+      responses:
+        200:
+          body:
+            example: !include examples/nodeapi-v1.0-senderid-get-200.json
+            schema: Sender
+        404:
+/receivers:
+  displayName: Receivers
+  get:
+    description: List Receivers
+    responses:
+      200:
+        body:
+          example: !include examples/nodeapi-v1.0-receivers-get-200.json
+          schema: Receivers
+  /{receiverId}:
+    get:
+      description: Get a single Receiver
+      responses:
+        200:
+          body:
+            example: !include examples/nodeapi-v1.0-receiverid-get-200.json
+            schema: Receiver
+        404:
+    /target:
+      put:
+        description: Request a change to a Receiver's subscription
+        body:
+          example: !include examples/nodeapi-v1.0-receivertarget-put-request.json
+        responses:
+          202:
+            body:
+              example: !include examples/nodeapi-v1.0-receivertarget-put-200.json
+              schema: SenderTarget
+          404:

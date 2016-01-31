@@ -1,0 +1,46 @@
+[
+    {
+        "version": "1441716120:318744030", 
+        "hostname": "host1", 
+        "label": "host1", 
+        "href": "http://172.29.176.102:12345/", 
+        "services": [
+            {
+                "href": "http://172.29.176.102:12345/x-nmos/node/v1.0/self/status/", 
+                "type": "urn:x-nmos:service:status"
+            }, 
+            {
+                "href": "http://172.29.176.102:12345/x-nmos/node/v1.0/self/pipelinemanager/", 
+                "type": "urn:x-nmos:service:pipelinemanager"
+            }, 
+            {
+                "href": "http://172.29.176.102:12345/x-nmos/node/v1.0/self/mdnsbridge/", 
+                "type": "urn:x-nmos:service:mdnsbridge"
+            }
+        ], 
+        "caps": {}, 
+        "id": "c8ba20e9-e197-4ec5-8764-4da672128589"
+    }, 
+    {
+        "version": "1441716067:450064243", 
+        "hostname": "host2", 
+        "label": "host2", 
+        "href": "http://172.29.176.19:12345/", 
+        "services": [
+            {
+                "href": "http://172.29.176.19:12345/x-nmos/node/v1.0/self/pipelinemanager/", 
+                "type": "urn:x-nmos:service:pipelinemanager"
+            }, 
+            {
+                "href": "http://172.29.176.19:12345/x-nmos/node/v1.0/self/status/", 
+                "type": "urn:x-nmos:service:status"
+            }, 
+            {
+                "href": "http://172.29.176.19:12345/x-nmos/node/v1.0/self/mdnsbridge/", 
+                "type": "urn:x-nmos:service:mdnsbridge"
+            }
+        ], 
+        "caps": {}, 
+        "id": "cebc6305-e8db-4026-aeb5-eb7a5620839e"
+    }
+]

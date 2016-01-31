@@ -1,0 +1,85 @@
+#%RAML 0.8
+
+title: Registration
+baseUri: http://example.api.com/x-nmos/{version}/registration
+version: v1.0
+mediaType: application/json
+documentation:
+  - title: Overview
+    content: |
+      The Registration API is exposed by NMOS discovery Nodes. It is used to publish data to the distributed registry, which can then be queried via the Query API. In smaller deployments where no distributed registry is available, the Registration API is not used and discovery responsibilities fall to individual Nodes which choose to implement Peer to Peer specification. The Registration API is a Write Only API.
+  - title: mDNS Advertisement
+    content: |
+      Registration APIs MUST produce an mDNS advertisement of the type \_nmos-registration.\_tcp
+
+      The mDNS advertisement MUST include a TXT record with key 'pri' and an integer value. Values 0 to 99 correspond to an active NMOS Registration API (zero being the highest priority). Values 100+ are reserved for development work to avoid colliding with a live system.
+
+      The IP address and port of the registration API MUST be identified via the mDNS advertisement, with the HTTP path then being resolved via the standard NMOS API path documentation.
+
+  - title: Client Behaviour
+    content: |
+      In order to prevent the overloading of a Registration API in production use, the following best practice for clients is highly recommended. Registration APIs may choose to ban clients on a temporary or permanent basis if they do not follow good practice.
+
+      - When a client (Node) first joins the network and discovers a Registration API it may interact with it immediately
+      - If the Registration API becomes unavailable, the client may discover another Registration API via the means described above (mDNS announced priority). It should then POST to the health resource as before, interpreting a success (200) response as confirmation that the registry still has knowledge of the Node despite one Registration API disappearing. Re-registration of all resources is not necessary if a success (200) response is received.
+      - If all Registration APIs in a network become unavailable, the client should continue to browse mDNS to identify when one has become available. Once a Registration API becomes available, the Node should assume that it has become de-registered. The Node should wait for a random period between zero and ten seconds before attempting registration in order to avoid flooding the registration API with requests.
+      - If at any time the client receives a 4XX error from the Registration API this is a client error. The client should not re-attempt the same request unless it has first taken corrective action to avoid the same error from occurring again. For example if a 404 response is received from the health resource, the Node must be re-registered before contacting the health resource again. A 400 error when registering a Flow may indicate an invalid payload, in which case the same payload should not be re-registered with the API and the client should log an error.
+      - If at any time the client receives a 5XX error or timeout from the Registration API it should assume a server side issue and carry out exponential back-off prior to any retry attempts to the same API. Alternatively another Registration API may be sought using the mDNS mechanism described above.
+/:
+  displayName: Base
+  get:
+    description: List of paths available from this API
+    responses:
+      200:
+        body:
+          example: !include examples/registrationapi-v1.0-base-get-200.json
+/resource:
+  displayName: Resource
+  post:
+    description: Create or update a registered resource
+    body:
+      example: !include examples/registrationapi-v1.0-resource-post-request.json
+      schema: !include schemas/registrationapi-v1.0-resource-post-request.json
+    responses:
+      200:
+        body:
+          example: !include examples/registrationapi-v1.0-resource-post-200.json
+        headers:
+          Location:
+            example: /x-nmos/v1.0/registration/resource/nodes/3b8be755-08ff-452b-b217-c9151eb21193/
+      201:
+        body:
+          example: !include examples/registrationapi-v1.0-resource-post-200.json
+        headers:
+          Location:
+            example: /x-nmos/v1.0/registration/resource/nodes/3b8be755-08ff-452b-b217-c9151eb21193/
+      400:
+  /{resourceId}:
+    delete:
+      description: Delete a registered resource
+      responses:
+        204:
+        404:
+    get:
+      description: Show a registered resource (for debug use only)
+      responses:
+        200:
+          body:
+            example: !include examples/registrationapi-v1.0-resource-get-200.json
+        404:
+/health/nodes/{nodeId}:
+  displayName: Node health
+  post:
+    description: Update Node health
+    responses:
+      200:
+        body:
+          example: !include examples/registrationapi-v1.0-health-post-200.json
+      404:
+  get:
+    description: Show a Node's health (for debug use only)
+    responses:
+      200:
+        body:
+          example: !include examples/registrationapi-v1.0-health-get-200.json
+      404:
