@@ -32,24 +32,24 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/registrationapi-v1.0-base-get-200.json
+          example: !include ../examples/registrationapi-v1.0-base-get-200.json
 /resource:
   displayName: Resource
   post:
     description: Create or update a registered resource
     body:
-      example: !include examples/registrationapi-v1.0-resource-post-request.json
+      example: !include ../examples/registrationapi-v1.0-resource-post-request.json
       schema: !include schemas/registrationapi-v1.0-resource-post-request.json
     responses:
       200:
         body:
-          example: !include examples/registrationapi-v1.0-resource-post-200.json
+          example: !include ../examples/registrationapi-v1.0-resource-post-200.json
         headers:
           Location:
             example: /x-nmos/v1.0/registration/resource/nodes/3b8be755-08ff-452b-b217-c9151eb21193/
       201:
         body:
-          example: !include examples/registrationapi-v1.0-resource-post-200.json
+          example: !include ../examples/registrationapi-v1.0-resource-post-200.json
         headers:
           Location:
             example: /x-nmos/v1.0/registration/resource/nodes/3b8be755-08ff-452b-b217-c9151eb21193/
@@ -65,7 +65,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/registrationapi-v1.0-resource-get-200.json
+            example: !include ../examples/registrationapi-v1.0-resource-get-200.json
         404:
 /health/nodes/{nodeId}:
   displayName: Node health
@@ -74,12 +74,12 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/registrationapi-v1.0-health-post-200.json
+          example: !include ../examples/registrationapi-v1.0-health-post-200.json
       404:
   get:
     description: Show a Node's health (for debug use only)
     responses:
       200:
         body:
-          example: !include examples/registrationapi-v1.0-health-get-200.json
+          example: !include ../examples/registrationapi-v1.0-health-get-200.json
       404:

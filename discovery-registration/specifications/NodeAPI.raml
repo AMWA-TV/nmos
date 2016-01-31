@@ -58,7 +58,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/nodeapi-v1.0-base-get-200.json
+          example: !include ../examples/nodeapi-v1.0-base-get-200.json
 /self:
   displayName: Self
   get:
@@ -66,7 +66,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/nodeapi-v1.0-self-get-200.json
+          example: !include ../examples/nodeapi-v1.0-self-get-200.json
           schema: Node
 /sources:
   displayName: Sources
@@ -75,7 +75,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/nodeapi-v1.0-sources-get-200.json
+          example: !include ../examples/nodeapi-v1.0-sources-get-200.json
           schema: Sources
   /{sourceId}:
     get:
@@ -83,7 +83,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/nodeapi-v1.0-sourceid-get-200.json
+            example: !include ../examples/nodeapi-v1.0-sourceid-get-200.json
             schema: Source
         404:
 /flows:
@@ -93,7 +93,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/nodeapi-v1.0-flows-get-200.json
+          example: !include ../examples/nodeapi-v1.0-flows-get-200.json
           schema: Flows
   /{flowId}:
     get:
@@ -101,7 +101,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/nodeapi-v1.0-flowid-get-200.json
+            example: !include ../examples/nodeapi-v1.0-flowid-get-200.json
             schema: Flow
         404:
 /devices:
@@ -111,7 +111,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/nodeapi-v1.0-devices-get-200.json
+          example: !include ../examples/nodeapi-v1.0-devices-get-200.json
           schema: Devices
   /{deviceId}:
     get:
@@ -119,7 +119,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/nodeapi-v1.0-deviceid-get-200.json
+            example: !include ../examples/nodeapi-v1.0-deviceid-get-200.json
             schema: Device
         404:
 /senders:
@@ -129,7 +129,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/nodeapi-v1.0-senders-get-200.json
+          example: !include ../examples/nodeapi-v1.0-senders-get-200.json
           schema: Senders
   /{senderId}:
     get:
@@ -137,7 +137,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/nodeapi-v1.0-senderid-get-200.json
+            example: !include ../examples/nodeapi-v1.0-senderid-get-200.json
             schema: Sender
         404:
 /receivers:
@@ -147,7 +147,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/nodeapi-v1.0-receivers-get-200.json
+          example: !include ../examples/nodeapi-v1.0-receivers-get-200.json
           schema: Receivers
   /{receiverId}:
     get:
@@ -155,17 +155,17 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/nodeapi-v1.0-receiverid-get-200.json
+            example: !include ../examples/nodeapi-v1.0-receiverid-get-200.json
             schema: Receiver
         404:
     /target:
       put:
         description: Request a change to a Receiver's subscription
         body:
-          example: !include examples/nodeapi-v1.0-receivertarget-put-request.json
+          example: !include ../examples/nodeapi-v1.0-receivertarget-put-request.json
         responses:
           202:
             body:
-              example: !include examples/nodeapi-v1.0-receivertarget-put-200.json
+              example: !include ../examples/nodeapi-v1.0-receivertarget-put-200.json
               schema: SenderTarget
           404:

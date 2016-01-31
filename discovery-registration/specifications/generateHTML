@@ -1,18 +1,32 @@
 #!/bin/bash
+
+havecmd ()
+{
+    type $1 > /dev/null 2>&1
+}
+
+if ! havecmd raml2html; then
+    echo "Please install raml2html"
+    exit 1
+fi
+
+# In case script is run from elsewhere
+cd $(dirname "${BASH_SOURCE[0]}")
+
+# Proper behaviour when no glob match
+shopt -s nullglob
+
 for INFILE in *.raml
 do
   echo "Found RAML file" $INFILE
-  OUTFILE=${INFILE::-5}
-  raml2html $INFILE > $OUTFILE.html
-  echo "Generated" $OUTFILE.html
-  #if [ -e /usr/bin/ramltomd ]; then
-  #  ramltomd -i $INFILE > $OUTFILE.md
-  #  echo "Generated" $OUTFILE.md
-  #fi
+  OUTFILE=${INFILE%%raml}html
+  echo $OUTFILE
+  raml2html $INFILE > $OUTFILE
+  echo "Generated" $OUTFILE
 done
 echo ""
 echo "Linting..."
-jsonlint -v examples/*.json
+jsonlint -v ../examples/*.json
 echo ""
 jsonlint -v schemas/*.json
 

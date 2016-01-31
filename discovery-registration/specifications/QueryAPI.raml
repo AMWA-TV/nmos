@@ -37,7 +37,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-base-get-200.json
+          example: !include ../examples/queryapi-v1.0-base-get-200.json
 /nodes:
   displayName: Nodes
   get:
@@ -45,7 +45,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-nodes-get-200.json
+          example: !include ../examples/queryapi-v1.0-nodes-get-200.json
           schema: Nodes
   /{nodeId}:
     get:
@@ -53,7 +53,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/queryapi-v1.0-nodeid-get-200.json
+            example: !include ../examples/queryapi-v1.0-nodeid-get-200.json
             schema: Node
         404:
 /sources:
@@ -68,7 +68,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-sources-get-200.json
+          example: !include ../examples/queryapi-v1.0-sources-get-200.json
           schema: Sources
   /{sourceId}:
     get:
@@ -76,7 +76,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/queryapi-v1.0-sourceid-get-200.json
+            example: !include ../examples/queryapi-v1.0-sourceid-get-200.json
             schema: Source
         404:
 /flows:
@@ -91,7 +91,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-flows-get-200.json
+          example: !include ../examples/queryapi-v1.0-flows-get-200.json
           schema: Flows
   /{flowId}:
     get:
@@ -99,7 +99,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/queryapi-v1.0-flowid-get-200.json
+            example: !include ../examples/queryapi-v1.0-flowid-get-200.json
             schema: Flow
         404:
 /devices:
@@ -113,7 +113,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-devices-get-200.json
+          example: !include ../examples/queryapi-v1.0-devices-get-200.json
           schema: Devices
   /{deviceId}:
     get:
@@ -121,7 +121,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/queryapi-v1.0-deviceid-get-200.json
+            example: !include ../examples/queryapi-v1.0-deviceid-get-200.json
             schema: Device
         404:
 /senders:
@@ -136,7 +136,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-senders-get-200.json
+          example: !include ../examples/queryapi-v1.0-senders-get-200.json
           schema: Senders
   /{senderId}:
     get:
@@ -144,7 +144,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/queryapi-v1.0-senderid-get-200.json
+            example: !include ../examples/queryapi-v1.0-senderid-get-200.json
             schema: Sender
         404:
 /receivers:
@@ -159,7 +159,7 @@ documentation:
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-receivers-get-200.json
+          example: !include ../examples/queryapi-v1.0-receivers-get-200.json
           schema: Receivers
   /{receiverId}:
     get:
@@ -167,7 +167,7 @@ documentation:
       responses:
         200:
           body:
-            example: !include examples/queryapi-v1.0-receiverid-get-200.json
+            example: !include ../examples/queryapi-v1.0-receiverid-get-200.json
             schema: Receiver
         404:
 /subscriptions:
@@ -175,28 +175,28 @@ documentation:
   post:
     description: Create a websocket subscription to an API resource
     body:
-      example: !include examples/queryapi-v1.0-subscriptions-post-request.json
+      example: !include ../examples/queryapi-v1.0-subscriptions-post-request.json
       schema: !include schemas/queryapi-v1.0-subscriptions-post-request.json
     responses:
       201:
         body:
-          example: !include examples/queryapi-v1.0-subscriptions-post-200.json
+          example: !include ../examples/queryapi-v1.0-subscriptions-post-200.json
       200:
         body:
-          example: !include examples/queryapi-v1.0-subscriptions-post-200.json
+          example: !include ../examples/queryapi-v1.0-subscriptions-post-200.json
   get:
     description: List active connections to websockets providing real-time updates on resource changes
     responses:
       200:
         body:
-          example: !include examples/queryapi-v1.0-subscriptions-get-200.json
+          example: !include ../examples/queryapi-v1.0-subscriptions-get-200.json
   /{subscriptionId}:
     get:
       description: Get a single subscription
       responses:
         200:
           body:
-            example: !include examples/queryapi-v1.0-subscriptionid-get-200.json
+            example: !include ../examples/queryapi-v1.0-subscriptionid-get-200.json
         404:
     delete:
       description: Delete a single subscription
