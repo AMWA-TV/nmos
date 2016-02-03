@@ -16,9 +16,7 @@ also described infomatively in the NMOS Technical Overview.
 Although uncompressed video and audio examples are presented, this specification
 does NOT define a payload format, and is intended to be payload format agnostic.
 As such, it can be applied to any payload format using the standard RTP header
-structure. Note that due to the difference in clock rate used between RTP payload
-types, application of RTP timestamp calculations used here may vary. Examples of
-this are provided to illustrate the most common cases.
+structure.
 
 2.  Grain (informative)
 
