@@ -1,27 +1,26 @@
-                        AMWA NMOS RTP specification
-                         (DRAFT 05, January 2016)
+             NMOS Mapping of Identity and Timing Information to RTP
+                         (DRAFT 06, January 2016)
 
 
 
-1.  Introduction
+1.  Scope
 
-This document specifies the carriage of synchronised video data, audio data, or 
-other time-related data over RTP [1]. In each case the payload is accompanied by
-intimate metadata.
+This specification describes a mapping of Source and Flow identifiers and PTP-derived
+Grain timestamps to a Real-time Transport Protocol (RTP) [1] stream using the audio
+and video conferences profile (AVP) [2] for the carriage of synchronised video data,
+audio data, or other time-related data.
 
-The Real-time Transport Protocol (RTP) specifies a means for delivering
-synchronised, real-time audio and video data over a network. This specification
-uses the audio and video conferences profile (AVP) [2].
+Source, Flow and Grain are as defined in the JT-NM Reference Architecture 1.0 [13],
+also described infomatively in the NMOS Technical Overview.
 
-This specification is intended to be payload format agnostic. As such, it can be
-applied to any payload format using the standard RTP header structure. Note that
-due to the difference in clock rate used between RTP payload types, application
-of RTP timestamp calculations used here may vary. Examples of this are provided
-to illustrate the most common cases.
+Although uncompressed video and audio examples are presented, this specification
+does NOT define a payload format, and is intended to be payload format agnostic.
+As such, it can be applied to any payload format using the standard RTP header
+structure. Note that due to the difference in clock rate used between RTP payload
+types, application of RTP timestamp calculations used here may vary. Examples of
+this are provided to illustrate the most common cases.
 
-
-
-2.  Grain
+2.  Grain (informative)
 
 This specification uses the concept of a Grain to describe a unit of 
 mono-essence video, audio or other time-related data.
@@ -37,7 +36,7 @@ mono-essence payload, providing it with identity and timing.
 
 
 
-3.  Payload Formats
+3.  Payload Formats (informative)
 
 By using RTP without modification to existing RFCs and by utilising SDP files to
 describe these streams, the core NMOS RTP specification remains codec
@@ -47,17 +46,16 @@ below) are also supported, with reference to an appropriate external
 specification.
 
 
-3.1.  RFC 4175 RTP Format
+3.1.  RFC 4175 RTP Format (informative)
 
 RFC 4175 [3] defines a payloading format for the carriage of uncompressed video
 over RTP. Both progressive and interlaced scanning are supported.
 
 
-3.2.  Linear PCM RTP Format
+3.2.  Linear PCM RTP Format (informative)
 
 RFC 3551 [2] and RFC 3190 [4] define payloading formats for L16 and L24
 uncompressed audio.
-
 
 
 4.  Network reference, media clock and RTP clock
@@ -611,3 +609,5 @@ An example SDP file is shown below for RFC 3190 2 channel audio:
 [11]   RFC 7273,  RTP Clock Source Signalling
 
 [12]   Multiple SSRC Signalling, draft-westerlund-avtcore-max-ssrc-02.txt
+
+[13]   Joint Task Force for Networked Media Reference Architecture 1.0 (jt-nm.org)
