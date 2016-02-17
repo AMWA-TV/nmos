@@ -17,7 +17,7 @@ Please read the [NMOS Technical Overview](NMOS Technical Overview.md)
 ## Repository contents
 
 * README.md -- This file
-* [NMOS Technical Overview.pdf](NMOS Technical Overview.pdf) -- High-level technical overview of the NMOS data model and API specifications
+* [NMOS Technical Overview](NMOS Technical Overview.md) -- High-level technical overview of the NMOS data model and API specifications
 * [discovery-registration/](discovery-registration/) -- Specifications, documentation, and examples for discovery and registration: NMOS Registration, Query and Node APIs
 * [in-stream-id-timing/](in-stream-id-timing/) -- Specifications, documentation, and examples for in-stream signalling of identity for video, audio and time-related data Flows: carriage in RTP header extensions
 
