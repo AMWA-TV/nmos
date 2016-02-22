@@ -54,7 +54,11 @@ documentation:
           Location:
             example: /x-nmos/v1.0/registration/resource/nodes/3b8be755-08ff-452b-b217-c9151eb21193/
       400:
-  /{resourceId}:
+  /{resourceType}/{resourceId}:
+    uriParameters:
+      resourceType:
+        description: One of 'nodes', 'devices', 'sources', 'flows', 'senders' or 'receivers'
+        type: string
     delete:
       description: Delete a registered resource
       responses:
