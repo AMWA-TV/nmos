@@ -8,6 +8,8 @@ This repository provides specifications for:
 
 For the latest version of this repository and issue tracker etc. please refer to [https://github.com/AMWA-TV/nmos/](https://github.com/AMWA-TV/nmos/)
 
+Screencasts introducing these specifications are available on the [AMWA website](http://www.amwa.tv/projects/nmi/NMI_presentations.shtml)
+
 NOTE: at the time of writing, some supporting material referred to in the technical overview is not yet available at this repository. Please contact AMWA for access to these items.
 
 ## Getting started
