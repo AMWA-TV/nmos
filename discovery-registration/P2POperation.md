@@ -1,6 +1,8 @@
 # Peer-to-Peer discovery
 
-This document describes usage of NMOS APIs for discovery in cases where where a distributed registry is not available, such as small ad-hoc installations. 
+_(c) AMWA 2016, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
+
+This document describes usage of NMOS APIs for discovery in cases where where a distributed registry is not available, such as small ad-hoc installations.
 
 ## Pre-Requisites
 * All Nodes advertise their presence via mDNS at all times

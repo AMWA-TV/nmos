@@ -1,4 +1,6 @@
-# NMOS API Overview
+# AMWA NMOS Discovery and Registration Specification: API Overview
+
+_(c) AMWA 2016, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
 
 ## Introduction
 

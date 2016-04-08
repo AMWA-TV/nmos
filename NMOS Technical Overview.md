@@ -1,9 +1,7 @@
 # NMOS Technical Overview
 
-| Date       | Change          |
-| :--------- | :-------------- |
-| 2016-02-01 | Initial Release |
-
+_(c) AMWA 2016, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
+q
 ## Introduction
 
 The Advanced Media Workflow Association are creating a family of Networked Media Open Specifications (NMOS)
