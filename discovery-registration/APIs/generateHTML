@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Tool to create HTML browseable version of the specifications.
+# Requires raml2html (https://github.com/kevinrenskers/raml2html)
+# (c) AMWA 2016
+
 havecmd ()
 {
     type $1 > /dev/null 2>&1
@@ -29,4 +33,3 @@ echo "Linting..."
 jsonlint -v ../examples/*.json
 echo ""
 jsonlint -v schemas/*.json
-
