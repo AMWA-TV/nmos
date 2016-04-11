@@ -1,4 +1,4 @@
-# **[Proposed Specification]** Networked Media Open Specifications
+# Networked Media Open Specifications
 
 NMOS is a family name for specifications produced by the Advanced Media Workflow Association related to networked media for professional applications.
 
@@ -14,7 +14,7 @@ NOTE: at the time of writing, some supporting material referred to in the techni
 
 ## Getting started
 
-Please read the [NMOS Technical Overview](NMOS Technical Overview.md) 
+Please read the [NMOS Technical Overview](NMOS Technical Overview.md)
 
 ## Repository contents
 
