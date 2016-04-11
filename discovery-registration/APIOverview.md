@@ -4,27 +4,28 @@ _(c) AMWA 2016, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
 
 ## Introduction
 
-NMOS Nodes present one or more APIs for consumption dependent upon their role in the system. These may include:
+Nodes (logical hosts) expose one or more APIs:
 
-* Node API
-  * Present on all Nodes regardless of role
-* Registration API
-  * Present on registry-backed discovery Nodes only
-* Query API
-  * Present on registry-backed discovery Nodes only
-* Peer to Peer Specification
-  * Used by Nodes which require control of connection management without a registry-backed discovery system.
+* The [Node API](APIs/NodeAPI.raml) is present on all Nodes to provide a means of finding the resources on each Node. The Node API also plays an important role in [Peer-to-peer discovery](P2POperation.md), and is expected to be used by future NMOS specifications, e.g. for connection management.
+* The [Registration](APIs/RegistrationAPI.raml) and [Query](APIs/QueryAPI.raml) are present on Nodes that enable registry-based discovery, as discussed in the [NMOS Technical Overview](../NMOS Technical Overview.md)
 
-Each core API is specified via RAML format documentation (http://raml.org/), accompanied by JSON schemas and example JSON format output for resources.
+## Requirements on Nodes
 
-## Interoperability Requirements
-Note that existing implementations of the distributed Query and Registration APIs are already available (see the provided virtual machine). Nodes MUST however implement the Node API, and interact with the Registration API as a minimum to interoperate. Optionally, Nodes MAY implement the Peer to Peer specification in order to permit continued operation on a link-local only, or smaller network deployment. Nodes requiring data about other Nodes in the system MUST obtain this via the Query API if available, or using the Peer to Peer specification in smaller networks (if implemented).
+A Node (logical host) MUST implement the [Node API](APIs/NodeAPI.raml).
+
+A Node MUST attempt to interact with the [Registration API](APIs/RegistrationAPI.raml).
+
+Optionally, Nodes MAY implement [Peer-to-peer discovery](P2POperation.md) in order to permit continued operation on a link-local only, or smaller network deployment. Nodes requiring data about other Nodes in the system MUST obtain this via the Query API if available, or using the Peer-to-peer specification in smaller networks (if implemented).
 
 ## mDNS Bridging
 For clients which need to discover the services of a Query API, but operate in software such as web browsers where mDNS is unsupported, it is suggested that a bridging service is employed to present the mDNS data via an HTTP service (or similar).
 
-## Common API Behaviour
-Whilst API specifications are held in RAML, some core API properties which are shared between all NMOS APIs are documented below:
+## API Specifications
+The Node, Registration and Query APIs are specified using:
+* The following sub-sections describing common API properties.
+* [RAML](http://raml.org/) documents and [JSON schemas](http://tools.ietf.org/html/draft-zyp-json-schema-04) in the [APIs/](APIs/) folder.
+
+Examples of JSON format output are provided in the [examples](examples/) folder.
 
 ### Content Types
 All APIs MUST provide a JSON representation signalled via 'Content-Type: application/json' headers. This SHOULD be the default content type in the absence of any requested alternative by clients. Other content types (such as HTML) are permitted if they are explicitly requested via Accept headers.
@@ -150,4 +151,3 @@ A set of keys and values providing a means to filter resources based on particul
 |--------------------------------|----------------------------|
 | urn:x-nmos:device:generic  | v1.0                       |
 | urn:x-nmos:device:pipeline | v1.0                       |
-
