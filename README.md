@@ -2,15 +2,15 @@
 
 NMOS is a family name for specifications produced by the Advanced Media Workflow Association related to networked media for professional applications.
 
-This repository provides specifications for:
-* Discovery and registration
-* In-stream signalling of idenitity
+This repository provides general information about these Specifications, including a [technical overview](NMOS Technical Overview.md)
+
+Other repositories contain the Specifications themselves:
+* [Discovery and Registration Proposed Specification (IS-04)](https://github.com/AMWA-TV/nmos-discovery-registration)
+* [In-stream Identity and Timing WIP Specification](https://github.com/AMWA-TV/nmos-in-stream-id-timing)
 
 For the latest version of this repository and issue tracker etc. please refer to [https://github.com/AMWA-TV/nmos/](https://github.com/AMWA-TV/nmos/)
 
-Screencasts introducing these specifications are available on the [AMWA website](http://www.amwa.tv/projects/nmi/NMI_presentations.shtml)
-
-NOTE: at the time of writing, some supporting material referred to in the technical overview is not yet available at this repository. Please contact AMWA for access to these items.
+Further supporting information, including screencasts and videos, is available at [nmos.tv](http://nmos.tv)
 
 ## Getting started
 
@@ -20,9 +20,6 @@ Please read the [NMOS Technical Overview](NMOS Technical Overview.md)
 
 * README.md -- This file
 * [NMOS Technical Overview](NMOS Technical Overview.md) -- High-level technical overview of the NMOS data model and API specifications
-* [discovery-registration/](discovery-registration/) -- Specifications, documentation, and examples for discovery and registration: NMOS Registration, Query and Node APIs
-* [in-stream-id-timing/](in-stream-id-timing/) -- Specifications, documentation, and examples for in-stream signalling of identity for video, audio and time-related data Flows: carriage in RTP header extensions
-
-## Licenses and disclaimers
-
-Please see the individual LICENSE and NOTICE files in subdirectories
+* [images](images) -- Images used in documents
+* [LICENSE](LICENSE) -- Licenses for software and text documents
+* [NOTICE](NOTICE) -- Disclaimer
