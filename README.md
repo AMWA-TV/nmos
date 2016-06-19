@@ -5,8 +5,9 @@ NMOS is a family name for specifications produced by the Advanced Media Workflow
 This repository provides general information about these Specifications, including a [technical overview](NMOS Technical Overview.md)
 
 Other repositories contain the Specifications themselves:
-* [Discovery and Registration Proposed Specification (IS-04)](https://github.com/AMWA-TV/nmos-discovery-registration)
-* [In-stream Identity and Timing WIP Specification](https://github.com/AMWA-TV/nmos-in-stream-id-timing)
+* [Discovery and Registration Specification (IS-04)](https://github.com/AMWA-TV/nmos-discovery-registration)
+* [Content Model Specification](https://github.com/AMWA-TV/nmos-content-model)
+* [In-stream Identity and Timing Specification](https://github.com/AMWA-TV/nmos-in-stream-id-timing)
 
 For the latest version of this repository and issue tracker etc. please refer to [https://github.com/AMWA-TV/nmos/](https://github.com/AMWA-TV/nmos/)
 
