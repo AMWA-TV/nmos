@@ -1,19 +1,24 @@
 # NMOS Technical Overview
 
-_(c) AMWA 2016, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
+_(c) AMWA 2017, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
+
+For the latest version of this document please go to https://github.com/AMWA-TV/nmos.
 
 ## Introduction
 
-The Advanced Media Workflow Association are creating a family of Networked Media Open Specifications (NMOS). Currently this are:
+The Advanced Media Workflow Association are creating a family of [Networked Media Open Specifications (NMOS)](http://www.nmos.tv). Each of these is made available through a GitHub repo:
 
-* [Discovery and Registration Specification](discovery-registration/README.md) (Proposed Specification IS-04)
-* [In-stream Identity and Timing Specification](in-stream-id-timing/README.md) (WIP)
+Currently the publicly available specifications and   links to repos are as follows:
 
-Each NMOS specification is located at a top-level folder within the following GitHub repository:
+* [Discovery and Registration Proposed Specification (IS-04)](https://github.com/AMWA-TV/nmos-discovery-registration)
+* [Content Model WIP Specification](https://github.com/AMWA-TV/nmos-content-model)
+* [In-stream Signaling of Identity and Timing information for RTP streams WIP Specification](https://github.com/AMWA-TV/nmos-in-stream-id-timing)
 
-[https://github.com/AMWA-TV/nmos](https://github.com/AMWA-TV/nmos)
+_Work is also underway within the AMWA Networked Media Incubator to create specifications for network control and device connection management. The WIP specifications will soon be made available on GitHub._
 
-This document provide a high-level technical overview of the NMOS data model and specifications, including examples of how these may be used. Please check the above repository for the latest version of this document.
+
+This document provides a high-level technical overview of the NMOS data model and specifications, including examples of how these may be used.
+
 
 ## Data Model Overview
 
@@ -51,33 +56,31 @@ As an example, consider the above concepts in the context of a video camera with
 
 -   The video Source provides (for the purposes of this example) two video Flows, one uncompressed, the other mezzanine encoded.
 
+Sources, Flows and Grains are formalized in the [NMOS Content Model](https://github.com/AMWA-TV/nmos-content-model).
+
 ### Senders and Receivers
 
 Devices transmit and receive Flows over the network using **Senders** and **Receivers.** These can be respectively considered as "virtual output ports" and "virtual input ports" on the Device. Receivers connect to Senders in order to transport content.
 
 ## Accessing a Node's resources
 
-Each Node represents the resources in its data model using a RESTful HTTP API called the **Node API**, which forms part of the Discovery and Registration Specification, and may also be used by future NMOS specifications.
+Each Node represents the resources in its data model using a RESTful HTTP/JSON API called the **Node API**, which forms part of the Discovery and Registration Specification, and may also be used by future NMOS specifications.
 
-## Identification, synchronization and transport of Flows
 
-Each Grain contains Flow and Source UUIDs as well as other attributes such as an **Origin Timestamp** and **Synchronization Timestamp** (these are often identical, but may differ in some cases; see the supporting documents for further information on timestamps and their uses).
+## Timing
 
-How this data travels between Nodes depends on the transport protocol being used. For each transport, the NMOS data model must be mapped into appropriate places in the protocol.
+The [NMOS Content Model](https://github.com/AMWA-TV/nmos-content-model) has been designed around the assumption that Nodes have access to a globally synchronized Clock to synchronize their Devices.
 
-As an example, RTP is typically used for real-time transport. RTP provides customizable **header extensions** into which the NMOS data model fields are inserted. The In-stream Identity and Timing Specification specifies how this is done.
+In typical usage (including the workshops of the AMWA Networked Media Incubator) the Clock is derived from GPS-locked PTP (using an epoch of 1970-01-01T00:00:00TAI) and is used to govern the capture of essence such as video frames, providing frame synchronization between discrete Devices.
 
-## Timing Model
-
-The NMOS Timing model has been designed to be used with a clock derived from PTP in order to synchronize Devices within a facility. By pairing this clock with a GPS source, absolute timing accuracy between geographically distributed locations can be ensured. As per SMPTE ST 2059-1, an epoch of 1970-01-01T00:00:00TAI is used, with zero phase at the epoch for periodic signals.
-
-The capture of essence such as video frames is governed by this clock, providing frame synchronization between discrete Devices. Each Grain is timestamped using the PTP clock in order to provide the means for synchronization of Flows where required, and unique identity for Grains in time. Two timestamps are used for each Grain:
+Each Grain is timestamped using the Clock in order to provide the means for synchronization of Flows where required, and unique identity for Grains in time. Two timestamps are used for each Grain:
 
 -   **Origin Timestamps** provide the original sampling instant of the media at the edge of the system, uniquely referenceable for all time.
 
 -   **Synchronization Timestamps** provide a means to cross-reference between Flows which may have passed through the network fabric via different paths, or passed through processing chains (such as codecs) which impose different levels of delay.
 
 By pairing these timestamps with Flow identifiers, it is possible to track a video frame or other essence through its chain of ancestors right back to the Device which originally captured it and the instant in time when that occurred.
+
 
 ## Example System Architecture
 
@@ -93,9 +96,9 @@ Regardless of their implementation, viewed logically, Nodes provide:
 
 -   A PTP slave for timing and synchronization.
 
-More detail on the Node HTTP API is contained in the *Node API specification.*
+The Node HTTP API is specified within the [discovery and registration specification](https://github.com/AMWA-TV/nmos-discovery-registration).
 
-NMOS does not specify the internal interfaces within a Node.
+NMOS does not specify the internal interfaces within a Node, although the following diagram may be helpful:
 
 ![Node Components](images/node-components.png)
 
@@ -117,14 +120,16 @@ Registered discovery takes place using a **Registration & Discovery System (RDS)
 
 ![Registration and Discovery](images/registration-and-discovery.png)
 
-The Registration Service implements the Registration API of the NMOS Discovery and Registration Specification. Nodes POST to this API to register themselves and their resources. The Registration Service also manages garbage collection of Nodes and their resources by requiring Nodes to send regular keep-alive/heartbeat messages.
+The Registration Service implements the **Registration API** (RESTful HTTP/JSON) of the NMOS Discovery and Registration Specification.  Nodes POST to this API to register themselves and their resources. The Registration Service also manages garbage collection of Nodes and their resources by requiring Nodes to send regular keep-alive/heartbeat messages.
 
-The Query Service implements the Query API of the NMOS Discovery and Registration Specification. Clients can GET lists of resources from this API. Typical usage examples include:
+The Query Service implements the **Query API** (RESTful HTTP/JSON) of the NMOS Discovery and Registration Specification. Clients can GET lists of resources from this API. Typical usage examples include:
 
 * Obtaining a list of registered Nodes in order to drive a configuration interface.
 * Obtaining a list of Sender resources and a list of Receiver resources in order to provide a connection management interface.
 
 The Query API also provides the ability to generate ‘long lived’ queries using its Subscription mechanism and WebSockets.
+
+The Registration and Query APIs are specified within the [discovery and registration specification](https://github.com/AMWA-TV/nmos-discovery-registration).
 
 ### Examples
 
@@ -134,7 +139,7 @@ The diagram below shows examples of peer-to-peer and registered discovery.
 
 ## Connection Management
 
-_Note: this section describes the approach the AMWA Networked Media Incubator has used for Connection Management, but is not in the scope of the two current NMOS Specifications. Future work of the Incubator may include creation of new NMOS Specification may be created for Connection Management._
+**Note: this section describes a particular approach to making/removing connections between Senders and Receivers that the AMWA Networked Media Incubator has used for Connection Management for the first three workshops, and for the public demonstration of IS-04 at IBC 2016. The Incubator is developing a more general API for device connection management, which should form the basis of a future NMOS specification.**
 
 Sender and Receiver resources enable connectivity between Nodes. Senders expose a description of what Flow they are sending and an href to access it (the ‘manifest’).
 
@@ -150,10 +155,19 @@ The diagram below shows a typical connection management sequence.
 
 ## Content Transport
 
-NMOS’s content model can be applied to several types of payload format and transport protocol, including, but not limited to:
+NMOS’s content model can be applied to several types of elemental payload format and transport protocol, including, but not limited to:
 
 * Uncompressed video over RTP according to [RFC 4175](https://tools.ietf.org/html/rfc4175)
 * Uncompressed audio over RTP according to [RFC 3190](https://tools.ietf.org/html/rfc3190)
 * ST.291 ANC data over RTP according to  [draft-ietf-payload-rtp-ancillary-02](https://tools.ietf.org/html/draft-ietf-payload-rtp-ancillary-02)
 
-The NMOS In-stream Identity and Timing Specification specifies how to apply the content model using RTP header extensions to carry identity and timing information and signal Grain boundaries. These can be extended to support e.g. mezzanine compression formats such as VC-2.
+The above are used by VSF's TR-03 and are being standardized by SMPTE in the ST 2110 family of specifications.
+
+In addition **multiplexed** streams are supported, in particular:
+* SMPTE ST 2022-6 (SDI over RTP)
+
+NMOS APIs include a "format" attribute to describe they type of Sources and Flows. _Note: for successful operation with multiplexed streams, v1.1 or later of IS-04 is required._
+
+[NMOS In-stream Signaling of Identity and Timing information for RTP streams](https://github.com/AMWA-TV/nmos-in-stream-id-timing) specifies how to apply the content model using **RTP header extensions** to carry identity and timing information and signal Grain boundaries. These can be extended to support e.g. mezzanine compression formats such as VC-2.
+
+Future NMOS specifications may be produced to specify how to apply the content model to other types of content transport (e.g. HTTP-based).
