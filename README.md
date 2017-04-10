@@ -16,12 +16,12 @@ Further supporting information, including screencasts and videos, is available a
 
 ## Getting started
 
-Please read the [NMOS Technical Overview](NMOS Technical Overview.md)
+Please read the [NMOS Technical Overview](NMOS%20Technical%20Overview.md)
 
 ## Repository contents
 
 * README.md -- This file
-* [NMOS Technical Overview](NMOS Technical Overview.md) -- High-level technical overview of the NMOS data model and API specifications
+* [NMOS Technical Overview](NMOS%20Technical%20Overview.md) -- High-level technical overview of the NMOS data model and API specifications
 * [images](images) -- Images used in documents
 * [LICENSE](LICENSE) -- Licenses for software and text documents
 * [NOTICE](NOTICE) -- Disclaimer
