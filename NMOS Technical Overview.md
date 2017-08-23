@@ -6,18 +6,74 @@ For the latest version of this document please go to https://github.com/AMWA-TV/
 
 ## Introduction
 
-The Advanced Media Workflow Association are creating a family of [Networked Media Open Specifications (NMOS)](http://www.nmos.tv). Each of these is made available through a GitHub repo:
+Networked Media Open Specifications ([NMOS]) are a family of specifications that support the professional AV media industry's transition to a "fully-networked" architecture. The NMOS specs are developed by the Advanced Media Workflow Association ([AMWA]) and are published on GitHub.
 
-Currently the publicly available specifications and   links to repos are as follows:
+### Background
+
+While much of the broadcast industry has moved to file-based operation, live facilities have long depended on specialist technologies such as the [Serial Digital Interface] (SDI), [SMPTE Timecode] and various incompatible control protocols (including some using RS-232, some of which are still in use).  However (as of 2017) there is a significant move towards replacing these with more general IT/IP technologies, allowing the industry to benefit from the high speeds and economies of scale that have enabled the success of the Internet and Web.
+
+Specifications such as [ST 2022-6], [ST 2110] and [AES-67] define specific
+
+, in its Networked Media Incubator group. This brings system developers together to develop, test and document practical solutions for
+
+In 2013 the Joint Task Force on Networked Media ([JT-NM]) to coordinate work across industry groups on interoperability. One of the outputs of the task force has been a Reference Architecture, which provides a collection of models, best practices, and frameworks.  This included a number of 
+
+## General Principles
+
+NMOS specifications make use A number of common
+
+### Web-friendly protocols
+
+* HTTP
+* WebSockets
+
+### Build on
+
+* IETF RFCs
+
+### Open ...
+
+### REST
+
+### Self-documenting specifications
+
+Such as RAML
+
+
+### Sec
+
+### Universal Identity
+
+* Everything can be identified
+* UUID/GUID
+
+
+- Learn from how the Internet and Web have grown
+- Identity is important
+- It’s not just about video and audio
+- Open approach
+- Use rather than invent
+- Benefit from modern tooling
+- Independent of infrastructure
+- Guided by JT-NM RA
+
+
+
+
+and are made available through AMWA GitHub repos.
+
+Currently the publicly available specifications and links to repos are as follows:
 
 * [Discovery and Registration Proposed Specification (IS-04)](https://github.com/AMWA-TV/nmos-discovery-registration)
 * [Content Model WIP Specification](https://github.com/AMWA-TV/nmos-content-model)
 * [In-stream Signaling of Identity and Timing information for RTP streams WIP Specification](https://github.com/AMWA-TV/nmos-in-stream-id-timing)
-
-_Work is also underway within the AMWA Networked Media Incubator to create specifications for network control and device connection management. The WIP specifications will soon be made available on GitHub._
+* [Device Connection Management WIP Specification](https://github.com/AMWA-TV/nmos-device-connection-management)
+* [Network Control WIP Specification](https://github.com/AMWA-TV/nmos-network-control)
 
 
 This document provides a high-level technical overview of the NMOS data model and specifications, including examples of how these may be used.
+
+
 
 
 ## Data Model Overview
@@ -171,3 +227,22 @@ NMOS APIs include a "format" attribute to describe they type of Sources and Flow
 [NMOS In-stream Signaling of Identity and Timing information for RTP streams](https://github.com/AMWA-TV/nmos-in-stream-id-timing) specifies how to apply the content model using **RTP header extensions** to carry identity and timing information and signal Grain boundaries. These can be extended to support e.g. mezzanine compression formats such as VC-2.
 
 Future NMOS specifications may be produced to specify how to apply the content model to other types of content transport (e.g. HTTP-based).
+
+
+[comment]: <> (References/Links)
+
+[NMOS]: http://nmos.tv "Networked Media Open Specifications website"
+
+[AMWA]: http://amwa.tv "Advanced Media Workflow Association"
+
+[JT-NM]: http://jt-nm.org "Joint Task Force on Networked Media (JT-NM)"
+
+[Serial Digital Interface]: http://ieeexplore.ieee.org/document/7292109/ "ST 259:2008 - SMPTE Standard - For Television — SDTV1 Digital Signal/Data — Serial Digital Interface"
+
+[SMPTE Timecode]: http://ieeexplore.ieee.org/document/7291029/ "ST 12-1:2014 - SMPTE Standard - Time and Control Code"
+
+[ST 2022-6]:
+
+[ST 2110]:
+
+[AES-67]:
