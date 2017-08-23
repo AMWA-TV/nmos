@@ -12,7 +12,7 @@ AMWA set up the Networked Media Incubator (also called just "Incubator" here) in
 
 ## What are IS-04, IS-05, IS-06, etc?
 
-These are codes assigned by AMWA for Interface Specifications they create, including the NMOS specs so far.  
+These are identifiers assigned by AMWA for Interface Specifications they create, including the NMOS specs so far.  
 
 Specs get an IS number once they reach Proposed status.  At the time of writing IS-04 is assigned to discovery and registration but IS-05 and IS-06 have been reserved for connection management and network control respectively.
 
