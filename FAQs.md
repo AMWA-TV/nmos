@@ -1,5 +1,37 @@
 # NMOS FAQs
 
+_(c) AMWA 2017, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
+
+[//]: # (ToC goes after this comment. Create it with "gh-md-toc")
+
+* [Who is AMWA?](#who-is-amwa)
+* [What is the Networked Media Incubator?](#what-is-the-networked-media-incubator)
+* [What are IS\-04, IS\-05, IS\-06, etc?](#what-are-is-04-is-05-is-06-etc)
+* [Where can I find the NMOS specifications?](#where-can-i-find-the-nmos-specifications)
+* [Where can I find an implementation?](#where-can-i-find-an-implementation)
+* [What is a Source, Flow, Grain, Node, Device, Sender, Receiver\.\.\.?](#what-is-a-source-flow-grain-node-device-sender-receiver)
+* [How does IS\-04 scale?](#how-does-is-04-scale)
+* [How can NMOS be used securely?](#how-can-nmos-be-used-securely)
+* [Does NMOS require multicast?](#does-nmos-require-multicast)
+* [Does NMOS require RTP?](#does-nmos-require-rtp)
+* [Does NMOS work in the cloud?](#does-nmos-work-in-the-cloud)
+* [Why does NMOS deal with only individual elemental Flows?](#why-does-nmos-deal-with-only-individual-elemental-flows)
+* [Why does NMOS deal with only uncompressed Flows?](#why-does-nmos-deal-with-only-uncompressed-flows)
+* [How does my company / project show its USPs?](#how-does-my-company--project-show-its-usps)
+* [If the “O” in NMOS means “open”, why are Incubator workshops closed?](#if-the-o-in-nmos-means-open-why-are-incubator-workshops-closed)
+* [What is "NMOS compliant/certified"?](#what-is-nmos-compliantcertified)
+* [Can I be sure that I won't be subject to patent fees/litigation if I implement NMOS?](#can-i-be-sure-that-i-wont-be-subject-to-patent-feeslitigation-if-i-implement-nmos)
+* [When will IS\-04 / NMOS be standardised? When is it “done”?](#when-will-is-04--nmos-be-standardised-when-is-it-done)
+* [Why does IS\-04 have connection management if there is IS\-05?](#why-does-is-04-have-connection-management-if-there-is-is-05)
+* [Why does IS\-05 use SDP? And why not <em>just</em> use SDP?](#why-does-is-05-use-sdp-and-why-not-just-use-sdp)
+* [What is the relationship between connection management and network control?](#what-is-the-relationship-between-connection-management-and-network-control)
+* [What is the relationship between NMOS and AMWA Labs?](#what-is-the-relationship-between-nmos-and-amwa-labs)
+* [Can I use IS\-xx without having to use IS\-yy?](#can-i-use-is-xx-without-having-to-use-is-yy)
+* [How do NMOS specifications fit into the wider community activity on interoperability?](#how-do-nmos-specifications-fit-into-the-wider-community-activity-on-interoperability)
+
+
+[//]: # (ToC goes before this comment)
+
 ## Who is AMWA?
 
 [AMWA] is the Advanced Media Workflow Association. Originally it was known for developing application specifications for using [MXF] (for example the [AS-11] family is used for delivery of finished media assets to a broadcaster or publisher).
@@ -18,7 +50,7 @@ Specs get an IS number once they reach Proposed status.  At the time of writing 
 
 It is possible that future NMOS specs may not start with "IS".  For example "AS" is used for Application Specifications and "MS" for Data Model Specifications.  Also "BCP" is used for Best Current Practice.
 
-For more detail on AMWA's specifcation process see [BCP-001].
+For more detail on AMWA's specification process see [BCP-001].
 
 
 ## Where can I find the NMOS specifications?
@@ -29,29 +61,30 @@ Note that some specifications are in private repos in their early stages.  These
 
 ## Where can I find an implementation?
 
-Several members of the AMWA Networked Media Incubator have created IS-04 implementations, some of which are open source:
+As well as proprietary implementations, several open-source implementations IS-04 and IS-05 are available.  See the page on [Implementations] for up-to-date information. At the time of writing this, they all use the Apache 2.0 license, which matches the NMOS specifications themselves.
 
-* [BBC's implementation], used as a reference by during Incubator workshops (Python).
-* [Ledger], part of Streampunk's suite for networked media (NodeJS).
+If you have an open-source implementation you would like added, please send a pull request to this repository.
 
-The reference implementation for IS-05 connection management is expected to be made open source soon.
 
 ## What is a Source, Flow, Grain, Node, Device, Sender, Receiver...?
 
-NMOS uses these common terms (capitalised) in specific ways that may not always correspond to your expectation.  They are defined in the specifications and summarised in the [Glossary].
+NMOS uses these common terms (capitalised) in specific ways that may not always correspond to your expectation.  They are defined in the specifications, explained in the [Technical Overview] and summarised in the [Glossary].
 
 ## How does IS-04 scale?
 
 IS-04 covers the APIs used for discovery and registration, and how to find the API Endpoints, but does not define an implementation of a registry. This allows implementors and integrators to choose an  approach to scalability that is appropriate to topology of the infrastructure and how it is used.
 
-[BBC's implementation] currently scales by using a registry based on [etcd], an open source distributed key-value store that allows a cluster of instances to be provisioned on a single or multiple networks.  The details of how etcd instances federate their information is not part of IS-04.
+[BBC's IS-04 implementation] currently scales by using a registry based on [etcd], an open source distributed key-value store that allows a cluster of instances to be provisioned on a single or multiple networks.  The details of how etcd instances federate their information is not part of IS-04.
 
  _(NB the BBC would like to point out that other distributed key-value stores are available, and its implementation could be easily modified to use them_).
 
+As of late September 2017, a new activity has just started in the Incubator to test the performance of IS-04 at scale.
 
 ## How can NMOS be used securely?
 
-NMOS APIs have supported use of HTTPS and WSS (secure WebSockets) since IS-04 v1.1. So far these haven't been used at Incubator workshops, but this is something we expect to happen in the future. As part of this we are likely to investigate and agree a suitable set of technologies to enable AAA (authentication, authorisation and audit) when using NMOS, where possible taking input from the AMWA Labs work.
+NMOS APIs have supported use of HTTPS and WSS (secure WebSockets) since IS-04 v1.1. So far these haven't been used at Incubator workshops, but this is something we expect to happen in the reasonably near future (I'm writing this in late September 2017).
+
+As part of this we are likely to investigate and agree a suitable set of technologies to enable AAA (authentication, authorisation and audit) when using NMOS, where possible taking input from the AMWA Labs work.
 
 ## Does NMOS require multicast?
 
@@ -61,10 +94,11 @@ IS-04 specifies how NMOS API Endpoints can be found using DNS-SD. This can use e
 
 Furthermore IS-04's use of DNS-SD is quite minimal – used to "bootstrap" operations.  The main part of IS-04 is based on HTTP and WebSockets, and is _independent of how the Endpoints are discovered_.
 
-
 (BTW, IS-04 peer-to-peer mode also will work with unicast DNS, although this would be an unusual case. A more likely case is that two devices are connected peer-to-peer via a low-cost switch that treat multicast packets as broadcast – this will still work.)
 
 The Flows that are discovered and connected through NMOS can be multicast (this has usually been the case for Incubator workshops) but can be unicast, and the connection management API supports both multicast and unicast models. See also question below about RTP.
+
+Generally we have been using multicast and IGMP at the Incubator workshops to date, both for DNS-SD and for media streams. That reflects the focus on 2110-type use cases. Where we need to address different cases, future workshops could take a different approach. See also the question about "the cloud" below.
 
 ## Does NMOS require RTP?
 
@@ -117,15 +151,26 @@ And the NMOS APIs are built on widely adopted patterns used on the Internet/Web,
 
 ## When will IS-04 / NMOS be standardised? When is it “done”?
 
-**Great question!**  At the time of writing, the AMWA board has just voted to proceed with elevation of IS-04 v1.0 and v1.1 to full AMWA Specification (It's quite likely that by the time you read this the spec will have been updated to reflect this.)
+**Great question!**  At the time of writing, IS-04 v1.0 and v1.1 have been recently elevated to full AMWA Specification.
 
-However, there will be further versions of IS-04 and other NMOS specs. v1.2 (currently work in progress as of August 2017) includes support for IS-05 connection management and deprecates the v1.0/v1.1 connection management mechanism.  Later versions may support further functionality and refactoring of NMOS – as the professional networked media industry matures we can expect requirements to keep changing, so although individual versions will be "done", NMOS will not stand still.
+However, there will be further versions of IS-04 and other NMOS specs. v1.2 (expected to be elevated to Proposed Specifcation in October 2017) includes support for IS-05 connection management and deprecates the v1.0/v1.1 connection management mechanism.  
+
+Later versions may support further functionality and refactoring of NMOS – as the professional networked media industry matures we can expect requirements to keep changing, so although individual versions will be "done", NMOS will not stand still.
 
 As for formal due-process standardisation of particular versions of NMOS specifications, this is a question for SMPTE and the desire or otherwise of the industry to see this happen.
 
 ## Why does IS-04 have connection management if there is IS-05?
 
 **History.** IS-04 v1.0 and v1.1 predate IS-05. A basic connection management mechanism was needed at earlier Incubator workshops so that we could connect together senders and receivers. This was included in IS-04 as an expediency, but doesn't really belong there.  Recent workshops use the separate, and more flexible device connection management API.  Once IS-05 becomes a Proposed Specifcation, the IS-04 mechanism will be deprecated in v1.2 and may be removed in later versions.
+
+## Why does IS-05 use SDP? And why not _just_ use SDP?
+
+Despite its ugliness, as of 2017 [SDP] is still regularly used with RTP media streams, and is included in SMPTE's ST 2110-10 for describing streams. So 2110-compliant senders and receivers will be using it anyway, and it makes sense for IS-05 to use it. This can be either within the JSON messages or via a link.
+
+However, IS-05 doesn't _require_ the use of SDP. It abstracts it through the Sender's ``/transportfile`` resource, and alternative formats can be used. For a non-RTP transport this will certainly be the case (e.g. DASH manifest).  
+
+And relying on _just_ SDP itself isn't enough. It describes the streams but doesn't provide a means of making connections, so we would be reliant on proprietary mechanisms.
+
 
 ## What is the relationship between connection management and network control?
 
@@ -147,9 +192,11 @@ The **Joint Task Force on Networked Media** is a an industry group that was set 
 
 This is discussed further in the [Technical Overview].
 
-[comment]: <> (References/Links)
+[//]: # (References/Links)
 
 [AMWA]: http://amwa.tv "Advanced Media Workflow Association"
+
+[AMWA Labs]: https://amwa.tv/downloads/brochures/AMWA_Labs_Apr_2017.pdf "AMWA Labs update for NAB 2017"
 
 [Arachnid]: https://github.com/Streampunk/arachnid "Streampunk Arachnid"
 
@@ -157,11 +204,15 @@ This is discussed further in the [Technical Overview].
 
 [BBC IP Studio]: http://www.bbc.co.uk/rd/projects/ip-studio "BBC R&D IP Studio"
 
-[BBC's implementation]: https://github.com/bbc/nmos-discovery-registration-ri "IS-04 reference implementation"
+[BBC's IS-04 implementation]: https://github.com/bbc/nmos-discovery-registration-ri "IS-04 reference implementation"
 
 [BCP-001]: http://amwa.tv/projects/BCP-001.shtml "BCP-001: AMWA Specification Process"
 
+[etcd]: https://github.com/coreos/etcd "etcd: Distributed reliable key-value store for the most critical data of a distributed system"
+
 [Glossary]: Glossary.md "Glossary"
+
+[Implementations]: Implementations.md "Implementations"
 
 [Incubator rules]: http://www.amwa.tv/projects/nmi/AMWA_NMOS_Rules_v2.11.pdf "AMWA Networked Media Incubator rules"
 
@@ -176,5 +227,7 @@ This is discussed further in the [Technical Overview].
 [Networked Media Incubator]: http://nmos.tv/about_NMI.html "Networked Media Incubator"
 
 [In-stream Signaling Specification]: https://github.com/AMWA-TV/nmos-in-stream-id-timing "AMWA WIP Specification: In-stream Signaling of Identity and Timing information for RTP streams"
+
+[SDP]: https://tools.ietf.org/html/rfc4566 "SDP: Session Description Protocol"
 
 [Technical Overview]: NMOS%20Technical%20Overview.md "NMOS Technical Overview"

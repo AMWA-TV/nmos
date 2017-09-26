@@ -5,23 +5,20 @@ _(c) AMWA 2017, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
 For the latest version of this document please go to https://github.com/AMWA-TV/nmos.
 
 
-[comment]: <> (ToC goes after this comment. Create it with "gh-md-toc --hide-header --depth=3")
+[//]: # (ToC goes after this comment. Create it with "gh-md-toc --hide-header --depth=3")
 
-* [NMOS Technical Overview](#nmos-technical-overview)
-  * [Introduction](#introduction)
-    * [Background](#background)
-    * [General Principles](#general-principles)
-  * [NMOS Model and Glossary](#nmos-model-and-glossary)
-  * [The Specifications](#the-specifications)
-    * [Discovery and Registration Proposed Specification (IS\-04)](#discovery-and-registration-proposed-specification-is-04)
-    * [Device Connection Management WIP Specification (future IS\-05)](#device-connection-management-wip-specification-future-is-05)
-    * [Network Control WIP Specification (future IS\-06)](#network-control-wip-specification-future-is-06)
-    * [Content Model WIP Specification](#content-model-wip-specification)
-    * [In\-stream Signaling of Identity and Timing information for RTP streams WIP Specification](#in-stream-signaling-of-identity-and-timing-information-for-rtp-streams-wip-specification)
+* [Introduction](#introduction)
+  * [Background](#background)
+  * [General Principles](#general-principles)
+* [NMOS Model and Terminology](#nmos-model-and-terminology)
+* [The Specifications](#the-specifications)
+  * [Discovery and Registration Proposed Specification (IS\-04)](#discovery-and-registration-proposed-specification-is-04)
+  * [Device Connection Management WIP Specification (future IS\-05)](#device-connection-management-wip-specification-future-is-05)
+  * [Network Control WIP Specification (future IS\-06)](#network-control-wip-specification-future-is-06)
+  * [Content Model WIP Specification](#content-model-wip-specification)
+  * [In\-stream Signaling of Identity and Timing information for RTP streams WIP Specification](#in-stream-signaling-of-identity-and-timing-information-for-rtp-streams-wip-specification)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
-
-[comment]: <> (ToC goes before this comment)
+[//]: # (ToC goes before this comment)
 
 
 ## Introduction
@@ -80,7 +77,7 @@ The success of HTTP and WebSockets is in part due to their open nature, being ma
 
 #### Openly available specifications
 
-We are using GitHub repositories to publish the specifications. These are made public as soon as is sensible, and of couse are available at no cost (AMWA is using a "RAND-Z" model for this work).  We use the Apache 2.0 open source licence for specifications (and )
+We are using GitHub repositories to publish the specifications. These are made public as soon as is sensible, and of couse are available at no cost (AMWA is using a "RAND-Z" model for this work).  We use the Apache 2.0 open source licence for specifications (and the current open-source implementations).
 
 
 #### Self-documenting specifications
@@ -129,7 +126,7 @@ Similarly the NMOS specifications have been written with the intent that they wi
 
 This has already been mentioned, but it underpins how work on future NMOS specifications is likely to develop, as it ensures the work stays relevant across a broad community.
 
-## NMOS Model and Glossary
+## NMOS Model and Terminology
 
 Before explaining the NMOS specifications themselves it is helpful to present the model we are using in a sequence of pictures. This will also introduce some of the terminology used in NMOS specifications – this is similar to that used in the [JT-NM RA]. Be warned that in some cases common words (such as "Device") are used to represent "logical" things and so may not mean what you expect.  A more complete list of NMOS terminology is provided in the [Glossary].
 
@@ -239,11 +236,15 @@ This maps the content model to RTP including how to use RTP header extensions to
 
 
 
-[comment]: <> (References/Links)
+[//]: # (References/Links)
 
 [AES-67]: http://www.aes.org/publications/standards/search.cfm?docID=96 "AES67-2015: AES standard for audio applications of networks - High-performance streaming audio-over-IP interoperability"
 
 [AMWA]: http://amwa.tv "Advanced Media Workflow Association"
+
+[Glossary]: Glossary.md "Glossary"
+
+[JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)""
 
 [JT-NM RA]: http://jt-nm.org/RA-1.0/ "Joint Task Force on Networked Media (JT-NM): Reference Architecture V1.0"
 

@@ -1,5 +1,7 @@
 # Open-source implementations of NMOS Specifications
 
+_(c) AMWA 2017, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
+
 This page contains a list of know open source implementations for NMOS specifications
 
 Creator  | Language  | License  | URL | Description
