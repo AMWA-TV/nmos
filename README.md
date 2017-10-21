@@ -2,7 +2,7 @@
 
 NMOS is a family name for specifications produced by the Advanced Media Workflow Association related to networked media for professional applications.
 
-This repository provides general information about these Specifications, including a [technical overview](NMOS Technical Overview.md)
+This repository provides general information about these Specifications, including a [technical overview](NMOS%20Technical%20Overview.md)
 
 Other repositories contain the Specifications themselves:
 * [Discovery and Registration Specification (IS-04)](https://github.com/AMWA-TV/nmos-discovery-registration)
