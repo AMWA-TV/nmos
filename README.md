@@ -6,7 +6,7 @@ This repository provides general information about these Specifications, includi
 
 Other repositories contain the Specifications themselves:
 * [Discovery and Registration Specification (IS-04)](https://github.com/AMWA-TV/nmos-discovery-registration)
-* [Device Connection Management WIP Specification (future IS-05)](https://github.com/AMWA-TV/nmos-device-connection-management)
+* [Device Connection Management Proposed Specification (future IS-05)](https://github.com/AMWA-TV/nmos-device-connection-management)
 * [Network Control WIP Specification (future IS-06)](https://github.com/AMWA-TV/nmos-network-control)
 * [Content Model WIP Specification](https://github.com/AMWA-TV/nmos-content-model)
 * [In-stream Signaling of Identity and Timing information for RTP streams WIP Specification](https://github.com/AMWA-TV/nmos-in-stream-id-timing)
