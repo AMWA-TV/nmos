@@ -1,6 +1,6 @@
 # Generating the GitHub Pages documentation
 
-Eventually this will be automated, but in the meantime, those with write access to the repo must update the GitHub Pages following any change to the specification or supporting documents.
+Eventually this will be automated, but in the meantime, those with write access to the repo must update the GitHub Pages following any change to the documents.
 
 Clone this repo, checkout the gh-pages branch and make
 

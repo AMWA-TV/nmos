@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+# Unlike the spec repos, the top-level nmos source-repo doesn't have a docs/ folder
+
 function extract {
     checkout=$1
     target_dir=$2
@@ -7,7 +10,7 @@ function extract {
     mkdir "$target_dir"
     cd source-repo
 	git checkout "$checkout"
-        cp -r docs "../$target_dir"
+        cp -r *.md "../$target_dir/"
     cd ..
 
 }
