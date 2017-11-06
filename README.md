@@ -25,6 +25,4 @@ Further information about AMWA is available at https://amwa.tv
 
 [master](branches/master)
 
-[new-documentation](branches/new-documentation)
-
 ## Tags

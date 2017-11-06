@@ -9,10 +9,11 @@ function extract {
     echo "Extracting documentation from $checkout into $target_dir"
     mkdir "$target_dir"
     cd source-repo
-	git checkout "$checkout"
-        cp -r *.md "../$target_dir/"
-    cd ..
-
+        git checkout "$checkout"
+        cp *.md "../$target_dir/"
+        mkdir "../$target_dir/images"
+        cp -r images/* "../$target_dir/images"
+        cd ..
 }
 
 
@@ -25,4 +26,3 @@ mkdir tags
 for tag in $(cd source-repo; git tag); do
     extract "tags/$tag" "tags/$tag"
 done
-
