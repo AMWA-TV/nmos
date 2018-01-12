@@ -1,28 +1,32 @@
-# Networked Media Open Specifications
+# AMWA Networked Media Open Specifications (NMOS)
 
-NMOS is a family name for specifications produced by the Advanced Media Workflow Association related to networked media for professional applications.
+## GitHub Pages documentation
 
-Here you will find general information about these Specifications. 
-  
-Start with the [Technical Overview](branches/master/NMOS%20Technical%20Overview.html) and [FAQs](branches/master/FAQs.html) on the master branch. At the end of the page, you can select documentation from all branches and release tags.
+If you are reading this you are on the gh-pages branch, which is used to generate the documentation from the master and other branches, and from releases.  These are served at https://amwa-tv.github.io/nmos-device-connection-management/.
 
+## Generating the documentation
 
-The table below lists the current specifications and provides links to their repositories  on [github.com/AMWA-TV](https://github.com/AMWA-TV/) and documentation on amwa-tv.github.io
+If you make any changes to the repo please do the following:
 
+Clone this repo (if you haven't already), checkout the gh-pages branch and make:
 
-Id | Name  | Status  | Repository  | Documentation
---|---|---|---|--
-IS-04 | Discovery and Registration | AMWA Specification  | [nmos-discovery-registration](https://github.com/AMWA-TV/nmos-discovery-registration)  |  [here](https://amwa-tv.github.io/nmos-discovery-registration)
-IS-05 | Device Connection Management  | Proposed AMWA Specification  | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management)  |  [here](https://amwa-tv.github.io/nmos-device-connection-management)
-IS-06 | Network Control | Work In Progress  |  [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) |  
-      | Content Model   | Work In Progress  | [nmos-content-model](https://github.com/AMWA-TV/nmos-content-model) |  
-      | In-stream Signaling of Identity and Timing information for RTP streams  | Work In Progress  | [nmos-in-stream-id-timing](https://github.com/AMWA-TV/nmos-in-stream-id-timing)  |  
+``git checkout gh-pages``
 
-Further supporting information, including screencasts and videos, is available at https://nmos.tv/
+``make``
 
-Further information about AMWA is available at https://amwa.tv
-## Branches
+This runs scripts to:
+- clone the repo from AMWA's GitHub
+- for each branch and release (with some exceptions) extract documentation, APIs and schemas
+  - making HTML renders of the RAML APIs
+- for each branch and release create indexes for the documentation, APIs and schemas
+- make links to what will later be the HTML renders of the Markdown documentation
 
-[master](branches/master)
+## Updating AMWA's GitHub
 
-## Tags
+You can push the updated documentation to AMWA's GitHub with.
+
+``make push``
+
+Admins must be to do this after merging PRs etc (until this is automated with CircleCI at some point).
+
+This then triggers a build of the GitHub Pages. This happens on GitHub's servers, using Jekyll to render the HTML.  This includes rendering the Markdown content, but we have to do the RAML ourselves.  

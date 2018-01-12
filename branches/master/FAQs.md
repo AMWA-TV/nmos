@@ -230,4 +230,4 @@ This is discussed further in the [Technical Overview].
 
 [SDP]: https://tools.ietf.org/html/rfc4566 "SDP: Session Description Protocol"
 
-[Technical Overview]: NMOS%20Technical%20Overview.md "NMOS Technical Overview"
+[Technical Overview]: NMOS_Technical_Overview.md "NMOS Technical Overview"
