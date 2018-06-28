@@ -7,14 +7,15 @@ shopt -s nullglob
 # Filename for index in each dir
 INDEX=index.md
 
-for b_or_t in branches tags; do
+# Modified version for top level nmos repo -- only does master
+for b_or_t in branches; do
     echo "Processing $b_or_t $INDEX..."
     cd "$b_or_t"
-    for dir in */; do
+    for dir in master/; do
         dirname="${dir%%/}"
         echo "Making $dirname/$INDEX"
         cd "$dir"
-            echo -e "# Documentation for $dirname\n" > "$INDEX"
+            echo -e "# Documentation\n" > "$INDEX"
             for doc in *.md; do
                 if [[ "$doc" != "index.md" && "$doc" != "README.md" ]]; then
                     no_ext=${doc%%.md}
@@ -39,17 +40,7 @@ echo "Adding in contents of master $INDEX"
 # Shameful but effective - correct the links while copying text
 sed 's:(:(branches/master/:' "branches/master/$INDEX" > "$CONTENTS"
 
-echo -e "\n## Branches" >> "$CONTENTS"
-for dir in branches/*; do
-    branch="${dir##*/}"
-    echo -e "\n[$branch](branches/$branch/)" >>  "$CONTENTS"
-done
-
-echo -e "\n## Tags" >> "$CONTENTS"
-for dir in tags/*; do
-    tag="${dir##*/}"
-    echo -e "\n[$tag](tags/$tag/)" >>  "$CONTENTS"
-done
+# Not adding all the branches and tags
 
 echo >> "$CONTENTS"
 

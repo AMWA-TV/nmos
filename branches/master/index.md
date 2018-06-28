@@ -1,4 +1,4 @@
-# Documentation for master
+# Documentation
 
  - [FAQs](FAQs.md)
  - [Glossary](Glossary.md)

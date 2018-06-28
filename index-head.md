@@ -10,13 +10,12 @@ The table below lists the current specifications and provides links to their rep
 
 Id | Name  | Status  | Repository  | Documentation
 --|---|---|---|--
-IS-04 | Discovery and Registration | AMWA Specification  | [nmos-discovery-registration](https://github.com/AMWA-TV/nmos-discovery-registration)  |  [here](https://amwa-tv.github.io/nmos-discovery-registration)
-IS-05 | Device Connection Management  | Proposed AMWA Specification  | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management)  |  [here](https://amwa-tv.github.io/nmos-device-connection-management)
-IS-06 | Network Control | Work In Progress  |  [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) |
-  .   | Content Model   | Work In Progress  | [nmos-content-model](https://github.com/AMWA-TV/nmos-content-model) |
-  .   | In-stream Signaling of Identity and Timing information for RTP streams  | Work In Progress  | [nmos-in-stream-id-timing](https://github.com/AMWA-TV/nmos-in-stream-id-timing)  |
+IS-04 | Discovery and Registration | AMWA Specification (Stable) | [nmos-discovery-registration](https://github.com/AMWA-TV/nmos-discovery-registration)  |  [here](https://amwa-tv.github.io/nmos-discovery-registration)
+IS-05 | Device Connection Management  | AMWA Specification  | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management)  |  [here](https://amwa-tv.github.io/nmos-device-connection-management)
+IS-06 | Network Control | Work In Progress  |  [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) | [here](https://amwa-tv.github.io/nmos-network-control)
 
 
 Further supporting information, including screencasts and videos, is available at https://nmos.tv/
 
 Further information about AMWA is available at https://amwa.tv
+
