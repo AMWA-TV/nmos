@@ -13,6 +13,7 @@ Id | Name  | Status  | Repository  | Documentation
 IS-04 | Discovery and Registration | AMWA Specification (Stable) | [nmos-discovery-registration](https://github.com/AMWA-TV/nmos-discovery-registration)  |  [here](https://amwa-tv.github.io/nmos-discovery-registration)
 IS-05 | Device Connection Management  | AMWA Specification  | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management)  |  [here](https://amwa-tv.github.io/nmos-device-connection-management)
 IS-06 | Network Control | Work In Progress  |  [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) | [here](https://amwa-tv.github.io/nmos-network-control)
+IS-07 | Event & Tally | Work In Progress  |  [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally) | [here](https://amwa-tv.github.io/nmos-event-tally)
 
 
 Further supporting information, including screencasts and videos, is available at https://nmos.tv/
