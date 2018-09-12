@@ -1,4 +1,6 @@
 #!/bin/bash
 
-git clone --no-checkout https://github.com/AMWA-TV/nmos source-repo/
+. ./repo-settings.sh
+
+git clone --no-checkout $REPO_ADDRESS source-repo/
 

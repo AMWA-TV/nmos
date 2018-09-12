@@ -2,7 +2,7 @@
 
 ## GitHub Pages documentation
 
-If you are reading this you are on the gh-pages branch, which is used to generate the documentation from the master and other branches, and from releases.  These are served at https://amwa-tv.github.io/nmos-device-connection-management/.
+If you are reading this you are on the gh-pages branch, which is used to generate the documentation from the master and other branches, and from releases.  These are served at <https://amwa-tv.github.io/nmos-device-connection-management/>.
 
 ## Generating the documentation
 
@@ -15,6 +15,7 @@ Clone this repo (if you haven't already), checkout the gh-pages branch and make:
 ``make``
 
 This runs scripts to:
+
 - clone the repo from AMWA's GitHub
 - for each branch and release (with some exceptions) extract documentation, APIs and schemas
   - making HTML renders of the RAML APIs

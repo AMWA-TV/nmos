@@ -1,4 +1,4 @@
-.PHONY: build all source-repo docs readmes fix-links push clean
+.PHONY: build all source-repo docs indexes fix-links push clean
 
 build: source-repo docs indexes fix-links
 
