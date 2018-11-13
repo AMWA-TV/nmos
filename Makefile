@@ -17,6 +17,9 @@ indexes:
 fix-links:
 	./fix-links.sh
 
+server:
+	./run-server.sh
+
 push:
 	./push-to-github.sh
 

@@ -14,7 +14,7 @@ IS-04 | Discovery and Registration | AMWA Specification (Stable) | [nmos-discove
 IS-05 | Device Connection Management  | AMWA Specification  | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management)  |  [here](https://amwa-tv.github.io/nmos-device-connection-management)
 IS-06 | Network Control | AMWA Specification  |  [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) | [here](https://amwa-tv.github.io/nmos-network-control)
 IS-07 | Event & Tally | Work In Progress  |  [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally) | [here](https://amwa-tv.github.io/nmos-event-tally)
-n/a | Parameter Registers | Continuing  |  [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers) | [here](https://peterbrightwell.github.io/nmos-parameter-registers/)
+n/a | Parameter Registers | Continuing  |  [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers) | [here](https://amwa-tv.github.io/nmos-parameter-registers/)
 
 
 ## Further reading: NMOS Wiki
