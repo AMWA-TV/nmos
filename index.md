@@ -15,7 +15,9 @@ IS-05 | Device Connection Management  | AMWA Specification (Stable) | [nmos-devi
 IS-06 | Network Control | AMWA Specification  |  [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) | [here](https://amwa-tv.github.io/nmos-network-control)
 IS-07 | Event & Tally | Work In Progress  |  [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally) | [here](https://amwa-tv.github.io/nmos-event-tally)
 n/a | Parameter Registers | Continuing  |  [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers) | [here](https://amwa-tv.github.io/nmos-parameter-registers/)
-
+n/a | Grouping | Approved for publication| [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers/blob/master/tags/grouphint.md) | [here](https://amwa-tv.github.io/nmos-parameter-registers/tags/grouphint.html)
+n/a | Audio Channel Mapping | Work In Progress | [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping) | [here](https://amwa-tv.github.io/nmos-audio-channel-mapping/)
+n/a | API Security | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security) | [here](https://amwa-tv.github.io/nmos-api-security/)
 
 ## Further reading: NMOS Wiki
 
