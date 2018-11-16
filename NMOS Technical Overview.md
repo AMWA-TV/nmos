@@ -176,7 +176,7 @@ So far, NMOS specifications have worked with quite fine-grained Resources (pun u
 
 This section outlines the publicly available NMOS specifications
 
-### Discovery and Registration Proposed Specification (IS-04)
+### Discovery and Registration Specification (IS-04)
 
 <https://amwa-tv.github.io/nmos-discovery-registration>
 
@@ -192,7 +192,7 @@ It specifies:
 
 It also includes a basic connection management mechanism that was used before the creation of IS-05 (see below). This is deprecated, and will be removed in later versions of IS-04.
 
-### Device Connection Management WIP Specification (IS-05)
+### Device Connection Management Specification (IS-05)
 
 <https://amwa-tv.github.io/nmos-device-connection-management>
 
