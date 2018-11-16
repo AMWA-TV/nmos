@@ -2,24 +2,25 @@
 
 _(c) AMWA 2017, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
 
-For the latest version of this document please go to https://github.com/AMWA-TV/nmos.
+For the latest version of this document please go to <https://github.com/AMWA-TV/nmos>.
 
+[//]: # (ToC goes after this comment. Generate with gen-toc.sh <this-file> and paste in.)
 
-[//]: # (ToC goes after this comment. Create it with "gh-md-toc --hide-header --depth=3")
-
-* [Introduction](#introduction)
-  * [Background](#background)
-  * [General Principles](#general-principles)
-* [NMOS Model and Terminology](#nmos-model-and-terminology)
-* [The Specifications](#the-specifications)
-  * [Discovery and Registration Proposed Specification (IS\-04)](#discovery-and-registration-proposed-specification-is-04)
-  * [Device Connection Management WIP Specification (future IS\-05)](#device-connection-management-wip-specification-future-is-05)
-  * [Network Control WIP Specification (future IS\-06)](#network-control-wip-specification-future-is-06)
-  * [Content Model WIP Specification](#content-model-wip-specification)
-  * [In\-stream Signaling of Identity and Timing information for RTP streams WIP Specification](#in-stream-signaling-of-identity-and-timing-information-for-rtp-streams-wip-specification)
+- [Introduction](#introduction)
+  - [Background](#background)
+  - [General Principles](#general-principles)
+- [NMOS Model and Terminology](#nmos-model-and-terminology)
+- [The Specifications](#the-specifications)
+  - [Discovery and Registration Proposed Specification (IS\-04)](#discovery-and-registration-proposed-specification-is-04)
+  - [Device Connection Management WIP Specification (IS\-05)](#device-connection-management-wip-specification-is-05)
+  - [Network Control WIP Specification (IS\-06)](#network-control-wip-specification-is-06)
+  - [Event and Tally Specification (future IS\-07)](#event-and-tally-specification-future-is-07)
+  - [Parameter Registers](#parameter-registers)
+  - [Grouping](#grouping)
+  - [Audio Channel Mapping (Work In Progress)](#audio-channel-mapping-work-in-progress)
+  - [API Security (Work In Progress)](#api-security-work-in-progress)
 
 [//]: # (ToC goes before this comment)
-
 
 ## Introduction
 
@@ -36,7 +37,6 @@ Standards bodies including SMPTE and AES have created specifications for streami
 ![JT-NM Layers](images/jtnm-layers.png)
 
 This is where the Advanced Media Workflow Association ([AMWA]) comes in.  AMWA is an industry group of manufacturers, developers and end users, that is trying to advance a software-focussed approach to support future professional media operations.  What this means in practice is identifying how to build upon "commodity" infrastructure (red layer) and widely used platform technologies/protocols (green) layer and supplement these where required with helpful specifications that build upon these building blocks.  AMWA has done this in the past with "application specifications" for file-based interchange and delivery, and is now doing this for networked media with the NMOS specifications, which are being created by AMWA's Networked Media Incubator group. These provide a open set of APIs to support interoperability for networked media applications:
-
 
 ![JT-NM Layers with NMOS APIs](images/jtnm-layers-nmos.png)
 
@@ -60,7 +60,6 @@ NMOS adopts this modern approach.
 
 Although "REST" is often used to mean any simple HTTP API, in creating the NMOS specs we have tried to adopt "correct practice" such as statelessness, uniform interface, resource identification in requests, HATEOAS, etc. (The [Wikipedia REST page] has a good summary of these.)  But as there are no hard rules on this, and a certain amount of pragmatism has also been used, especially for more control-oriented activities such as connection management.
 
-
 #### Technology independence through data modelling
 
 This might seem to conflict with some of the above, but it doesn't have to. In creating the NMOS specifications we have started with (UML) data models, which you will see in the NMOS repositories. The HTTP/WebSockets/RAML/JSON
@@ -73,40 +72,32 @@ You can see this explicitly in the relation between the logical content model an
 
 The success of HTTP and WebSockets is in part due to their open nature, being made available through IETF RFCs. The same applies to RTP, which is the basis of much industry activity on live IP at present.
 
-
-
 #### Openly available specifications
 
 We are using GitHub repositories to publish the specifications. These are made public as soon as is sensible, and of couse are available at no cost (AMWA is using a "RAND-Z" model for this work).  We use the Apache 2.0 open source licence for specifications (and the current open-source implementations).
-
 
 #### Self-documenting specifications
 
 Much of the "normative" part of the NMOS specifications takes the form of RAML and JSON Schema (with text-based supporting information). This allows
 
-
 #### Scalable
 
 The Internet/Web has scaled well so far (shortage of remaining public IPv4 addresses notwithstanding). NMOS APIs are built from Internet/Web technologies, so should also scale. That's the theory – at the time of writing this we are planning some practical work to study/prove this is the case, including documenting best practice.
-
-
 
 #### Securable
 
 Huge amounts of resources are spent on ensuring the world can use the Internet/Web securely.  NMOS APIs are built from Internet/Web technologies, so should benefit.  Again, that's the theory – so far Incubator workshops have used plain HTTP/WebSockets for expediency, but the specifications support HTTPS/WSS.  At the time of writing this we are planning some practical work to study/prove this is the case, including documenting best practice (such as what authentication, authorisation and audit technologies are well suited to networked media applications).
 
-
-
 #### Suitable for all types of platform
 
 Professional media has to work in many different types of environment, requiring a range of types of equipment. This means that NMOS specifications have been designed to work on many types of platform, such as:
+
 - low-power devices, used on location and connected on a local network
 - rack-mounted equipment within a fixed facility in a television centre
 - virtualised in an on-premesis data centre
 - on a shared or public cloud
 
-
-#### Universal Identity
+ersal Identity
 
 In NMOS specifications, everything is treated as a resource that can be uniquely identified. This is discussed in depth in the "Identity Framework" section of the [JT-NM RA]. In practice it means that every resource has a UUID/GUID that can be generated locally (rather than being assigned by a central authority). This UUID is then used within JSON messages and as part of RESTful URIs.
 
@@ -146,13 +137,11 @@ or:
 
 ![Node-Device-Senders-Receivers](images/node-device-senders-receivers.png)
 
-
 Devices, Senders and Receivers are all **Resources**. A Resource is a uniquely identified and addressable part of a networksed system:
 
 ![Node-Device-Sender-Receiver-UUIDs](images/node-device-sender-receiver-uuids.png)  
 
 As an example, consider an IP-enabled camera. Associated with it there will probably be a Node, a Device, A video Sender, an audio Sender (if it has microphones), and maybe a data Sender (e.g. for position data), and perhaps Receivers for reverse video, intercom and control data.
-
 
 NMOS uses the term **Flow** for a sequence of video, audio, or time-related data, which can _flow_ from a Sender to a Receiver or Receivers. A Flow is treated as a resource and has a unique ID:
 
@@ -166,12 +155,12 @@ Although Grains often are regularly spaced, they don't have to be, for example i
 
 ![Grains-Irregular](images/grains-irregular.png)
 
-
 Each Flow is also associated with a **Source**. This is the _logical_ originator of the Flow:
 
 ![Grains-Flow-Source](images/grains-flow-source.png)
 
 So in the NMOS model, a camera could be have several associated resources:
+
 - Node
 - Device
 - Video, Audio and Data Sources
@@ -179,11 +168,9 @@ So in the NMOS model, a camera could be have several associated resources:
 - Video, Audio and Data Receivers (for tally, viewfinder and comms)
 - Video, Audio and Data Flows
 
-
 ![Overview-Class](images/overview-class.png)
 
 So far, NMOS specifications have worked with quite fine-grained Resources (pun unavoidable).  Future NMOS specifications will consider functionality and content at a higher level, for example for detailing with "bundles" of Flows.
-
 
 ## The Specifications
 
@@ -191,7 +178,7 @@ This section outlines the publicly available NMOS specifications
 
 ### Discovery and Registration Proposed Specification (IS-04)
 
-https://github.com/AMWA-TV/nmos-discovery-registration
+<https://amwa-tv.github.io/nmos-discovery-registration>
 
 This Specification enables applications to discover networked resources, which is an important first step towards automation and scalability.
 
@@ -205,9 +192,9 @@ It specifies:
 
 It also includes a basic connection management mechanism that was used before the creation of IS-05 (see below). This is deprecated, and will be removed in later versions of IS-04.
 
-### Device Connection Management WIP Specification (future IS-05)
+### Device Connection Management WIP Specification (IS-05)
 
-https://github.com/AMWA-TV/nmos-device-connection-management
+<https://amwa-tv.github.io/nmos-device-connection-management>
 
 This Specification provides an HTTP API for establishing (and removing) Flows between Senders and Receivers.
 
@@ -215,26 +202,41 @@ This allows the connection to made in a way that doesn't require knowledge of th
 
 It allows connections to be prepared and "activated" at a particular time and allows multiple connections to be made/unmade at the same time (sometimes known as "bulk" or "salvo" operation).
 
+### Network Control WIP Specification (IS-06)
 
-### Network Control WIP Specification (future IS-06)
-https://github.com/AMWA-TV/nmos-network-control
+<https://amwa-tv.github.io/nmos-network-control>
 
 This Specification can be considered as a "northbound API" for SDN controllers. It provides an HTTP API to communicate information about the network topology, allow reservation of bandwidth for low-level network flows and monitoring.
 
+### Event and Tally Specification (future IS-07)
 
-### Content Model WIP Specification
+<https://amwa-tv.github.io/AMWA-TV/nmos-event-tally>
 
-https://github.com/AMWA-TV/nmos-content-model
+This Specification provides a mechanism for conveying time-related state and state change information, for example tally information from sensors and actuators using WebSockets or a message queue (MQTT).
 
-This formalises the content parts of the model presented above, and forms a basis for mapping to particular transports and representations.
+### Parameter Registers
 
-### In-stream Signaling of Identity and Timing information for RTP streams WIP Specification
+<https://amwa-tv.github.io/nmos-parameter-registers>
 
-https://github.com/AMWA-TV/nmos-in-stream-id-timing
+The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
-This maps the content model to RTP including how to use RTP header extensions to include identity and timing information.
+### Grouping
 
+<https://amwa-tv.github.io/nmos-parameter-registers/tags/grouphint.html>
 
+This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
+
+### Audio Channel Mapping (Work In Progress)
+
+<https://amwa-tv.github.io/nmos-audio-channel-mapping/>
+
+This will set channel mapping/selecting/shuffling settings for use with NMOS APIs.
+
+### API Security (Work In Progress)
+
+<https://amwa-tv.github.io/nmos-api-security/>
+
+This will document best practice for securing NMOS specifications in an interoperable way. This includes recommendations for using TLS and PKI and will extend to role-based authorisation of operations.
 
 [//]: # (References/Links)
 
