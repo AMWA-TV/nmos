@@ -13,7 +13,7 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
 - [The Specifications](#the-specifications)
   - [Discovery and Registration Specification (IS\-04)](#discovery-and-registration-specification-is-04)
   - [Device Connection Management Specification (IS\-05)](#device-connection-management-specification-is-05)
-  - [Network Control WIP Specification (IS\-06)](#network-control-wip-specification-is-06)
+  - [Network Control Specification (IS\-06)](#network-control-specification-is-06)
   - [Event and Tally Specification (future IS\-07)](#event-and-tally-specification-future-is-07)
   - [Parameter Registers](#parameter-registers)
   - [Grouping](#grouping)
@@ -202,7 +202,7 @@ This allows the connection to made in a way that doesn't require knowledge of th
 
 It allows connections to be prepared and "activated" at a particular time and allows multiple connections to be made/unmade at the same time (sometimes known as "bulk" or "salvo" operation).
 
-### Network Control WIP Specification (IS-06)
+### Network Control Specification (IS-06)
 
 <https://amwa-tv.github.io/nmos-network-control>
 
