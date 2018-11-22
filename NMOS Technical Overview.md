@@ -17,10 +17,8 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
   - [Event and Tally Specification (future IS\-07)](#event-and-tally-specification-future-is-07)
   - [Parameter Registers](#parameter-registers)
   - [Grouping](#grouping)
-  - [Audio Channel Mapping (Work In Progress)](#audio-channel-mapping-work-in-progress)
+  - [Audio Channel Mapping (Work In Progress, future IS\-08)](#audio-channel-mapping-work-in-progress-future-is-08)
   - [API Security (Work In Progress)](#api-security-work-in-progress)
-
-[//]: # (ToC goes before this comment)
 
 ## Introduction
 
@@ -226,7 +224,7 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
 
-### Audio Channel Mapping (Work In Progress)
+### Audio Channel Mapping (Work In Progress, future IS-08)
 
 <https://amwa-tv.github.io/nmos-audio-channel-mapping/>
 
