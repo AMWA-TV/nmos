@@ -13,14 +13,12 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
 - [The Specifications](#the-specifications)
   - [Discovery and Registration Specification (IS\-04)](#discovery-and-registration-specification-is-04)
   - [Device Connection Management Specification (IS\-05)](#device-connection-management-specification-is-05)
-  - [Network Control WIP Specification (IS\-06)](#network-control-wip-specification-is-06)
+  - [Network Control Specification (IS\-06)](#network-control-specification-is-06)
   - [Event and Tally Specification (future IS\-07)](#event-and-tally-specification-future-is-07)
   - [Parameter Registers](#parameter-registers)
   - [Grouping](#grouping)
-  - [Audio Channel Mapping (Work In Progress)](#audio-channel-mapping-work-in-progress)
+  - [Audio Channel Mapping (Work In Progress, future IS\-08)](#audio-channel-mapping-work-in-progress-future-is-08)
   - [API Security (Work In Progress)](#api-security-work-in-progress)
-
-[//]: # (ToC goes before this comment)
 
 ## Introduction
 
@@ -97,7 +95,7 @@ Professional media has to work in many different types of environment, requiring
 - virtualised in an on-premesis data centre
 - on a shared or public cloud
 
-ersal Identity
+#### Universal Identity
 
 In NMOS specifications, everything is treated as a resource that can be uniquely identified. This is discussed in depth in the "Identity Framework" section of the [JT-NM RA]. In practice it means that every resource has a UUID/GUID that can be generated locally (rather than being assigned by a central authority). This UUID is then used within JSON messages and as part of RESTful URIs.
 
@@ -202,7 +200,7 @@ This allows the connection to made in a way that doesn't require knowledge of th
 
 It allows connections to be prepared and "activated" at a particular time and allows multiple connections to be made/unmade at the same time (sometimes known as "bulk" or "salvo" operation).
 
-### Network Control WIP Specification (IS-06)
+### Network Control Specification (IS-06)
 
 <https://amwa-tv.github.io/nmos-network-control>
 
@@ -226,7 +224,7 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
 
-### Audio Channel Mapping (Work In Progress)
+### Audio Channel Mapping (Work In Progress, future IS-08)
 
 <https://amwa-tv.github.io/nmos-audio-channel-mapping/>
 
