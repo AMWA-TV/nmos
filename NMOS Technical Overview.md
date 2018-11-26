@@ -16,7 +16,7 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
   - [Network Control Specification (IS\-06)](#network-control-specification-is-06)
   - [Event and Tally Specification (future IS\-07)](#event-and-tally-specification-future-is-07)
   - [Parameter Registers](#parameter-registers)
-  - [Grouping](#grouping)
+  - [Natural Grouping](#natural-grouping)
   - [Audio Channel Mapping (Work In Progress, future IS\-08)](#audio-channel-mapping-work-in-progress-future-is-08)
   - [API Security (Work In Progress)](#api-security-work-in-progress)
 
@@ -218,9 +218,9 @@ This Specification provides a mechanism for conveying time-related state and sta
 
 The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
-### Grouping
+### Natural Grouping
 
-<https://amwa-tv.github.io/nmos-parameter-registers/tags/grouphint.html>
+<https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html>
 
 This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
 
