@@ -9,11 +9,11 @@ The table below lists the current specifications and provides links to their rep
 Id | Name  | Status  | Repository  | Documentation
 --|---|---|---|--
 IS-04 | Discovery and Registration | AMWA Specification (Stable) | [nmos-discovery-registration](https://github.com/AMWA-TV/nmos-discovery-registration)  |  [here](https://amwa-tv.github.io/nmos-discovery-registration)
-IS-05 | Device Connection Management  | AMWA Specification (Stable) | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management)  |  [here](https://amwa-tv.github.io/nmos-device-connection-management)
-IS-06 | Network Control | AMWA Specification  |  [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) | [here](https://amwa-tv.github.io/nmos-network-control)
-IS-07 | Event & Tally | Work In Progress  |  [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally) | [here](https://amwa-tv.github.io/nmos-event-tally)
-n/a | Parameter Registers | Continuing  |  [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers) | [here](https://amwa-tv.github.io/nmos-parameter-registers/)
-n/a | Natural Grouping | Approved for publication| [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping) | [here](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html)
+IS-05 | Device Connection Management  | AMWA Specification (Stable) | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management) | [here](https://amwa-tv.github.io/nmos-device-connection-management)
+IS-06 | Network Control | AMWA Specification | [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) | [here](https://amwa-tv.github.io/nmos-network-control)
+IS-07 | Event & Tally | AMWA Specification | [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally) | [here](https://amwa-tv.github.io/nmos-event-tally)
+n/a | Parameter Registers | Continuing  | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers) | [here](https://amwa-tv.github.io/nmos-parameter-registers/)
+BCP-002 | Natural Grouping | Finalised, approved | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping) | [here](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html)
 IS-08 | Audio Channel Mapping | Work In Progress | [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping) | [here](https://amwa-tv.github.io/nmos-audio-channel-mapping/)
 n/a | API Security | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security) | [here](https://amwa-tv.github.io/nmos-api-security/)
 
