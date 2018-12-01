@@ -14,11 +14,13 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
   - [Discovery and Registration Specification (IS\-04)](#discovery-and-registration-specification-is-04)
   - [Device Connection Management Specification (IS\-05)](#device-connection-management-specification-is-05)
   - [Network Control Specification (IS\-06)](#network-control-specification-is-06)
-  - [Event and Tally Specification (future IS\-07)](#event-and-tally-specification-future-is-07)
+  - [Event and Tally Specification (IS\-07)](#event-and-tally-specification-is-07)
   - [Parameter Registers](#parameter-registers)
-  - [Natural Grouping](#natural-grouping)
+  - [Natural Grouping (future BCP\-002)](#natural-grouping-future-bcp-002)
   - [Audio Channel Mapping (Work In Progress, future IS\-08)](#audio-channel-mapping-work-in-progress-future-is-08)
-  - [API Security (Work In Progress)](#api-security-work-in-progress)
+  - [Securing Communications (Work In Progress, future BCP\-003)](#securing-communications-work-in-progress-future-bcp-003)
+
+[//]: # (ToC goes before this comment.)
 
 ## Introduction
 
@@ -206,7 +208,7 @@ It allows connections to be prepared and "activated" at a particular time and al
 
 This Specification can be considered as a "northbound API" for SDN controllers. It provides an HTTP API to communicate information about the network topology, allow reservation of bandwidth for low-level network flows and monitoring.
 
-### Event and Tally Specification (future IS-07)
+### Event and Tally Specification (IS-07)
 
 <https://amwa-tv.github.io/AMWA-TV/nmos-event-tally>
 
@@ -218,7 +220,7 @@ This Specification provides a mechanism for conveying time-related state and sta
 
 The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
-### Natural Grouping
+### Natural Grouping (future BCP-002)
 
 <https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html>
 
@@ -230,11 +232,11 @@ This defines how to tag related resources, such as a group of Senders belonging 
 
 This will set channel mapping/selecting/shuffling settings for use with NMOS APIs.
 
-### API Security (Work In Progress)
+### Securing Communications (Work In Progress, future BCP-003)
 
-<https://amwa-tv.github.io/nmos-api-security/>
+<https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html>
 
-This will document best practice for securing NMOS specifications in an interoperable way. This includes recommendations for using TLS and PKI and will extend to role-based authorisation of operations.
+This is documents best practice for securing communications used in NMOS specifications, using  TLS and PKI. Further documents will cover role-based authorisation of operations.
 
 [//]: # (References/Links)
 
