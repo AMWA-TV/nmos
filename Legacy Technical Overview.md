@@ -1,5 +1,26 @@
 # Networked Media Open Specifications: Legacy Technical Overview
 
+
+[//]: # (ToC goes after this comment. Generate with gen-toc.sh <this-file> and paste in.)
+
+- [NMOS Data Model Overview](#nmos-data-model-overview)
+  - [Node](#node)
+  - [Devices](#devices)
+  - [Sources, Flows and Grains](#sources-flows-and-grains)
+  - [Senders and Receivers](#senders-and-receivers)
+- [Accessing a Node's resources](#accessing-a-nodes-resources)
+- [Timing](#timing)
+- [Example System Architecture](#example-system-architecture)
+  - [Node Structure](#node-structure)
+- [Registering and Discovering Nodes](#registering-and-discovering-nodes)
+  - [Peer\-to\-Peer Discovery](#peer-to-peer-discovery)
+  - [Registered Model](#registered-model)
+  - [Examples](#examples)
+- [Connection Management](#connection-management)
+- [Content Transport](#content-transport)
+
+[//]: # (ToC goes before this comment.)
+
 This page is based on the original technical overview used by the AMWA Networked Media Incubator, before the NMOS family was created.  It covers much of the current IS-04, including its legacy connection management mechanism (now deprecated), and the in-stream id and timing mapping for RTP.
 
 Eventually all current information will be migrated elsewhere and this page will be removed.
