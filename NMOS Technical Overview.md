@@ -18,7 +18,7 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
   - [Parameter Registers](#parameter-registers)
   - [Natural Grouping (future BCP\-002)](#natural-grouping-future-bcp-002)
   - [Audio Channel Mapping (Work In Progress, future IS\-08)](#audio-channel-mapping-work-in-progress-future-is-08)
-  - [Securing Communications (Work In Progress, future BCP\-003)](#securing-communications-work-in-progress-future-bcp-003)
+  - [Securing Communications (Work In Progress, future BCP\-003\-01)](#securing-communications-work-in-progress-future-bcp-003)
 
 [//]: # (ToC goes before this comment.)
 
@@ -232,7 +232,7 @@ This defines how to tag related resources, such as a group of Senders belonging 
 
 This will set channel mapping/selecting/shuffling settings for use with NMOS APIs.
 
-### Securing Communications (Work In Progress, future BCP-003)
+### Securing Communications (Work In Progress, future BCP-003-01)
 
 <https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html>
 
