@@ -17,7 +17,7 @@ IS-07 | Event & Tally | AMWA Specification | [nmos-event-tally](https://github.c
 n/a | Parameter Registers | Continuing  | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers) | [here](https://amwa-tv.github.io/nmos-parameter-registers/)
 BCP-002 | Natural Grouping | Finalised, approved | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping) | [here](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html)
 IS-08 | Audio Channel Mapping | Work In Progress | [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping) | [here](https://amwa-tv.github.io/nmos-audio-channel-mapping/)
-BCP-003 | Securing Comms | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security) | [here](https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html)
+BCP-003-01 | API Security: Communications | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security) | [here](https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html)
 
 ## Further reading: NMOS Wiki
 
