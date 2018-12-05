@@ -1,6 +1,6 @@
 # NMOS Technical Overview
 
-_(c) AMWA 2017, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
+_(c) AMWA 2018, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
 
 For the latest version of this document please go to <https://github.com/AMWA-TV/nmos>.
 
@@ -16,7 +16,7 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
   - [Network Control Specification (IS\-06)](#network-control-specification-is-06)
   - [Event and Tally Specification (IS\-07)](#event-and-tally-specification-is-07)
   - [Parameter Registers](#parameter-registers)
-  - [Natural Grouping (future BCP\-002)](#natural-grouping-future-bcp-002)
+  - [Natural Grouping (future BCP\-002\-01)](#natural-grouping-future-bcp-002-01)
   - [Audio Channel Mapping (Work In Progress, future IS\-08)](#audio-channel-mapping-work-in-progress-future-is-08)
   - [Securing Communications (Work In Progress, future BCP\-003\-01)](#securing-communications-work-in-progress-future-bcp-003)
 
@@ -220,7 +220,7 @@ This Specification provides a mechanism for conveying time-related state and sta
 
 The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
-### Natural Grouping (future BCP-002)
+### Natural Grouping (future BCP-002-01)
 
 <https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html>
 
@@ -246,7 +246,7 @@ This is documents best practice for securing communications used in NMOS specifi
 
 [Glossary]: Glossary.md "Glossary"
 
-[JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)""
+[JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)"
 
 [JT-NM RA]: http://jt-nm.org/RA-1.0/ "Joint Task Force on Networked Media (JT-NM): Reference Architecture V1.0"
 
