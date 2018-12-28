@@ -20,3 +20,9 @@ BCP-003-01 | API Security: Communications | Work In Progress | [nmos-api-securit
 ## Further reading: NMOS Wiki
 
 Further information to help developers and users can be found at <https://github.com/AMWA-TV/nmos/wiki>.
+
+<!-- ## Test area
+
+This tests mathjax:
+
+$E = m c^2$ -->

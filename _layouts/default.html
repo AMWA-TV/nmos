@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+      <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          inlineMath: [['$','$']]
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+   -->
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+
+      <div id="logo-banner">
+        <a href="https://amwa-tv.github.io/nmos"><img id="nmos-logo" src="/assets/images/NMOS-80a0ff.png" alt="NMOS logo"/></a>
+        <span id="title">Networked Media Open Specifications</span>
+        <a href="https://www.amwa.tv/"><img id="amwa-logo" src="/assets/images/from-AMWA-80a0ff.png" target="_blank" alt="from AMWA logo"/></a>
+      </div>
+        
+        <div class="header" id="myHeader">
+          <a href="/">HOME</a>
+          <a href="https://github.com/AMWA-TV/nmos">GITHUB</a>
+          <a href="https://github.com/AMWA-TV/nmos/wiki">WIKI</a>
+          <a href="https://github.com/AMWA-TV/nmos/wiki/FAQ">FAQs</a>
+          <a href="https://amwa-tv.github.io/nmos-discovery-registration">IS-04</a>
+          <a href="https://amwa-tv.github.io/nmos-device-connection-management">IS-05</a>
+          <a href="https://amwa-tv.github.io/nmos-network-control">IS-06</a>
+          <a href="https://amwa-tv.github.io/nmos-event-tally">IS-07</a>
+          <span class="dropdown">MORE...
+            <div class="dropdown-content">
+              <p><a href="https://amwa-tv.github.io/parameter-registers">Parameter Registers</a></p>
+              <p><a href="https://amwa-tv.github.io/nmos-grouping">Grouping</a></p>
+              <p><a href="https://amwa-tv.github.io/nmos-audio-channel-mapping">Audio Channel Mapping</a></p>
+              <p><a href="https://amwa-tv.github.io/nmos-api-security">API Security</a></p>
+            </div>
+          </span>
+        </div>
+  
+      <div class="content">
+        {{ content }}
+      </div>
+
+      {% if site.github.private != true and site.github.license %}
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. {% github_edit_link "Improve this page" %}.
+      </div>
+      {% endif %}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+    {% if site.google_analytics %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endif %}
+
+
+    <script>
+    window.onscroll = function() {myFunction()};
+    
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+    
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+
+    </script>
+  </body>
+</html>

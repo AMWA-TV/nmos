@@ -1,0 +1,113 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+    margin: 0;
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+  }
+  
+  h1 {
+    color: blue;
+    text-align: center;
+  }
+  
+  p {
+    font-family: verdana;
+    font-size: 20px;
+  }
+
+  #logo-banner {
+    display: table;
+    width: 1024px;
+    background-color: #80a0ff;
+
+    #nmos-logo {
+      display: table-cell;
+      width: 191px;
+      height: 64px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      // border: 3px solid red;
+    }
+
+    #title {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 175%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #f1f1f1;
+        background-color: #80a0ff;
+        // border: 3px solid green;
+    }
+
+    #amwa-logo {
+      display: table-cell;
+      align-self: center;
+      width: 243px;
+      height: 64px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      // border: 3px solid red;
+    }
+  }
+  
+  .header {
+    height: 64px;
+    line-height: 64px;
+    width: 1024px;
+    font-size: 125%;
+    background: #4040ff;
+
+    a {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #f1f1f1;
+    }
+
+    .dropdown {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+      padding-left: 10px;
+      padding-right: 10px;
+      color: #f1f1f1;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #4040ff;
+      min-width: 100px;
+      padding: 12px 16px;
+      z-index: 1;
+      font-size: 100%;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  }
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 1024px;
+  }
+  
+  .sticky + .content {
+    padding-top: 102px;
+  }
+
+  
