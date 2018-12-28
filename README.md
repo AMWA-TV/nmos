@@ -31,3 +31,19 @@ You can push the updated documentation to AMWA's GitHub with.
 Admins must be to do this after merging PRs etc (until this is automated with CircleCI at some point).
 
 This then triggers a build of the GitHub Pages. This happens on GitHub's servers, using Jekyll to render the HTML.  This includes rendering the Markdown content, but we have to do the RAML ourselves.  
+
+## Serving pages locally
+
+See also <https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll>
+
+Install Bundler and Jekyll - af you have Ruby installed then:
+
+``gem install bundler``
+
+``bundle install``
+
+Run server with:
+
+``make server``
+
+And browse to <http://127.0.0.1:4000/nmos/>.
