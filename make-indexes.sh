@@ -6,7 +6,7 @@
 
 shopt -s nullglob
 
-. ./repo-settings.sh
+. ./get-config.sh
 
 # Text in this file will appear at the start of the top-level index
 INTRO=intro.md
@@ -14,29 +14,21 @@ INTRO=intro.md
 # Filename for index in each dir
 INDEX=index.md
 
-# Modified version for top level nmos repo -- only does the default branch
-for b_or_t in branches; do
-    echo "Processing $b_or_t $INDEX..."
-    cd "$b_or_t"
-    for dir in "$DEFAULT_BRANCH/"; do
-        dirname="${dir%%/}"
-        echo "Making $dirname/$INDEX"
-        cd "$dir"
-            echo -e "# Documentation\n" > "$INDEX"
-            for doc in *.md; do
-                if [[ "$doc" != "index.md" && "$doc" != "README.md" ]]; then
-                    no_ext=${doc%%.md}
-                    # Spaces causing problems so rename extracted docs to use underscore
-                    underscore_space_doc="${doc// /_}"
-                    mv "$doc" "$underscore_space_doc"
-                    linktext=${no_ext}
-                    echo "- [$linktext]($underscore_space_doc)" >> "$INDEX"
-                fi
-            done
-            cd ..
-      done
-      cd ..
-done
+# Modified version for top level nmos repo -- only does the default tree
+cd $DEFAULT_TREE
+    echo "Making $INDEX for default tree"
+    echo -e "# Documentation\n" > "$INDEX"
+    for doc in *.md; do
+        if [[ "$doc" != "index.md" && "$doc" != "README.md" ]]; then
+            no_ext=${doc%%.md}
+            # Spaces causing problems so rename extracted docs to use underscore
+            underscore_space_doc="${doc// /_}"
+            mv "$doc" "$underscore_space_doc"
+            linktext=${no_ext}
+            echo "- [$linktext]($underscore_space_doc)" >> "$INDEX"
+        fi
+    done
+    cd ../..
 
 echo "Making top level $INDEX"
 
@@ -44,12 +36,9 @@ cat "$INTRO" > "$INDEX"
 echo >> "$INDEX"
 
 # Add the default links at the top - correct the links while copying text
-if [ "$DEFAULT_RELEASE" ]; then
-    echo "Adding in contents of $INDEX for default release $DEFAULT_RELEASE"
-    sed "s:(:(tags/$DEFAULT_RELEASE/:" "tags/$DEFAULT_RELEASE/$INDEX" >> "$INDEX"
-elif [ "$DEFAULT_BRANCH" ]; then
-    echo "Adding in contents of $INDEX for default branch $DEFAULT_BRANCH"
-    sed "s:(:(branches/$DEFAULT_BRANCH/:" "branches/$DEFAULT_BRANCH/$INDEX" >> "$INDEX" 
+if [ "$DEFAULT_TREE" ]; then
+    echo "Adding in contents of $INDEX for default tree $DEFAULT_TREE"
+    sed "s:(:($DEFAULT_TREE/:" "$DEFAULT_TREE/$INDEX" >> "$INDEX"
 fi
 
 # NB: Not listing individual branches or releases for top-level repo
