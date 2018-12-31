@@ -6,23 +6,17 @@ Here you will find general information about these Specifications – start with
 
 The table below lists the current specifications and provides links to their repositories  on [github.com/AMWA-TV](https://github.com/AMWA-TV/) and documentation on amwa-tv.github.io
 
-Id | Name  | Status  | Repository  | Documentation
+Id | Name  | Status  | Repository
 --|---|---|---|--
-IS-04 | Discovery and Registration | AMWA Specification (Stable) | [nmos-discovery-registration](https://github.com/AMWA-TV/nmos-discovery-registration)  |  [here](https://amwa-tv.github.io/nmos-discovery-registration)
-IS-05 | Device Connection Management  | AMWA Specification (Stable) | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management) | [here](https://amwa-tv.github.io/nmos-device-connection-management)
-IS-06 | Network Control | AMWA Specification | [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control) | [here](https://amwa-tv.github.io/nmos-network-control)
-IS-07 | Event & Tally | AMWA Specification | [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally) | [here](https://amwa-tv.github.io/nmos-event-tally)
-n/a | Parameter Registers | Continuing  | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers) | [here](https://amwa-tv.github.io/nmos-parameter-registers/)
-BCP-002-01 | Natural Grouping | Finalised, approved | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping) | [here](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html)
-IS-08 | Audio Channel Mapping | Work In Progress | [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping) | [here](https://amwa-tv.github.io/nmos-audio-channel-mapping/)
-BCP-003-01 | API Security: Communications | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security) | [here](https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html)
+IS-04 | [Discovery and Registration](https://amwa-tv.github.io/nmos-discovery-registration) | AMWA Specification (Stable) | [nmos-discovery-registration](https://github.com/AMWA-TV/nmos-discovery-registration)
+IS-05 | [Device Connection Management](https://amwa-tv.github.io/nmos-device-connection-management) | AMWA Specification (Stable) | [nmos-device-connection-management](https://github.com/AMWA-TV/nmos-device-connection-management)
+IS-06 | [Network Control](https://amwa-tv.github.io/nmos-network-control) | AMWA Specification | [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control)
+IS-07 | [Event & Tally](https://amwa-tv.github.io/nmos-event-tally) | AMWA Specification | [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally)
+n/a | [Parameter Registers](https://amwa-tv.github.io/nmos-parameter-registers/) | Continuing  | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers)
+BCP-002-01 | [Natural Grouping](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html) | Finalised, approved | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping)
+IS-08 | [Audio Channel Mapping](https://amwa-tv.github.io/nmos-audio-channel-mapping/) | Work In Progress | [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping)
+BCP-003-01 | [API Security: Communications](https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html) | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
 
 ## Further reading: NMOS Wiki
 
 Further information to help developers and users can be found at <https://github.com/AMWA-TV/nmos/wiki>.
-
-<!-- ## Test area
-
-This tests mathjax:
-
-$E = m c^2$ -->
