@@ -2,7 +2,7 @@
 
 ## GitHub Pages documentation
 
-If you are reading this you are on the gh-pages branch, which is used to generate the documentation from the master and other branches, and from releases.  These are served at <https://amwa-tv.github.io/nmos-device-connection-management/>.
+If you are reading this you are on the gh-pages branch, which is used to generate the documentation from the master and other branches, and from releases.  These are served at <https://amwa-tv.github.io/nmos>.
 
 ## Generating the documentation
 
@@ -46,4 +46,4 @@ Run server with:
 
 ``make server``
 
-And browse to <http://127.0.0.1:4000/nmos/>.
+and browse to the indicated page.
