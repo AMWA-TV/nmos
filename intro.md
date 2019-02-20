@@ -16,7 +16,7 @@ n/a | [Parameter Registers](https://amwa-tv.github.io/nmos-parameter-registers/)
 BCP-002-01 | [Natural Grouping](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html) | Finalised, approved | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping)
 IS-08 | [Audio Channel Mapping](https://amwa-tv.github.io/nmos-audio-channel-mapping/) | Work In Progress | [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping)
 BCP-003-01 | [API Security: Communications](https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html) | AMWA Specification | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
-BCP-003-02 | [API Security: Authorization](https://amwa-tv.github.io/nmos-api-security/best-practice-authorisation.html) | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
+BCP-003-02 | [API Security: Authorization](https://amwa-tv.github.io/nmos-api-security/best-practice-authorisation.html) | Finalised | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
 n/a | [ID & Timing Model](https://amwa-tv.github.io/nmos-id-timing-model/) | Work In Progress  | [nmos-id-timing-model](https://github.com/AMWA-TV/nmos-id-timing-model)
 
 ## Further reading: NMOS Wiki
