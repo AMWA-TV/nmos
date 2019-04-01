@@ -6,6 +6,8 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
 
 [//]: # (ToC goes after this comment. Generate with gen-toc.sh <this-file> and paste in.)
 
+[//]: # (ToC goes before this comment.)
+
 - [Introduction](#introduction)
   - [Background](#background)
   - [General Principles](#general-principles)
@@ -17,10 +19,8 @@ For the latest version of this document please go to <https://github.com/AMWA-TV
   - [Event and Tally Specification (IS\-07)](#event-and-tally-specification-is-07)
   - [Parameter Registers](#parameter-registers)
   - [Natural Grouping (future BCP\-002\-01)](#natural-grouping-future-bcp-002-01)
-  - [Audio Channel Mapping (Work In Progress, future IS\-08)](#audio-channel-mapping-work-in-progress-future-is-08)
-  - [Securing Communications (Work In Progress, future BCP\-003\-01)](#securing-communications-work-in-progress-future-bcp-003)
-
-[//]: # (ToC goes before this comment.)
+  - [Audio Channel Mapping (IS\-08)](#audio-channel-mapping-is-08)
+  - [Securing Communications (BCP\-003\-01)](#securing-communications-bcp-003-01)
 
 ## Introduction
 
@@ -226,13 +226,13 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
 
-### Audio Channel Mapping (Work In Progress, future IS-08)
+### Audio Channel Mapping (IS-08)
 
 <https://amwa-tv.github.io/nmos-audio-channel-mapping/>
 
 This will set channel mapping/selecting/shuffling settings for use with NMOS APIs.
 
-### Securing Communications (Work In Progress, future BCP-003-01)
+### Securing Communications (BCP-003-01)
 
 <https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html>
 
