@@ -1,2 +1,13 @@
 .DS_Store
 *.swp
+*~
+*#
+npm-debug.log
+source-repo/
+_site/
+.sass-cache/
+Gemfile.lock
+package-lock.json
+node_modules/
+package.json
+yarn.lock
