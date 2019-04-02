@@ -4,23 +4,8 @@ _(c) AMWA 2018, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
 
 For the latest version of this document please go to <https://github.com/AMWA-TV/nmos>.
 
-[//]: # (ToC goes after this comment. Generate with gen-toc.sh <this-file> and paste in.)
-
-[//]: # (ToC goes before this comment.)
-
-- [Introduction](#introduction)
-  - [Background](#background)
-  - [General Principles](#general-principles)
-- [NMOS Model and Terminology](#nmos-model-and-terminology)
-- [The Specifications](#the-specifications)
-  - [Discovery and Registration Specification (IS\-04)](#discovery-and-registration-specification-is-04)
-  - [Device Connection Management Specification (IS\-05)](#device-connection-management-specification-is-05)
-  - [Network Control Specification (IS\-06)](#network-control-specification-is-06)
-  - [Event and Tally Specification (IS\-07)](#event-and-tally-specification-is-07)
-  - [Parameter Registers](#parameter-registers)
-  - [Natural Grouping (future BCP\-002\-01)](#natural-grouping-future-bcp-002-01)
-  - [Audio Channel Mapping (IS\-08)](#audio-channel-mapping-is-08)
-  - [Securing Communications (BCP\-003\-01)](#securing-communications-bcp-003-01)
+* A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
+{:toc}
 
 ## Introduction
 
@@ -210,7 +195,7 @@ This Specification can be considered as a "northbound API" for SDN controllers. 
 
 ### Event and Tally Specification (IS-07)
 
-<https://amwa-tv.github.io/AMWA-TV/nmos-event-tally>
+<https://amwa-tv.github.io/nmos-event-tally>
 
 This Specification provides a mechanism for conveying time-related state and state change information, for example tally information from sensors and actuators using WebSockets or a message queue (MQTT).
 
