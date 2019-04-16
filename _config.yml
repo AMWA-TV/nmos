@@ -6,3 +6,7 @@ baseurl: /nmos
 
 # Which release or branch appears in header links and on the home page
 default_tree: branches/master
+
+# So we can redirect from e.g. /is-04
+plugins:
+  - jekyll-redirect-from
