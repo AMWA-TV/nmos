@@ -31,6 +31,4 @@ Further information to help developers and users can be found at <https://github
 - [Glossary](branches/master/Glossary.md)
 - [Implementations](branches/master/Implementations.md)
 - [Legacy Technical Overview](branches/master/Legacy_Technical_Overview.md)
-- [Legacy_Technical_Overview](branches/master/Legacy_Technical_Overview.md)
 - [NMOS Technical Overview](branches/master/NMOS_Technical_Overview.md)
-- [NMOS_Technical_Overview](branches/master/NMOS_Technical_Overview.md)

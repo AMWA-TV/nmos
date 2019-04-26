@@ -6,6 +6,4 @@
 - [Glossary](Glossary.md)
 - [Implementations](Implementations.md)
 - [Legacy Technical Overview](Legacy_Technical_Overview.md)
-- [Legacy_Technical_Overview](Legacy_Technical_Overview.md)
 - [NMOS Technical Overview](NMOS_Technical_Overview.md)
-- [NMOS_Technical_Overview](NMOS_Technical_Overview.md)

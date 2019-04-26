@@ -47,11 +47,7 @@ Although "REST" is often used to mean any simple HTTP API, in creating the NMOS 
 
 #### Technology independence through data modelling
 
-This might seem to conflict with some of the above, but it doesn't have to. In creating the NMOS specifications we have started with (UML) data models, which you will see in the NMOS repositories. The HTTP/WebSockets/RAML/JSON
-
- and then mapped these to JSON/HTTP/WebSockets/whatever. But should the wider IT/IP world migrate to new technologies, alternative mappings of the data models could feature in updated spec
-
-You can see this explicitly in the relation between the logical content model and the RTP mapping specification. The IS-04 and IS-05 specifications you see on GitHub  
+This might seem to conflict with some of the above, but it doesn't have to. In creating the NMOS specifications we have started with (UML) data models, which you will see in the NMOS repositories, and mapped these to JSON/HTTP/WebSockets/whatever. But should the wider IT/IP world migrate to new technologies, alternative mappings of the data models could feature in updated specifications.
 
 #### Build on widely used and open foundations
 
@@ -63,7 +59,7 @@ We are using GitHub repositories to publish the specifications. These are made p
 
 #### Self-documenting specifications
 
-Much of the "normative" part of the NMOS specifications takes the form of RAML and JSON Schema (with text-based supporting information). This allows
+Much of the "normative" part of the NMOS specifications takes the form of RAML and JSON Schema (with text-based supporting information). This allows for automatic generation of the HTML rendered API documentation you will see on the GitHub pages.
 
 #### Scalable
 
