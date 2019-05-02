@@ -15,6 +15,7 @@ IS-05 | [Device Connection Management](https://amwa-tv.github.io/nmos-device-con
 IS-06 | [Network Control](https://amwa-tv.github.io/nmos-network-control) | AMWA Specification | [nmos-network-control](https://github.com/AMWA-TV/nmos-network-control)
 IS-07 | [Event & Tally](https://amwa-tv.github.io/nmos-event-tally) | AMWA Specification | [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally)
 IS-08 | [Audio Channel Mapping](https://amwa-tv.github.io/nmos-audio-channel-mapping/) | AMWA Specification| [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping)
+IS-09 | [System](https://amwa-tv.github.io/nmos-system) | Work In Progress | [nmos-system](https://github.com/AMWA-TV/nmos-system)
 MS-04 | [ID & Timing Model](https://amwa-tv.github.io/nmos-id-timing-model/) | Finalised, approved  | [nmos-id-timing-model](https://github.com/AMWA-TV/nmos-id-timing-model)
 BCP-002-01 | [Natural Grouping](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html) | Finalised, approved | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping)
 BCP-003-01 | [API Security: Communications](https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html) | AMWA Specification | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
