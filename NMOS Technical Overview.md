@@ -199,29 +199,48 @@ This Specification can be considered as a "northbound API" for SDN controllers. 
 
 This Specification provides a mechanism for conveying time-related state and state change information, for example tally information from sensors and actuators using WebSockets or a message queue (MQTT).
 
-### Parameter Registers
+### Audio Channel Mapping Specification (IS-08)
 
-<https://amwa-tv.github.io/nmos-parameter-registers>
+<https://amwa-tv.github.io/nmos-audio-channel-mapping/>
 
-The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
+This Specification provides a mechanism to set channel mapping/selecting/shuffling settings for use with NMOS APIs
 
-### Natural Grouping (future BCP-002-01)
+### System API (future IS-09)
+
+<https://amwa-tv.github.io/nmos-system/>
+
+This will allow Nodes to find Resources that are common across a system, to ensure consistent start-up.
+
+### Identity & Timing Model (future MS-04)
+
+<https://amwa-tv.github.io/nmos-id-timing-model/>
+
+This will document a model for identity and timing that applies to AMWA NMOS specifications associated with the identification and processing of content.
+This is consistent with the model and terminology presented in this Overview.
+
+### Authorization (future BCP-003-02 and IS-10)
+
+<https://amwa-tv.github.io/nmos-api-security/best-practice-authorisation.html> and <https://amwa-tv.github.io/nmos-authorization/>
+
+These will specify how to implement client authorization for the NMOS APIs.
+
+### Natural Grouping (BCP-002-01)
 
 <https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html>
 
 This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
-
-### Audio Channel Mapping (IS-08)
-
-<https://amwa-tv.github.io/nmos-audio-channel-mapping/>
-
-This will set channel mapping/selecting/shuffling settings for use with NMOS APIs.
 
 ### Securing Communications (BCP-003-01)
 
 <https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html>
 
 This is documents best practice for securing communications used in NMOS specifications, using  TLS and PKI. Further documents will cover role-based authorisation of operations.
+
+### Parameter Registers
+
+<https://amwa-tv.github.io/nmos-parameter-registers>
+
+The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
 [//]: # (References/Links)
 
