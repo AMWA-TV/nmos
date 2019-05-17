@@ -14,10 +14,11 @@ IS-06 | [Network Control](https://amwa-tv.github.io/nmos-network-control) | AMWA
 IS-07 | [Event & Tally](https://amwa-tv.github.io/nmos-event-tally) | AMWA Specification | [nmos-event-tally](https://github.com/AMWA-TV/nmos-event-tally)
 IS-08 | [Audio Channel Mapping](https://amwa-tv.github.io/nmos-audio-channel-mapping/) | AMWA Specification| [nmos-audio-channel-mapping](https://github.com/AMWA-TV/nmos-audio-channel-mapping)
 IS-09 | [System](https://amwa-tv.github.io/nmos-system) | Work In Progress | [nmos-system](https://github.com/AMWA-TV/nmos-system)
-MS-04 | [ID & Timing Model](https://amwa-tv.github.io/nmos-id-timing-model/) | Finalised, approved  | [nmos-id-timing-model](https://github.com/AMWA-TV/nmos-id-timing-model)
-BCP-002-01 | [Natural Grouping](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html) | Finalised, approved | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping)
+IS-10 | [Authorization](https://amwa-tv.github.io/nmos-authorization) | Work In Progress | [nmos-authorization](https://github.com/AMWA-TV/nmos-authorization)
+MS-04 | [ID & Timing Model](https://amwa-tv.github.io/nmos-id-timing-model/) | Work In Progress | [nmos-id-timing-model](https://github.com/AMWA-TV/nmos-id-timing-model)
+BCP-002-01 | [Natural Grouping](https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html) | AMWA Specification | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping)
 BCP-003-01 | [API Security: Communications](https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html) | AMWA Specification | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
-BCP-003-02 | [API Security: Authorization](https://amwa-tv.github.io/nmos-api-security/best-practice-authorisation.html) | Finalised | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
+BCP-003-02 | [API Security: Authorization](https://amwa-tv.github.io/nmos-api-security/best-practice-authorisation.html) | Work In Progress | [nmos-api-security](https://github.com/AMWA-TV/nmos-api-security)
 n/a | [Parameter Registers](https://amwa-tv.github.io/nmos-parameter-registers/) | Continuing  | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers)
 
 ## Further reading: NMOS Wiki
