@@ -159,7 +159,7 @@ So far, NMOS specifications have worked with quite fine-grained Resources (pun u
 
 ## The Specifications
 
-This section outlines the publicly available NMOS specifications
+This section outlines the publicly available NMOS specifications.
 
 ### IS-04: Discovery and Registration
 
@@ -203,9 +203,9 @@ This Specification provides a mechanism for conveying time-related state and sta
 
 <https://amwa-tv.github.io/nmos-audio-channel-mapping/>
 
-This Specification provides a mechanism to make setting for channel selection, mapping and shuffling with NMOS APIs.
+This Specification provides a mechanism to define settings for channel mapping, selection and shuffling for use with NMOS APIs.
 
-### IS-09: System API
+### IS-09: System (Work In Progress)
 
 <https://amwa-tv.github.io/nmos-system/>
 
