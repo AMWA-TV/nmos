@@ -157,9 +157,80 @@ So in the NMOS model, a camera could be have several associated resources:
 
 So far, NMOS specifications have worked with quite fine-grained Resources (pun unavoidable).  Future NMOS specifications will consider functionality and content at a higher level, for example for detailing with "bundles" of Flows.
 
+## Reading the Specifications
+
+### Finding the Specifications
+
+A current list of NMOS Specifications is at <https://amwa-tv.github.io/nmos>:
+
+![NMOS-Main-List](images/nmos-main-list.png)
+
+
+From there you can click on the entry in the "Name" column to go to the *rendered HTML documentation* for each Specification.
+> You can also use the links below, and redirects such as <https://amwa-tv.github.io/is-04> are provided to the documentation. 
+
+To see the GitHub _repository_ that contains the source for the specification, click on the entry in the "Repository" column, or on "GITHUB" in the menu bar of the documentation. This takes you to the default git branch
+
+![Find-Spec-Table](images/find-spec-table-crop.png)
+
+### Navigating the Specifications
+
+The NMOS Interface Specications (IS-04 etc.) are layed out as below, where the directory names refer to what is in the repo:
+
+* `/APIs/`: RAML API definitions
+  * `/APIs/schemas/`: JSON Schemas referenced from the RAML
+* `/examples/`: Example API messages
+* `/docs/`: Normative and supporting documentats, starting with an Overview.
+
+The most imporant parts of these are listed on the Specification's main documentation page:
+
+![Doc-Main-List](images/doc-main-list.png)
+
+And you can also use menu options:
+
+![Menu-Docs-Spec](images/menu-docs-spec.png)
+
+### Selecting a Version
+
+"VERSIONS..." in the documenation menu lets you select a particular release of a specification, or a particular release:
+
+![Nav-Versions](images/nav-versions.png)
+
+On the main Specification list, the "Version(s)" column lets you go directly to the documentation for the most important versions, and also download GitHub releases.
+
+### Other Menu Options
+
+The documentation menu also allows you to go to the NMOS wiki, look at FAQs, access tools such as the NMOS test suite, switch to a different Specification, and search the documentation.
+> To search the repository, use the GitHub search feature.
+
+![Header-Menu](images/header-menu.png)
+
+To go back to the main Spec list, click the NMOS logo.
+
+### Viewing the APIs
+
+You can download the RAML and schema files directly from the repo (in the directories listed above). 
+But in many cases it may be easier to view rendered versions, such as this one for the IS-04 Node API:
+
+![API-Doc](images/api-doc.png)
+
+Then you can use the GET, PUT, etc. buttons to see a relevant request or response message, in this case for getting a source resource:
+
+![API-Doc-Get](images/api-doc-get.png)
+
+> Note that this example includes three further referenced schemas.  At present you will have to navigate to the "Schemas" page to see these.  We hope to put in links soon though!
+
+> And also note that the header and toolbar are not present on the rendered API specs, so you'll have to use the back button until they are. We'll try to fix that also.
+
+### Viewing the documentation
+
+This is straightforward - just click on the relevant links.
+
+>  Note that the numbers in the document file names are removed for the HTML site (so `1.0. Overview` -> `Overview`), but the order is preserved.  Please submit an issue if you think is undesirable.
+
 ## The Specifications
 
-This section outlines the publicly available NMOS specifications
+This section outlines the publicly available NMOS specifications.
 
 ### IS-04: Discovery and Registration
 
