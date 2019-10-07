@@ -180,7 +180,7 @@ The NMOS Interface Specications (IS-04 etc.) are layed out as below, where the d
 * `/APIs/`: RAML API definitions
   * `/APIs/schemas/`: JSON Schemas referenced from the RAML
 * `/examples/`: Example API messages
-* `/docs/`: Normative and supporting documentats, starting with an Overview.
+* `/docs/`: Normative and supporting documents, starting with an Overview.
 
 The most imporant parts of these are listed on the Specification's main documentation page:
 
