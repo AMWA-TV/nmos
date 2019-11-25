@@ -1,15 +1,15 @@
 # NMOS Technical Overview
 
-_(c) AMWA 2018, CC Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)_
-
-For the latest version of this document please go to <https://github.com/AMWA-TV/nmos>.
-
 * A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
 {:toc}
 
 ## Introduction
 
-Networked Media Open Specifications ([NMOS]) are a family of specifications that support the professional AV media industry's transition to a "fully-networked" architecture. The NMOS specs are developed by the Advanced Media Workflow Association ([AMWA]) and are published on GitHub.
+Networked Media Open Specifications ([NMOS]) are a family of specifications that support the professional AV media industry's transition to a "fully-networked" architecture. 
+
+The NMOS specs are developed by the Advanced Media Workflow Association ([AMWA]) and are published on GitHub.
+
+NMOS specs are required by other industry recommendations, in particular [TR-1001-1], which addresses requirements for the behaviour of media devices and the network enviroment in which devices run.
 
 This page provides a technical overview of NMOS.  It's a work in progress, and will be updated with information currently in a legacy document in this repository.
 
@@ -299,7 +299,7 @@ This documents best practice for securing communications used in NMOS specificat
 
 ### BCP-003-02 and IS-10: Authorization (Work In Progress)
 
-<https://amwa-tv.github.io/nmos-api-security/best-practice-authorisation.html> and <https://amwa-tv.github.io/nmos-authorization/>
+<https://amwa-tv.github.io/nmos-api-security/best-practice-authorization.html> and <https://amwa-tv.github.io/nmos-authorization/>
 
 These specify how to implement client authorization for the NMOS APIs.
 
@@ -330,5 +330,7 @@ The Parameter Registers provide an extensible mechanism for defining values used
 [ST 2022-6]: http://ieeexplore.ieee.org/document/7289943/ "ST 2022-6:2012 - SMPTE Standard - Transport of High Bit Rate Media Signals over IP Networks (HBRMT)"
 
 [ST 2110]: https://www.smpte.org/webcasts/Standards-SMPTE-ST-2110 "SMPTE ST 2110 – Professional Media over IP Networks"
+
+[TR-1001-1]: http://www.jt-nm.org/documents/JT-NM_TR-1001-1:2018_v1.0.pdf "JT-NM TR-1001: System Environment and Device Behaviors For SMPTE ST 2110 Media Nodes in Engineered Networks"
 
 [Wikipedia REST page]: https://en.wikipedia.org/wiki/Representational_state_transfer "Wikipedia REST page"
