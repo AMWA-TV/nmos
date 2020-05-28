@@ -1,27 +1,28 @@
 # NMOS Technical Overview
+{:.no_toc}
 
 * A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
 {:toc}
 
 ## Introduction
 
-Networked Media Open Specifications ([NMOS]) are a family of specifications that support the professional AV media industry's transition to a "fully-networked" architecture. 
+Networked Media Open Specifications ([NMOS][]) are a family of specifications that support the professional AV media industry's transition to a "fully-networked" architecture. 
 
-The NMOS specs are developed by the Advanced Media Workflow Association ([AMWA]) and are published on GitHub.
+The NMOS specs are developed by the Advanced Media Workflow Association ([AMWA][]) and are published on GitHub.
 
-NMOS specs are required by other industry recommendations, in particular [TR-1001-1], which addresses requirements for the behaviour of media devices and the network enviroment in which devices run.
+NMOS specs are required by other industry recommendations, in particular [TR-1001-1][], which addresses requirements for the behaviour of media devices and the network enviroment in which devices run.
 
 This page provides a technical overview of NMOS.  It's a work in progress, and will be updated with information currently in a legacy document in this repository.
 
 ### Background
 
-While much of the broadcast industry has moved to file-based operation, live facilities have long depended on specialist technologies such as the [Serial Digital Interface] (SDI), [SMPTE Timecode] and various incompatible control protocols (including some using RS-232, some of which are still in use).  However (as of 2017) there is a significant move towards replacing these with more general IT/IP technologies, allowing the industry to benefit from the high speeds and economies of scale that have enabled the success of the Internet and Web.
+While much of the broadcast industry has moved to file-based operation, live facilities have long depended on specialist technologies such as the [Serial Digital Interface][] (SDI), [SMPTE Timecode][] and various incompatible control protocols (including some using RS-232, some of which are still in use).  However (as of 2017) there is a significant move towards replacing these with more general IT/IP technologies, allowing the industry to benefit from the high speeds and economies of scale that have enabled the success of the Internet and Web.
 
-Standards bodies including SMPTE and AES have created specifications for streaming of uncompressed video and audio over IP.  These use RTP and include [ST 2022-6] for SDI-based payloads, [AES-67] for audio-only payloads and the forthcoming [ST 2110] for separate video, audio and ancillary data over IP.  However none of these tackle the control or application planes, leaving significant additional work to be done to achieve useful interoperability in professional networked media environments. So a number of industry bodies came together in 2013 on the Joint Task Force on Networked Media ([JT-NM]) to coordinate how this might happen. This led to the creation of a "reference architecture" for interoperability ([JT-NM RA]). At its most basic this identifies models and best practices for what may be needed at four layers: operation, application, platform and infrastructure.
+Standards bodies including SMPTE and AES have created specifications for streaming of uncompressed video and audio over IP.  These use RTP and include [ST 2022-6][] for SDI-based payloads, [AES-67][] for audio-only payloads and the forthcoming [ST 2110][] for separate video, audio and ancillary data over IP.  However none of these tackle the control or application planes, leaving significant additional work to be done to achieve useful interoperability in professional networked media environments. So a number of industry bodies came together in 2013 on the Joint Task Force on Networked Media ([JT-NM][]) to coordinate how this might happen. This led to the creation of a "reference architecture" for interoperability ([JT-NM RA][]). At its most basic this identifies models and best practices for what may be needed at four layers: operation, application, platform and infrastructure.
 
 ![JT-NM Layers](images/jtnm-layers.png)
 
-This is where the Advanced Media Workflow Association ([AMWA]) comes in.  AMWA is an industry group of manufacturers, developers and end users, that is trying to advance a software-focussed approach to support future professional media operations.  What this means in practice is identifying how to build upon "commodity" infrastructure (red layer) and widely used platform technologies/protocols (green) layer and supplement these where required with helpful specifications that build upon these building blocks.  AMWA has done this in the past with "application specifications" for file-based interchange and delivery, and is now doing this for networked media with the NMOS specifications, which are being created by AMWA's Networked Media Incubator group. These provide a open set of APIs to support interoperability for networked media applications:
+This is where the Advanced Media Workflow Association ([AMWA][]) comes in.  AMWA is an industry group of manufacturers, developers and end users, that is trying to advance a software-focussed approach to support future professional media operations.  What this means in practice is identifying how to build upon "commodity" infrastructure (red layer) and widely used platform technologies/protocols (green) layer and supplement these where required with helpful specifications that build upon these building blocks.  AMWA has done this in the past with "application specifications" for file-based interchange and delivery, and is now doing this for networked media with the NMOS specifications, which are being created by AMWA's Networked Media Incubator group. These provide a open set of APIs to support interoperability for networked media applications:
 
 ![JT-NM Layers with NMOS APIs](images/jtnm-layers-nmos.png)
 
@@ -43,7 +44,7 @@ NMOS adopts this modern approach.
 
 #### REST
 
-Although "REST" is often used to mean any simple HTTP API, in creating the NMOS specs we have tried to adopt "correct practice" such as statelessness, uniform interface, resource identification in requests, HATEOAS, etc. (The [Wikipedia REST page] has a good summary of these.)  But as there are no hard rules on this, and a certain amount of pragmatism has also been used, especially for more control-oriented activities such as connection management.
+Although "REST" is often used to mean any simple HTTP API, in creating the NMOS specs we have tried to adopt "correct practice" such as statelessness, uniform interface, resource identification in requests, HATEOAS, etc. (The [Wikipedia REST page][] has a good summary of these.)  But as there are no hard rules on this, and a certain amount of pragmatism has also been used, especially for more control-oriented activities such as connection management.
 
 #### Technology independence through data modelling
 
@@ -80,7 +81,7 @@ Professional media has to work in many different types of environment, requiring
 
 #### Universal Identity
 
-In NMOS specifications, everything is treated as a resource that can be uniquely identified. This is discussed in depth in the "Identity Framework" section of the [JT-NM RA]. In practice it means that every resource has a UUID/GUID that can be generated locally (rather than being assigned by a central authority). This UUID is then used within JSON messages and as part of RESTful URIs.
+In NMOS specifications, everything is treated as a resource that can be uniquely identified. This is discussed in depth in the "Identity Framework" section of the [JT-NM RA][]. In practice it means that every resource has a UUID/GUID that can be generated locally (rather than being assigned by a central authority). This UUID is then used within JSON messages and as part of RESTful URIs.
 
 #### Flexible content
 
@@ -100,7 +101,7 @@ This has already been mentioned, but it underpins how work on future NMOS specif
 
 ## NMOS Model and Terminology
 
-Before explaining the NMOS specifications themselves it is helpful to present the model we are using in a sequence of pictures. This will also introduce some of the terminology used in NMOS specifications – this is similar to that used in the [JT-NM RA]. Be warned that in some cases common words (such as "Device") are used to represent "logical" things and so may not mean what you expect.  A more complete list of NMOS terminology is provided in the [Glossary].
+Before explaining the NMOS specifications themselves it is helpful to present the model we are using in a sequence of pictures. This will also introduce some of the terminology used in NMOS specifications – this is similar to that used in the [JT-NM RA][]. Be warned that in some cases common words (such as "Device") are used to represent "logical" things and so may not mean what you expect.  A more complete list of NMOS terminology is provided in the [Glossary][].
 
 In NMOS specifications a **Device** represents a _logical_ block of functionality, and a **Node** is the host for one or more Devices.
 
@@ -309,13 +310,11 @@ These specify how to implement client authorization for the NMOS APIs.
 
 The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
-[//]: # (References/Links)
-
 [AES-67]: http://www.aes.org/publications/standards/search.cfm?docID=96 "AES67-2015: AES standard for audio applications of networks - High-performance streaming audio-over-IP interoperability"
 
 [AMWA]: http://amwa.tv "Advanced Media Workflow Association"
 
-[Glossary]: Glossary.md "Glossary"
+[Glossary]: https://amwa-tv.github.io/nmos/branches/master/Glossary.html "Glossary"
 
 [JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)"
 
