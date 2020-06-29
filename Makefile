@@ -3,7 +3,7 @@
 .PHONY: build-tools distclean
 
 build-tools:
-	./make-build-tools.sh
+	./.init-scripts/make-build-tools.sh
 
 distclean:
-	./make-distclean.sh
+	./.init-scripts/make-distclean.sh
