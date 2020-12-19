@@ -1,0 +1,48 @@
+name: Render
+on:
+  push:
+    branches:
+        - 'v[0-9]*.[0-9]*'
+        - 'publish-*'
+    tags:
+        - 'v[0-9]*.[0-9]*'
+  release:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Uses Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Setup
+        run: make distclean build-tools
+      - name: Build
+        run: make build
+      - name: Remove source-repo
+        run: rm -rf source-repo/
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v5
+        with:
+          author_name: AMWA
+          author_email: info@amwa.tv
+          message: "Build for Github Pages"
+          add: '.'
+          branch: gh-pages
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+
+
