@@ -2,45 +2,41 @@ name: Render
 on:
   push:
     branches:
-      - master
-      - main
-      - 'publish-*'
+        - 'v[0-9]+.[0-9]+-dev'
+        - 'v[0-9]+.[0-9]+.x'
+        - 'publish-*'
+    tags:
+        - 'v[0-9]+.[0-9]+'
+        - 'v[0-9]+.[0-9]+.[0-9]+'
+  release:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: gh-pages
-      - name: Use Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Uses Python
+      - name: Install Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - name: Setup
+      - name: Install Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - name: Install Bundler
+        run: gem install bundler
+      - name: Setup 
         run: make distclean build-tools
-      - name: Build
+      - name: Build site
         run: make build
-      - name: Remove source-repo
-        run: rm -rf source-repo/
-      - name: Add and Commit
-        uses: EndBug/add-and-commit@v5
-        with:
-          author_name: AMWA
-          author_email: info@amwa.tv
-          message: "Build for Github Pages"
-          add: '.'
-          branch: gh-pages
+      - name: Upload site
+        run: make upload
         env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-
-
+          SSH_HOST: ${{ secrets.SSH_HOST }} 
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

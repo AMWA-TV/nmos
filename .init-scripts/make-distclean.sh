@@ -2,4 +2,5 @@
 
 set -o errexit
 
-rm -rf package.json node_modules/ yarn.lock package-lock.json .scripts/
+rm -rf source-repo branches tags index.md index-contents.md
+rm -rf node_modules/ yarn.lock package-lock.json .scripts/ .layouts/ _layouts/ assets/ raml2html-nmos-theme/ _site/
