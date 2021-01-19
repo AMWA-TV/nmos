@@ -20,8 +20,8 @@ IS-09 | [System Parameters](https://specs.amwa.tv/is-09) | AMWA Specification | 
 IS-10 | [Authorization](https://specs.amwa.tv/is-10) | Work In Progress | | [nmos-authorization](https://github.com/AMWA-TV/nmos-authorization)
 MS-04 | [ID & Timing Model](https://specs.amwa.tv/ms-04/) | AMWA Specification | [v1.0](https://specs.amwa.tv/ms-04/v1.0) [↓](https://github.com/AMWA-TV/nmos-id-timing-model/releases/tag/v1.0) | [nmos-id-timing-model](https://github.com/AMWA-TV/nmos-id-timing-model)
 BCP-002-01 | [Natural Grouping](https://specs.amwa.tv/nmos-grouping/branches/master/best-practice-natural-grouping.html) | AMWA Specification | | [nmos-grouping](https://github.com/AMWA-TV/nmos-grouping)
-BCP-003-01 | [Securing Communications in NMOS Systems](https://specs.amwa.tv/bcp003-01) | AMWA Specification | | [nmos-secure-communication](https://github.com/AMWA-TV/nmos-secure-communication)
-BCP-003-02 | [Authorization in NMOS Systems](https://specs.amwa.tv/bcp003-02) | Work In Progress | | [nmos-authorization-practice](https://github.com/AMWA-TV/nmos-authorization-practice)
-BCP-003-03 | [Certificate Provisioning in NMOS Systems](https://specs.amwa.tv/bcp003-03) | Work In Progress | | [nmos-certificate-provisioning](https://github.com/AMWA-TV/nmos-certificate-provisioning)
+BCP-003-01 | [Securing Communications in NMOS Systems](https://specs.amwa.tv/bcp-003-01) | AMWA Specification | | [nmos-secure-communication](https://github.com/AMWA-TV/nmos-secure-communication)
+BCP-003-02 | [Authorization in NMOS Systems](https://specs.amwa.tv/bcp-003-02) | Work In Progress | | [nmos-authorization-practice](https://github.com/AMWA-TV/nmos-authorization-practice)
+BCP-003-03 | [Certificate Provisioning in NMOS Systems](https://specs.amwa.tv/bcp-003-03) | Work In Progress | | [nmos-certificate-provisioning](https://github.com/AMWA-TV/nmos-certificate-provisioning)
 n/a | [Parameter Registers](https://specs.amwa.tv/nmos-parameter-registers/) | Continuing  | | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers)
 
