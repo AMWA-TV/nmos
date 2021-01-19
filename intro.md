@@ -23,5 +23,7 @@ BCP-002-01 | [Natural Grouping](https://specs.amwa.tv/nmos-grouping/branches/mas
 BCP-003-01 | [Securing Communications in NMOS Systems](https://specs.amwa.tv/bcp-003-01) | AMWA Specification | | [nmos-secure-communication](https://github.com/AMWA-TV/nmos-secure-communication)
 BCP-003-02 | [Authorization in NMOS Systems](https://specs.amwa.tv/bcp-003-02) | Work In Progress | | [nmos-authorization-practice](https://github.com/AMWA-TV/nmos-authorization-practice)
 BCP-003-03 | [Certificate Provisioning in NMOS Systems](https://specs.amwa.tv/bcp-003-03) | Work In Progress | | [nmos-certificate-provisioning](https://github.com/AMWA-TV/nmos-certificate-provisioning)
+BCP-004-01 | [NMOS Receiver Capabilities](https://specs.amwa.tv/bcp-004-01) | Work In Progress | | [nmos-receiver-capabilities](https://github.com/AMWA-TV/nmos-receiver-capabilities)
+n/a | [NMOS EDID Connection Management](https://specs.amwa.tv/nmos-edid-connection-management/) | Work In Progress  | | [nmos-edid-connection-management](https://github.com/AMWA-TV/nmos-edid-connection-management)
 n/a | [Parameter Registers](https://specs.amwa.tv/nmos-parameter-registers/) | Continuing  | | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers)
 
