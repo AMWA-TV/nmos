@@ -30,11 +30,11 @@ jobs:
       - name: Install Bundler
         run: gem install bundler
       - name: Setup 
-        run: make distclean build-tools
+        run: make -C render distclean build-tools
       - name: Build site
-        run: make build
+        run: make -C render build
       - name: Upload site
-        run: make upload
+        run: make -C render upload
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }} 
           SSH_USER: ${{ secrets.SSH_USER }}
