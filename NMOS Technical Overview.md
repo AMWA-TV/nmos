@@ -317,7 +317,7 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 [JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)"
 
-[JT-NM RA]: http://jt-nm.org/RA-1.0/ "Joint Task Force on Networked Media (JT-NM): Reference Architecture V1.0"
+[JT-NM RA]: http://jt-nm.org/reference-architecture/ "Joint Task Force on Networked Media (JT-NM): Reference Architecture V1.0"
 
 [NMOS]: http://nmos.tv "Networked Media Open Specifications website"
 
@@ -329,6 +329,6 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 [ST 2110]: https://www.smpte.org/webcasts/Standards-SMPTE-ST-2110 "SMPTE ST 2110 – Professional Media over IP Networks"
 
-[TR-1001-1]: http://www.jt-nm.org/documents/JT-NM_TR-1001-1:2018_v1.0.pdf "JT-NM TR-1001: System Environment and Device Behaviors For SMPTE ST 2110 Media Nodes in Engineered Networks"
+[TR-1001-1]: https://www.jt-nm.org/tr-1001-1 "JT-NM TR-1001: System Environment and Device Behaviors For SMPTE ST 2110 Media Nodes in Engineered Networks"
 
 [Wikipedia REST page]: https://en.wikipedia.org/wiki/Representational_state_transfer "Wikipedia REST page"
