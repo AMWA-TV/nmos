@@ -13,4 +13,4 @@ default_tree: branches/master
 
 # Regex patterns of releases and branches to show
 show_releases: 
-show_branches: master
+show_branches: ^master$|^main$|^publish-
