@@ -2,13 +2,9 @@ name: Render
 on:
   push:
     branches:
-        - 'v[0-9]+.[0-9]+-dev'
-        - 'v[0-9]+.[0-9]+.x'
-        - 'publish-*'
-    tags:
-        - 'v[0-9]+.[0-9]+'
-        - 'v[0-9]+.[0-9]+.[0-9]+'
-  release:
+        - '^master$'
+        - '^main$'
+        - 'publish-'
 jobs:
   build:
     runs-on: ubuntu-latest
