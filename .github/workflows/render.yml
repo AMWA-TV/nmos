@@ -2,9 +2,9 @@ name: Render
 on:
   push:
     branches:
-        - '^master$'
-        - '^main$'
-        - 'publish-'
+        - master
+        - main
+        - publish-*
 jobs:
   build:
     runs-on: ubuntu-latest
