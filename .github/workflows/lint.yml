@@ -11,6 +11,6 @@ jobs:
         with:
           node-version: '12.x'
       - name: Setup
-        run: make -C lint distclean build-tools
+        run: make -C .lint distclean build-tools
       - name: Lint
-        run: make -C lint lint
+        run: make -C .lint lint
