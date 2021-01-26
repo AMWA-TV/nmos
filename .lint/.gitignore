@@ -1,0 +1,10 @@
+*#
+*.swp
+*~
+.DS_Store
+.scripts/
+node_modules/
+npm-debug.log
+package-lock.json
+package.json
+yarn.lock
