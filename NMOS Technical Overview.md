@@ -158,13 +158,12 @@ So far, NMOS specifications have worked with quite fine-grained Resources (pun u
 
 ### Finding the Specifications
 
-A current list of NMOS Specifications is at <https://amwa-tv.github.io/nmos>:
+A current list of NMOS Specifications is at <https://specs.amwa.tv/nmos>:
 
 ![NMOS-Main-List](images/nmos-main-list.png)
 
 
 From there you can click on the entry in the "Name" column to go to the *rendered HTML documentation* for each Specification.
-> You can also use the links below, and redirects such as <https://amwa-tv.github.io/is-04> are provided to the documentation. 
 
 To see the GitHub _repository_ that contains the source for the specification, click on the entry in the "Repository" column, or on "GITHUB" in the menu bar of the documentation. This takes you to the default git branch
 
@@ -231,7 +230,7 @@ This section outlines the publicly available NMOS specifications.
 
 ### IS-04: Discovery and Registration
 
-<https://amwa-tv.github.io/nmos-discovery-registration>
+<https://specs.amwa.tv/is-04>
 
 This Specification enables applications to discover networked resources, which is an important first step towards automation and scalability.
 
@@ -247,7 +246,7 @@ It also includes a basic connection management mechanism that was used before th
 
 ### IS-05: Device Connection Management
 
-<https://amwa-tv.github.io/nmos-device-connection-management>
+<https://specs.amwa.tv/is-05>
 
 This Specification provides an HTTP API for establishing (and removing) Flows between Senders and Receivers.
 
@@ -257,56 +256,56 @@ It allows connections to be prepared and "activated" at a particular time and al
 
 ### IS-06: Network Control
 
-<https://amwa-tv.github.io/nmos-network-control>
+<https://specs.amwa.tv/is-06>
 
 This Specification can be considered as a "northbound API" for SDN controllers. It provides an HTTP API to communicate information about the network topology, allow reservation of bandwidth for low-level network flows and monitoring.
 
 ### IS-07: Event & Tally
 
-<https://amwa-tv.github.io/nmos-event-tally>
+<https://specs.amwa.tv/is-07>
 
 This Specification provides a mechanism for conveying time-related state and state change information, for example tally information from sensors and actuators using WebSockets or a message queue (MQTT).
 
 ### IS-08: Audio Channel Mapping
 
-<https://amwa-tv.github.io/nmos-audio-channel-mapping/>
+<https://specs.amwa.tv/is-08>
 
 This Specification provides a mechanism to define settings for channel mapping, selection and shuffling for use with NMOS APIs.
 
-### IS-09: System (Work In Progress)
+### IS-09: System
 
-<https://amwa-tv.github.io/nmos-system/>
+<https://specs.amwa.tv/is-09>
 
 This allows Nodes to find Resources that are common across a system, to ensure consistent start-up.
 
-### MS-04: Identity & Timing Model (Work In Progress)
+### MS-04: Identity & Timing Model
 
-<https://amwa-tv.github.io/nmos-id-timing-model/>
+<https://specs.amwa.tv/ms-04>
 
 This will document a model for identity and timing that applies to AMWA NMOS specifications associated with the identification and processing of content.
 This is consistent with the model and terminology presented in this Overview.
 
 ### BCP-002-01: Natural Grouping
 
-<https://amwa-tv.github.io/nmos-grouping/best-practice-natural-grouping.html>
+<https://specs.amwa.tv/bcp-002>
 
 This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
 
 ### BCP-003-01: Securing Communications
 
-<https://amwa-tv.github.io/nmos-api-security/best-practice-secure-comms.html>
+<https://specs.amwa.tv/bcp-003-01>
 
 This documents best practice for securing communications used in NMOS specifications, using  TLS and PKI.
 
 ### BCP-003-02 and IS-10: Authorization (Work In Progress)
 
-<https://amwa-tv.github.io/nmos-api-security/best-practice-authorization.html> and <https://amwa-tv.github.io/nmos-authorization/>
+<https://specs.amwa.tv/bcp-003-02> and <https://specs.amwa.tv/is-10>
 
 These specify how to implement client authorization for the NMOS APIs.
 
 ### Parameter Registers
 
-<https://amwa-tv.github.io/nmos-parameter-registers>
+<https://specs.amwa.tv/nmos-parameter-registers>
 
 The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
@@ -314,11 +313,11 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 [AMWA]: http://amwa.tv "Advanced Media Workflow Association"
 
-[Glossary]: https://amwa-tv.github.io/nmos/branches/master/Glossary.html "Glossary"
+[Glossary]: https://specs.amwa.tv/nmos/branches/master/Glossary.html "Glossary"
 
 [JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)"
 
-[JT-NM RA]: http://jt-nm.org/RA-1.0/ "Joint Task Force on Networked Media (JT-NM): Reference Architecture V1.0"
+[JT-NM RA]: http://jt-nm.org/reference-architecture/ "Joint Task Force on Networked Media (JT-NM): Reference Architecture V1.0"
 
 [NMOS]: http://nmos.tv "Networked Media Open Specifications website"
 
@@ -330,6 +329,6 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 [ST 2110]: https://www.smpte.org/webcasts/Standards-SMPTE-ST-2110 "SMPTE ST 2110 – Professional Media over IP Networks"
 
-[TR-1001-1]: http://www.jt-nm.org/documents/JT-NM_TR-1001-1:2018_v1.0.pdf "JT-NM TR-1001: System Environment and Device Behaviors For SMPTE ST 2110 Media Nodes in Engineered Networks"
+[TR-1001-1]: https://www.jt-nm.org/tr-1001-1 "JT-NM TR-1001: System Environment and Device Behaviors For SMPTE ST 2110 Media Nodes in Engineered Networks"
 
 [Wikipedia REST page]: https://en.wikipedia.org/wiki/Representational_state_transfer "Wikipedia REST page"
