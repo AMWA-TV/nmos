@@ -3,8 +3,6 @@
 <a href="https://github.com/AMWA-TV/nmos/actions?query=workflow%3ALint"><img src="https://github.com/AMWA-TV/nmos/workflows/Lint/badge.svg"/></a> 
 <a href="https://github.com/AMWA-TV/nmos/actions?query=workflow%3ARender"><img src="https://github.com/AMWA-TV/nmos/workflows/Render/badge.svg"/></a> 
 
-This repository contains 
-
 [//]: # "INTRO-START"
 
 NMOS is a family name for specifications produced by the Advanced Media Workflow Association related to networked media for professional applications.
@@ -32,3 +30,5 @@ n/a | [NMOS EDID Connection Management](https://specs.amwa.tv/nmos-edid-connecti
 n/a | [Parameter Registers](https://specs.amwa.tv/nmos-parameter-registers/) | Continuing  | | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers)
 
 [//]: # "INTRO-END"
+
+This repository contains the source for general documention about NMOS.
