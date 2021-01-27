@@ -313,7 +313,7 @@ The Parameter Registers provide an extensible mechanism for defining values used
 
 [AMWA]: http://amwa.tv "Advanced Media Workflow Association"
 
-[Glossary]: https://specs.amwa.tv/nmos/branches/master/Glossary.html "Glossary"
+[Glossary]: https://specs.amwa.tv/nmos/branches/main/Glossary.html "Glossary"
 
 [JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)"
 
