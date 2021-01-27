@@ -9,8 +9,8 @@ amwa_id: NMOS
 baseurl: /nmos
 
 # Which release or branch appears in header links and on the home page
-default_tree: branches/master
+default_tree: branches/main
 
 # Regex patterns of releases and branches to show
 show_releases: 
-show_branches: ^master$|^main$|^publish-
+show_branches: ^main$|^publish-
