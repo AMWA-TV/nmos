@@ -9,7 +9,7 @@ NMOS is a family name for specifications produced by the Advanced Media Workflow
 
 The table below lists the current specifications and provides links to their repositories on [github.com/AMWA-TV](https://github.com/AMWA-TV/) and documentation on [specs.amwa.tv](https://specs.amwa.tv). The "Version" links will take you to the documentation and download page (↓) for the latest release of recent versions of the specification.
 
-The [NMOS API Testing Tool](https://amwa-tv.github.io/nmos-testing) supports the majority of these specifications.
+The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the majority of these specifications.
 
 Id | Name  | Spec Status | Version(s) | Repository
 :--:|:---:|:---:|:---:|:--:
