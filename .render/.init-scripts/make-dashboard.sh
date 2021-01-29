@@ -18,6 +18,7 @@ for repo in \
     nmos-system \
     nmos-authorization \
     nmos-grouping \
+    nmos-natural-grouping \
     nmos-api-security \
     nmos-secure-communication \
     nmos-authorization-practice \
