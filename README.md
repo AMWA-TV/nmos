@@ -26,6 +26,7 @@ Id | Name  | Spec Status | Version(s) | Repository
 [BCP-003-02](https://specs.amwa.tv/bcp-003-02) | [Authorization in NMOS Systems](https://specs.amwa.tv/bcp-003-02) | Work In Progress | | [nmos-authorization-practice](https://github.com/AMWA-TV/nmos-authorization-practice)
 [BCP-003-03](https://specs.amwa.tv/bcp-003-03) | [Certificate Provisioning in NMOS Systems](https://specs.amwa.tv/bcp-003-03) | Work In Progress | | [nmos-certificate-provisioning](https://github.com/AMWA-TV/nmos-certificate-provisioning)
 [BCP-004-01](https://specs.amwa.tv/bcp-004-01) | [NMOS Receiver Capabilities](https://specs.amwa.tv/bcp-004-01) | Work In Progress | | [nmos-receiver-capabilities](https://github.com/AMWA-TV/nmos-receiver-capabilities)
+[INFO-002](https://specs.amwa.tv/info-002) | [NMOS Authorization Implementation Guide](https://specs.amwa.tv/info-002) | Work In Progress | | [nmos-authorization-implementation-guide](https://github.com/AMWA-TV/nmos-authorization-implementation-guide)
 n/a | [NMOS EDID Connection Management](https://specs.amwa.tv/nmos-edid-connection-management/) | Work In Progress  | | [nmos-edid-connection-management](https://github.com/AMWA-TV/nmos-edid-connection-management)
 n/a | [Parameter Registers](https://specs.amwa.tv/nmos-parameter-registers/) | Continuing  | | [nmos-parameter-registers](https://github.com/AMWA-TV/nmos-parameter-registers)
 
