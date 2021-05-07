@@ -8,41 +8,48 @@ cat  << EOF > "$DASHBOARD"
 | --- | --- | --- | --- | --- |
 EOF
 
-for repo in \
+for id in \
     nmos \
-    nmos-discovery-registration \
-    nmos-device-connection-management \
-    nmos-network-control \
-    nmos-event-tally \
-    nmos-audio-channel-mapping \
-    nmos-system \
-    nmos-authorization \
-    nmos-grouping \
-    nmos-natural-grouping \
-    nmos-api-security \
-    nmos-secure-communication \
-    nmos-authorization-practice \
-    nmos-certificate-provisioning \
-    nmos-receiver-capabilities \
-    nmos-edid-connection-management \
-    nmos-id-timing-model \
+    is-04 \
+    is-05 \
+    is-06 \
+    is-07 \
+    is-08 \
+    is-09 \
+    is-10 \
+    is-11 \
+    ms-04 \
+    bcp-002-01 \
+    bcp-003-01 \
+    bcp-003-02 \
+    bcp-003-03 \
+    bcp-004-01 \
+    bcp-005-01 \
+    info-002 \
+    info-003 \
     nmos-parameter-registers \
-    nmos-template \
+    is-template \
     ; do
-    repo_address="https://github.com/AMWA-TV/$repo"
+    repo_address=$(curl -w "%{url_effective}\n" -I -L -s -S "https://specs.amwa.tv/$id/repo" -o /dev/null)
+    repo="${repo_address##*/}"
 
     git clone --depth 1 "$repo_address" "$repo"
-    cd "$repo"
+    (
+        cd "$repo" || exit 1
         default_branch="$(git remote show origin | awk '/HEAD branch/ { print $3 }')"
-        ID=$(awk '/amwa_id:/ { print $2; }' .render/_config.yml)
+        config_id=$(awk '/amwa_id:/ { print $2; }' .render/_config.yml)
+        if [[ "${config_id,,}" != "$id" ]]; then
+            echo "amwa_id in _config.yml is $config_id - does not match expected $id"
+            exit 1
+        fi
         cat << EOF >> "../$DASHBOARD"
-| [$ID](https://amwa-tv.github.io/$repo) \
+| [${id^^}](https://specs.amwa.tv/$id) \
 | [$repo]($repo_address) \
 | $default_branch \
 | <a href="$repo_address/actions?query=workflow%3ALint"><img src="$repo_address/workflows/Lint/badge.svg"/></a> \
 | <a href="$repo_address/actions?query=workflow%3ARender"><img src="$repo_address/workflows/Render/badge.svg"/></a> \
 |
 EOF
-    cd ..
+    )
     rm -rf "$repo"
 done
