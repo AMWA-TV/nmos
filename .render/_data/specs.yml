@@ -19,3 +19,55 @@
     - v1.1.1
     - v1.0.2
 
+- amwa_id: IS-06
+  url: https://specs.amwa.tv/is-06
+  name: Network Control
+  status: AMWA Specification
+  repo_name: nmos-network-control
+  repo_url: https://specs.amwa.tv/nmos-network-control
+  releases:
+    - v1.0.1
+
+- amwa_id: IS-07
+  url: https://specs.amwa.tv/is-07
+  name: Event & Tally
+  status: AMWA Specification
+  repo_name: nmos-event-tally
+  repo_url: https://specs.amwa.tv/nmos-event-tally
+  releases:
+    - v1.0.1
+
+- amwa_id: IS-08
+  url: https://specs.amwa.tv/is-08
+  name: Audio Channel Mapping
+  status: AMWA Specification (Stable)
+  repo_name: nmos-audio-channel-mapping
+  repo_url: https://specs.amwa.tv/nmos-audio-channel-mapping
+  releases:
+    - v1.0.1
+
+- amwa_id: IS-09
+  url: https://specs.amwa.tv/is-09
+  name: System Parameters
+  status: AMWA Specification
+  repo_name: nmos-system
+  repo_url: https://specs.amwa.tv/nmos-system
+  releases:
+    - v1.0.0
+
+- amwa_id: IS-10
+  url: https://specs.amwa.tv/is-10
+  name: Authorization
+  status: AMWA Specification
+  repo_name: nmos-authorization
+  repo_url: https://specs.amwa.tv/nmos-authorization
+  releases:
+    - v1.0.0
+
+- amwa_id: IS-11
+  url: https://specs.amwa.tv/is-11
+  name: Authorization
+  status: Work In Progress
+  repo_name: nmos-sink-metadata-processing
+  repo_url: https://specs.amwa.tv/nmos-sink-metadata-processing
+  releases:
