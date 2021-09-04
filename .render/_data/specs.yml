@@ -128,7 +128,7 @@
 
 - amwa_id: BCP-005-01
   url: https://specs.amwa.tv/bcp-005-01
-  name: EDID to Receive Capabilities Mapping
+  name: EDID to Receiver Capabilities Mapping
   status: Work In Progress
   repo_name: nmos-receiver-capabilities
   repo_url: https://github.com/AMWA-TV/nmos-receiver-capabilities
