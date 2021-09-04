@@ -29,14 +29,19 @@ The index of NMOS specs is now auto-generated (by the template code below) and a
 			<td style="text-align: center"><a href="{{ spec.url }}">{{ spec.amwa_id }}</a></td>
 			<td style="text-align: center"><a href="{{ spec.url }}">{{ spec.name }}</a></td>
 			<td style="text-align: center">{{ spec.status }}</td>
-			<td></td>
+			<td style="text-align: center">
+				{% for release in spec.releases %}
+					<div>
+						<a href="{{ spec.url }}/{{ release }}">{{ release }}</a>
+						<a href="{{ spec.repo_url }}/releases/tag/{{ release }}">↓</a>
+					</div>
+				{% endfor %}
+			</td>
 			<td style="text-align: center"><a href="{{ spec.repo_url }}">{{ spec.repo_name }}</a></td>
 		</tr>
 		{% endfor %}
 	</tbody>
 </table>
-
-
 
 <!-- INTRO-END -->
 

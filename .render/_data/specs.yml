@@ -4,7 +4,10 @@
   status: AMWA Specification (Stable)
   repo_name: nmos-discovery-registration
   repo_url: https://github.com/AMWA-TV/nmos-discovery-registration
-  default_tree: releases/v1.3.1
+  releases:
+    - v1.1.3
+    - v1.2.2
+    - v1.3.1
 
 - amwa_id: IS-05
   url: https://specs.amwa.tv/is-05
@@ -12,5 +15,7 @@
   status: AMWA Specification (Stable)
   repo_name: nmos-device-connection-management
   repo_url: https://specs.amwa.tv/nmos-device-connection-management
-  default_tree: releases/v1.1.1
+  releases:
+    - v1.1.1
+    - v1.0.2
 
