@@ -1,8 +1,16 @@
 - amwa_id: IS-04
-  baseurl: /is-04
+  url: https://specs.amwa.tv/is-04
+  name: Discovery & Registration
+  status: AMWA Specification (Stable)
+  repo_name: nmos-discovery-registration
+  repo_url: https://github.com/AMWA-TV/nmos-discovery-registration
   default_tree: releases/v1.3.1
 
 - amwa_id: IS-05
-  baseurl: /is-05
+  url: https://specs.amwa.tv/is-05
+  name: Device Connection Management
+  status: AMWA Specification (Stable)
+  repo_name: nmos-device-connection-management
+  repo_url: https://specs.amwa.tv/nmos-device-connection-management
   default_tree: releases/v1.1.1
 
