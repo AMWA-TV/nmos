@@ -66,7 +66,7 @@
 
 - amwa_id: IS-11
   url: https://specs.amwa.tv/is-11
-  name: Authorization
+  name: Sink Metadata Processing
   status: Work In Progress
   repo_name: nmos-sink-metadata-processing
   repo_url: https://github.com/AMWA-TV/nmos-sink-metadata-processing
