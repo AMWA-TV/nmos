@@ -1,0 +1,8 @@
+- amwa_id: IS-04
+  baseurl: /is-04
+  default_tree: releases/v1.3.1
+
+- amwa_id: IS-05
+  baseurl: /is-05
+  default_tree: releases/v1.1.1
+
