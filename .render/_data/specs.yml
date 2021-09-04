@@ -14,7 +14,7 @@
   name: Device Connection Management
   status: AMWA Specification (Stable)
   repo_name: nmos-device-connection-management
-  repo_url: https://specs.amwa.tv/nmos-device-connection-management
+  repo_url: https://github.com/AMWA-TV/nmos-device-connection-management
   releases:
     - v1.1.1
     - v1.0.2
@@ -24,7 +24,7 @@
   name: Network Control
   status: AMWA Specification
   repo_name: nmos-network-control
-  repo_url: https://specs.amwa.tv/nmos-network-control
+  repo_url: https://github.com/AMWA-TV/nmos-network-control
   releases:
     - v1.0.1
 
@@ -33,7 +33,7 @@
   name: Event & Tally
   status: AMWA Specification
   repo_name: nmos-event-tally
-  repo_url: https://specs.amwa.tv/nmos-event-tally
+  repo_url: https://github.com/AMWA-TV/nmos-event-tally
   releases:
     - v1.0.1
 
@@ -42,7 +42,7 @@
   name: Audio Channel Mapping
   status: AMWA Specification (Stable)
   repo_name: nmos-audio-channel-mapping
-  repo_url: https://specs.amwa.tv/nmos-audio-channel-mapping
+  repo_url: https://github.com/AMWA-TV/nmos-audio-channel-mapping
   releases:
     - v1.0.1
 
@@ -51,7 +51,7 @@
   name: System Parameters
   status: AMWA Specification
   repo_name: nmos-system
-  repo_url: https://specs.amwa.tv/nmos-system
+  repo_url: https://github.com/AMWA-TV/nmos-system
   releases:
     - v1.0.0
 
@@ -60,7 +60,7 @@
   name: Authorization
   status: AMWA Specification
   repo_name: nmos-authorization
-  repo_url: https://specs.amwa.tv/nmos-authorization
+  repo_url: https://github.com/AMWA-TV/nmos-authorization
   releases:
     - v1.0.0
 
@@ -69,5 +69,91 @@
   name: Authorization
   status: Work In Progress
   repo_name: nmos-sink-metadata-processing
-  repo_url: https://specs.amwa.tv/nmos-sink-metadata-processing
+  repo_url: https://github.com/AMWA-TV/nmos-sink-metadata-processing
+  releases:
+
+- amwa_id: MS-04
+  url: https://specs.amwa.tv/ms-04
+  name: ID & Timing Model
+  status: Work In Progress
+  repo_name: nmos-id-timing-model
+  repo_url: https://github.com/AMWA-TV/nmos-id-timing-model
+  releases:
+    - v1.0.0
+
+- amwa_id: BCP-002-01
+  url: https://specs.amwa.tv/bcp-002-01
+  name: Natural Grouping
+  status: AMWA Specification
+  repo_name: nmos-natural-grouping
+  repo_url: https://github.com/AMWA-TV/nmos-natural-grouping
+  releases:
+    - v1.0.0
+
+- amwa_id: BCP-003-01
+  url: https://specs.amwa.tv/bcp-003-01
+  name: Secure Communications in NMOS Systems
+  status: AMWA Specification
+  repo_name: nmos-secure-communication
+  repo_url: https://github.com/AMWA-TV/nmos-secure-communication
+  releases:
+    - v1.0.0
+
+- amwa_id: BCP-003-02
+  url: https://specs.amwa.tv/bcp-003-02
+  name: Authorization in NMOS Systems
+  status: AMWA Specification
+  repo_name: nmos-authorization-practice
+  repo_url: https://github.com/AMWA-TV/nmos-authorization-practice
+  releases:
+    - v1.0.0
+
+- amwa_id: BCP-003-03
+  url: https://specs.amwa.tv/bcp-003-03
+  name: Certificate Provisioning in NMOS Systemsn
+  status: AMWA Specification
+  repo_name: nmos-certificate-provisioning
+  repo_url: https://github.com/AMWA-TV/nmos-certificate-provisioning
+  releases:
+    - v1.0.0
+
+- amwa_id: BCP-004-01
+  url: https://specs.amwa.tv/bcp-004-01
+  name: Receiver Capabilities
+  status: AMWA Specification
+  repo_name: nmos-receiver-capabilities
+  repo_url: https://github.com/AMWA-TV/nmos-receiver-capabilities
+  releases:
+    - v1.0.0
+
+- amwa_id: BCP-005-01
+  url: https://specs.amwa.tv/bcp-005-01
+  name: EDID to Receive Capabilities Mapping
+  status: Work In Progress
+  repo_name: nmos-receiver-capabilities
+  repo_url: https://github.com/AMWA-TV/nmos-receiver-capabilities
+  releases:
+
+- amwa_id: INFO-002
+  url: https://specs.amwa.tv/info-002
+  name: Security Implementation Guide
+  status: AMWA Specification
+  repo_name: nmos-security-implementation-guide
+  repo_url: https://github.com/AMWA-TV/nmos-security-implementation-guide
+  releases:
+
+- amwa_id: INFO-003
+  url: https://specs.amwa.tv/info-003
+  name: Sink Metadata Processing Architecture
+  status: Work In Progress
+  repo_name: nmos-sink-metadata-processing-architecture
+  repo_url: https://github.com/AMWA-TV/nmos-sink-metadata-processing-architecture
+  releases:
+
+- amwa_id: n/a
+  url: https://specs.amwa.tv/nmos-parameter-registers
+  name: Parameter Registers
+  status: Continuing
+  repo_name: nmos-parameter-registers
+  repo_url: https://github.com/AMWA-TV/nmos-parameter-registers
   releases:
