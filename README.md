@@ -13,6 +13,8 @@ The table below lists the current specifications and provides links to their rep
 
 The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the majority of these specifications.
 
+{% include spec_table.html %}
+
 <!-- INTRO-END -->
 
-> **The table of NMOS specs is now auto-generated (see `spec_table.html`) and does not appear in this README. You can find it at <https://specs.amwa.tv/nmos>.**
+> **The table of NMOS specs is at <https://specs.amwa.tv/nmos>.  It is now generated from [a data file](.render/_data/specs.yml) and no longer appear in this README.**
