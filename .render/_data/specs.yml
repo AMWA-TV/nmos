@@ -89,14 +89,6 @@
   repo_url: https://github.com/AMWA-TV/nmos-control-architecture-framework
   releases:
 
-- amwa_id: MS-05-02
-  url: https://specs.amwa.tv/ms-05-02
-  name: NMOS Control Architecture Feature Sets
-  status: Work In Progress
-  repo_name: nmos-control-architecture-feature-sets
-  repo_url: https://github.com/AMWA-TV/nmos-control-architecture-feature-sets
-  releases:
-
 - amwa_id: BCP-002-01
   url: https://specs.amwa.tv/bcp-002-01
   name: Natural Grouping
