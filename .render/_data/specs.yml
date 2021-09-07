@@ -81,6 +81,22 @@
   releases:
     - v1.0.0
 
+- amwa_id: MS-05-01
+  url: https://specs.amwa.tv/ms-05-01
+  name: NMOS Control Architecture Framework
+  status: Work In Progress
+  repo_name: nmos-control-architecture-framework
+  repo_url: https://github.com/AMWA-TV/nmos-control-architecture-framework
+  releases:
+
+- amwa_id: MS-05-02
+  url: https://specs.amwa.tv/ms-05-02
+  name: NMOS Control Architecture Feature Sets
+  status: Work In Progress
+  repo_name: nmos-control-architecture-feature-sets
+  repo_url: https://github.com/AMWA-TV/nmos-control-architecture-feature-sets
+  releases:
+
 - amwa_id: BCP-002-01
   url: https://specs.amwa.tv/bcp-002-01
   name: Natural Grouping
@@ -130,8 +146,8 @@
   url: https://specs.amwa.tv/bcp-005-01
   name: EDID to Receiver Capabilities Mapping
   status: Work In Progress
-  repo_name: nmos-receiver-capabilities
-  repo_url: https://github.com/AMWA-TV/nmos-receiver-capabilities
+  repo_name: nmos-edid-to-receiver-caps-mapping
+  repo_url: https://github.com/AMWA-TV/nmos-edid-to-receiver-caps-mapping
   releases:
 
 - amwa_id: INFO-002
@@ -150,6 +166,14 @@
   repo_url: https://github.com/AMWA-TV/nmos-sink-metadata-processing-architecture
   releases:
 
+- amwa_id: INFO-004
+  url: https://specs.amwa.tv/info-004
+  name: Implementation Guide for DNS-SD
+  status: Work In Progress
+  repo_name: nmos-dns-sd-implementation-guide
+  repo_url: https://github.com/AMWA-TV/nmos-dns-sd-implementation-guide
+  releases:
+  
 - amwa_id: n/a
   url: https://specs.amwa.tv/nmos-parameter-registers
   name: Parameter Registers
