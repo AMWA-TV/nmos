@@ -1,0 +1,29 @@
+<table style="text-align: center">
+	<thead>
+		<tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Spec Status</th>
+      <th>Release(s)</th>
+      <th>Repository</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for spec in site.data.specs %}
+		<tr>
+			<td><a href="{{ spec.url }}">{{ spec.amwa_id }}</a></td>
+			<td><a href="{{ spec.url }}">{{ spec.name }}</a></td>
+			<td>{{ spec.status }}</td>
+			<td>
+				{% for release in spec.releases %}
+					<div>
+						<a href="{{ spec.url }}/{{ release }}">{{ release }}</a>
+						<a href="{{ spec.repo_url }}/releases/tag/{{ release }}">↓</a>
+					</div>
+				{% endfor %}
+			</td>
+			<td><a href="{{ spec.repo_url }}">{{ spec.repo_name }}</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
