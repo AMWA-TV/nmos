@@ -161,7 +161,7 @@
 - amwa_id: INFO-004
   url: https://specs.amwa.tv/info-004
   name: Implementation Guide for DNS-SD
-  status: Work In Progress
+  status: AMWA Specification
   repo_name: nmos-dns-sd-implementation-guide
   repo_url: https://github.com/AMWA-TV/nmos-dns-sd-implementation-guide
   releases:
