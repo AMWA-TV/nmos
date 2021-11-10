@@ -75,7 +75,7 @@
 - amwa_id: MS-04
   url: https://specs.amwa.tv/ms-04
   name: ID & Timing Model
-  status: Work In Progress
+  status: AMWA Specification
   repo_name: nmos-id-timing-model
   repo_url: https://github.com/AMWA-TV/nmos-id-timing-model
   releases:
