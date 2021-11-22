@@ -142,6 +142,14 @@
   repo_url: https://github.com/AMWA-TV/nmos-edid-to-receiver-caps-mapping
   releases:
 
+- amwa_id: BCP-006-01
+  url: https://specs.amwa.tv/bcp-006-01
+  name: NMOS With JPEG XS
+  status: Work In Progress
+  repo_name: nmos-jpeg-xs
+  repo_url: https://github.com/AMWA-TV/nmos-jpeg-xs
+  releases:
+
 - amwa_id: INFO-002
   url: https://specs.amwa.tv/info-002
   name: Security Implementation Guide
