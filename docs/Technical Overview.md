@@ -79,7 +79,7 @@ Professional media has to work in many different types of environment, requiring
 - virtualised in an on-premesis data centre
 - on a shared or public cloud
 
-#### Universal Identity
+#### Universal identity
 
 In NMOS specifications, everything is treated as a resource that can be uniquely identified. This is discussed in depth in the "Identity Framework" section of the [JT-NM RA][]. In practice it means that every resource has a UUID/GUID that can be generated locally (rather than being assigned by a central authority). This UUID is then used within JSON messages and as part of RESTful URIs.
 
@@ -219,7 +219,7 @@ Then you can use the GET, PUT, etc. buttons to see a relevant request or respons
 
 > Note that this example includes three further referenced schemas.  At present you will have to navigate to the "Schemas" page to see these.  We hope to put in links soon though!
 
-### Viewing the documentation
+### Viewing the Documentation
 
 This is straightforward - just click on the relevant links.
 
