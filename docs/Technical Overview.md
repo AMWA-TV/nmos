@@ -1,12 +1,12 @@
 # NMOS Technical Overview
 {:.no_toc}
 
-* A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
+- A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
 {:toc}
 
 ## Introduction
 
-Networked Media Open Specifications ([NMOS][]) are a family of specifications that support the professional AV media industry's transition to a "fully-networked" architecture. 
+Networked Media Open Specifications ([NMOS][]) are a family of specifications that support the professional AV media industry's transition to a "fully-networked" architecture.
 
 The NMOS specs are developed by the Advanced Media Workflow Association ([AMWA][]) and are published on GitHub.
 
@@ -162,8 +162,11 @@ A current list of NMOS Specifications is at <https://specs.amwa.tv/nmos>:
 
 ![NMOS-Main-List](images/nmos-main-list.png)
 
+From there you can click on the entry in the "Name" column to go to the *rendered HTML documentation* for each Specification. Each Specification's "home page" contains a short introduction, typically including:
 
-From there you can click on the entry in the "Name" column to go to the *rendered HTML documentation* for each Specification.
+- What does it do?
+- Why does it matter?
+- How does it work?
 
 To see the GitHub _repository_ that contains the source for the specification, click on the entry in the "Repository" column, or on "GITHUB" in the menu bar of the documentation. This takes you to the default git branch
 
@@ -173,10 +176,10 @@ To see the GitHub _repository_ that contains the source for the specification, c
 
 The NMOS Interface Specications (IS-04 etc.) are layed out as below, where the directory names refer to what is in the repo:
 
-* `/APIs/`: RAML API definitions
-  * `/APIs/schemas/`: JSON Schemas referenced from the RAML
-* `/examples/`: Example API messages
-* `/docs/`: Normative and supporting documents, starting with an Overview.
+- `/APIs/`: RAML API definitions
+  - `/APIs/schemas/`: JSON Schemas referenced from the RAML
+- `/examples/`: Example API messages
+- `/docs/`: Normative and supporting documents, starting with an Overview.
 
 The most imporant parts of these are listed on the Specification's main documentation page:
 
@@ -188,7 +191,7 @@ And you can also use menu options:
 
 ### Selecting a Version
 
-"VERSIONS..." in the documenation menu lets you select a particular release of a specification, or a particular release:
+"VERSIONS..." in the documenation menu lets you select a particular release of a specification, or a live (development) branch:
 
 ![Nav-Versions](images/nav-versions.png)
 
@@ -205,7 +208,7 @@ To go back to the main Spec list, click the NMOS logo.
 
 ### Viewing the APIs
 
-You can download the RAML and schema files directly from the repo (in the directories listed above). 
+You can download the RAML and schema files directly from the repo (in the directories listed above).
 But in many cases it may be easier to view rendered versions, such as this one for the IS-04 Node API:
 
 ![API-Doc](images/api-doc.png)
@@ -216,98 +219,9 @@ Then you can use the GET, PUT, etc. buttons to see a relevant request or respons
 
 > Note that this example includes three further referenced schemas.  At present you will have to navigate to the "Schemas" page to see these.  We hope to put in links soon though!
 
-> And also note that the header and toolbar are not present on the rendered API specs, so you'll have to use the back button until they are. We'll try to fix that also.
-
 ### Viewing the documentation
 
 This is straightforward - just click on the relevant links.
-
->  Note that the numbers in the document file names are removed for the HTML site (so `1.0. Overview` -> `Overview`), but the order is preserved.  Please submit an issue if you think is undesirable.
-
-## The Specifications
-
-This section outlines the publicly available NMOS specifications.
-
-### IS-04: Discovery and Registration
-
-<https://specs.amwa.tv/is-04>
-
-This Specification enables applications to discover networked resources, which is an important first step towards automation and scalability.
-
-It specifies:
-
-- an HTTP **Registration API** that Nodes use to register their resources with a **Registry**.
-- an HTTP **Query API** that applications use to find a list of available resources of a particular type (Device, Sender, Receiver...) in the Registry.
-- an HTTP **Node API** that applications use to find further resources on the Node.
-- how to announce the APIs using DNS-SD, so the API endpoints don't have to be known by Nodes or Applications.
-- how to achieve "peer-to-peer" discovery using DNS-SD and the Node API, where no Registry is available.
-
-It also includes a basic connection management mechanism that was used before the creation of IS-05 (see below). This is deprecated, and will be removed in later versions of IS-04.
-
-### IS-05: Device Connection Management
-
-<https://specs.amwa.tv/is-05>
-
-This Specification provides an HTTP API for establishing (and removing) Flows between Senders and Receivers.
-
-This allows the connection to made in a way that doesn't require knowledge of the transport protocol that will be used. It can be used for both unicast and multicast connections, and to initiate a connection made by a separate controller application.
-
-It allows connections to be prepared and "activated" at a particular time and allows multiple connections to be made/unmade at the same time (sometimes known as "bulk" or "salvo" operation).
-
-### IS-06: Network Control
-
-<https://specs.amwa.tv/is-06>
-
-This Specification can be considered as a "northbound API" for SDN controllers. It provides an HTTP API to communicate information about the network topology, allow reservation of bandwidth for low-level network flows and monitoring.
-
-### IS-07: Event & Tally
-
-<https://specs.amwa.tv/is-07>
-
-This Specification provides a mechanism for conveying time-related state and state change information, for example tally information from sensors and actuators using WebSockets or a message queue (MQTT).
-
-### IS-08: Audio Channel Mapping
-
-<https://specs.amwa.tv/is-08>
-
-This Specification provides a mechanism to define settings for channel mapping, selection and shuffling for use with NMOS APIs.
-
-### IS-09: System
-
-<https://specs.amwa.tv/is-09>
-
-This allows Nodes to find Resources that are common across a system, to ensure consistent start-up.
-
-### MS-04: Identity & Timing Model
-
-<https://specs.amwa.tv/ms-04>
-
-This will document a model for identity and timing that applies to AMWA NMOS specifications associated with the identification and processing of content.
-This is consistent with the model and terminology presented in this Overview.
-
-### BCP-002-01: Natural Grouping
-
-<https://specs.amwa.tv/bcp-002>
-
-This defines how to tag related resources, such as a group of Senders belonging to the same Device or Node, or a group of Receivers belonging to the same Device or Node.
-
-### BCP-003-01: Securing Communications
-
-<https://specs.amwa.tv/bcp-003-01>
-
-This documents best practice for securing communications used in NMOS specifications, using  TLS and PKI.
-
-### BCP-003-02 and IS-10: Authorization (Work In Progress)
-
-<https://specs.amwa.tv/bcp-003-02> and <https://specs.amwa.tv/is-10>
-
-These specify how to implement client authorization for the NMOS APIs.
-
-### Parameter Registers
-
-<https://specs.amwa.tv/nmos-parameter-registers>
-
-The Parameter Registers provide an extensible mechanism for defining values used within NMOS Specfications. Currently these use URNs. For example some NMOS resources have a `format` property, and `urn:x-nmos:format:video` provides a formal way of using this.
 
 [AES-67]: http://www.aes.org/publications/standards/search.cfm?docID=96 "AES67-2015: AES standard for audio applications of networks - High-performance streaming audio-over-IP interoperability"
 
