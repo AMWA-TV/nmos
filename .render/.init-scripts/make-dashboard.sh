@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+SPECS_YML=_data/specs.yml
 DASHBOARD=Dashboard.md
+
 cat  << EOF > "$DASHBOARD"
 ## Dashboard
 
@@ -8,42 +10,27 @@ cat  << EOF > "$DASHBOARD"
 | --- | --- | --- | --- | --- |
 EOF
 
-for id in \
-    nmos \
-    is-04 \
-    is-05 \
-    is-06 \
-    is-07 \
-    is-08 \
-    is-09 \
-    is-10 \
-    is-11 \
-    ms-04 \
-    bcp-002-01 \
-    bcp-003-01 \
-    bcp-003-02 \
-    bcp-003-03 \
-    bcp-004-01 \
-    bcp-005-01 \
-    info-002 \
-    info-003 \
-    nmos-parameter-registers \
-    is-template \
-    ; do
-    repo_address=$(curl -w "%{url_effective}\n" -I -L -s -S "https://specs.amwa.tv/$id/repo" -o /dev/null)
-    repo="${repo_address##*/}"
+# Using yaml2json and jq because yq is not packaged for APK.
+# We could also get specs using curl https://specs.amwa.tv/nmos/specs,
+# but the render might not yet be updated.
+
+specs=$(yaml2json "$SPECS_YML")
+
+for id in $(echo "$specs" | jq -r '.[].amwa_id'); do
+    repo_address=$(echo "$specs" | jq -r '.[] | select(.amwa_id == "'"$id"'").repo_url')
+    repo=$(echo "$specs" | jq -r '.[] | select(.amwa_id == "'"$id"'").repo_name')
 
     git clone --depth 1 "$repo_address" "$repo"
     (
         cd "$repo" || exit 1
         default_branch="$(git remote show origin | awk '/HEAD branch/ { print $3 }')"
         config_id=$(awk '/amwa_id:/ { print $2; }' .render/_config.yml)
-        if [[ "${config_id,,}" != "$id" ]]; then
+        if [[ "${config_id,,}" != "${id,,}" ]]; then
             echo "amwa_id in _config.yml is $config_id - does not match expected $id"
             exit 1
         fi
         cat << EOF >> "../$DASHBOARD"
-| [${id^^}](https://specs.amwa.tv/$id) \
+| [${id^^}](https://specs.amwa.tv/${id,,}) \
 | [$repo]($repo_address) \
 | $default_branch \
 | <a href="$repo_address/actions?query=workflow%3ALint"><img src="$repo_address/workflows/Lint/badge.svg"/></a> \
