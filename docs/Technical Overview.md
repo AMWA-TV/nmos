@@ -168,7 +168,7 @@ From there you can click on the entry in the "Name" column to go to the *rendere
 - Why does it matter?
 - How does it work?
 
-To see the GitHub _repository_ that contains the source for the specification, click on the entry in the "Repository" column, or on "GITHUB" in the menu bar of the documentation. This takes you to the default git branch
+To see the GitHub _repository_ that contains the source for the specification, click on the entry in the "Repository" column, or on "REPO" in the menu bar of the documentation. This takes you to the default git branch
 
 ![Find-Spec-Table](images/find-spec-table-crop.png)
 

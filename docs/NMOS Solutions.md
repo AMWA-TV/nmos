@@ -1,7 +1,7 @@
 # NMOS Solutions
 {:.no_toc}
 
-* A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
+- A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
 {:toc}
 
 This page lists open source, free and commercial implementations of NMOS specifications.
