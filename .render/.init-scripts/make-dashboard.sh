@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+SPECS_YML=_data/specs.yml
 DASHBOARD=Dashboard.md
+
 cat  << EOF > "$DASHBOARD"
 ## Dashboard
 
@@ -8,9 +10,15 @@ cat  << EOF > "$DASHBOARD"
 | --- | --- | --- | --- | --- |
 EOF
 
-for id in $(awk '/amwa_id/ {print $3}' _data/specs.yml); do 
-    repo_address=$(curl -w "%{url_effective}\n" -I -L -s -S "https://specs.amwa.tv/${id,,}/repo" -o /dev/null)
-    repo="${repo_address##*/}"
+# Using yaml2json and jq because yq is not packaged for APK.
+# We could also get specs using curl https://specs.amwa.tv/nmos/specs,
+# but the render might not yet be updated.
+
+specs=$(yaml2json "$SPECS_YML")
+
+for id in $(echo "$specs" | jq -r '.[].amwa_id'); do # id is double-quoted
+    repo_address=$(echo "$specs" | jq -r '.[] | select(.amwa_id == "'"$id"'").repo_url')
+    repo=$(echo "$specs" | jq -r '.[] | select(.amwa_id == "'"$id"'").repo_name')
 
     git clone --depth 1 "$repo_address" "$repo"
     (
@@ -22,7 +30,7 @@ for id in $(awk '/amwa_id/ {print $3}' _data/specs.yml); do
             exit 1
         fi
         cat << EOF >> "../$DASHBOARD"
-| [${id^^}](https://specs.amwa.tv/$id) \
+| [${id^^}](https://specs.amwa.tv/${id,,}) \
 | [$repo]($repo_address) \
 | $default_branch \
 | <a href="$repo_address/actions?query=workflow%3ALint"><img src="$repo_address/workflows/Lint/badge.svg"/></a> \
