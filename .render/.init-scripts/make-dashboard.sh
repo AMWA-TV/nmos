@@ -8,29 +8,8 @@ cat  << EOF > "$DASHBOARD"
 | --- | --- | --- | --- | --- |
 EOF
 
-for id in \
-    nmos \
-    is-04 \
-    is-05 \
-    is-06 \
-    is-07 \
-    is-08 \
-    is-09 \
-    is-10 \
-    is-11 \
-    ms-04 \
-    bcp-002-01 \
-    bcp-003-01 \
-    bcp-003-02 \
-    bcp-003-03 \
-    bcp-004-01 \
-    bcp-005-01 \
-    info-002 \
-    info-003 \
-    nmos-parameter-registers \
-    is-template \
-    ; do
-    repo_address=$(curl -w "%{url_effective}\n" -I -L -s -S "https://specs.amwa.tv/$id/repo" -o /dev/null)
+for id in $(awk '/amwa_id/ {print $3}' _data/specs.yml); do 
+    repo_address=$(curl -w "%{url_effective}\n" -I -L -s -S "https://specs.amwa.tv/${id,,}/repo" -o /dev/null)
     repo="${repo_address##*/}"
 
     git clone --depth 1 "$repo_address" "$repo"
@@ -38,7 +17,7 @@ for id in \
         cd "$repo" || exit 1
         default_branch="$(git remote show origin | awk '/HEAD branch/ { print $3 }')"
         config_id=$(awk '/amwa_id:/ { print $2; }' .render/_config.yml)
-        if [[ "${config_id,,}" != "$id" ]]; then
+        if [[ "${config_id,,}" != "${id,,}" ]]; then
             echo "amwa_id in _config.yml is $config_id - does not match expected $id"
             exit 1
         fi

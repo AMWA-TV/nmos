@@ -174,7 +174,7 @@
   repo_url: https://github.com/AMWA-TV/nmos-dns-sd-implementation-guide
   releases:
   
-- amwa_id: n/a
+- amwa_id: NMOS-PARAMETER-REGISTERS
   url: https://specs.amwa.tv/nmos-parameter-registers
   name: Parameter Registers
   status: Continuing
