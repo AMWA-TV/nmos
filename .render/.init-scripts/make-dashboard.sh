@@ -16,7 +16,7 @@ EOF
 
 specs=$(yaml2json "$SPECS_YML")
 
-for id in $(echo "$specs" | jq -r '.[].amwa_id'); do # id is double-quoted
+for id in $(echo "$specs" | jq -r '.[].amwa_id'); do
     repo_address=$(echo "$specs" | jq -r '.[] | select(.amwa_id == "'"$id"'").repo_url')
     repo=$(echo "$specs" | jq -r '.[] | select(.amwa_id == "'"$id"'").repo_name')
 
