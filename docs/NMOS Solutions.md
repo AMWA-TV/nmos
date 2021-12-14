@@ -19,7 +19,7 @@ To have an implementation added, please submit a GitHub issue to the [NMOS repo]
 | [BBC R&D NMOS Joint RI](https://github.com/bbc/nmos-joint-ri) |  Python | Apache 2.0  | IS-04 and IS-05 registry and APIs (used as reference in AMWA workshops). |
 | [BBC R&D NMOS Web Router](https://github.com/bbc/nmos-web-router) | Javascript | Apache 2.0 | IS-04 and IS-05 web-based client application |
 | [BBC R&D Authorisation Server](https://github.com/bbc/nmos-auth-server) | Python | Apache 2.0 | OAuth2 Authorisation Server based on AMWA NMOS BCP-003-02 / IS-10 |
-| [NVIDIA NMOS Docker](https://dockr.ly/2K046pJ) | N/A | Apache 2.0 | Docker container with Registry and Controller, IS-04, IS-05, IS-07, IS-08, IS-09, BCP-002-01, BCP-003-01 and BCP-004-01 |
+| [NVIDIA NMOS Docker](https://hub.docker.com/r/rhastie/nmos-cpp) | N/A | Apache 2.0 | Docker container with Registry and Controller, IS-04, IS-05, IS-07, IS-08, IS-09, BCP-002-01, BCP-003-01 and BCP-004-01 |
 | [Riedel NMOS Explorer](https://myriedel.riedel.net/en/downloads/) | N/A | Freeware | IS-04 and IS-05 client application for Windows and Linux |
 | [Sony nmos-cpp](https://github.com/sony/nmos-cpp) | C++ | Apache 2.0 | Cross-platform toolkit for IS-04, IS-05, IS-07, IS-08, IS-09, BCP-002-01, BCP-003-01 and BCP-004-01, and example Registry and Node applications |
 | [Sony nmos-js](https://github.com/sony/nmos-js) | Javascript | Apache 2.0 | IS-04 and IS-05 web-based client application with support for BCP-002-01, BCP-003-01 and BCP-004-01 |
@@ -43,7 +43,7 @@ Many of these products have participated in the JT-NM Tested programme, with res
 | BFE | [SILKNET](https://bfe.tv/en/solutions-products/control-monitoring-systems/ksc-silknet/) | IS-04 v1.3 <br/> IS-05 v1.1 <br/> IS-07 v1.0  | Broadcast SDN Controller |
 | EVS | [Cerebrum](https://evs.com/en/product/cerebrum/) | IS-04 v1.2 <br/> IS-05 v1.0 | Broadcast Control, Orchestration and Monitoring Solution |
 | Imagine Communications | [Magellan SDNO](https://imaginecommunications.com/product/magellan-sdn-orchestrator/) | IS-04 v1.2 <br/> IS-05 v1.0 | Broadcast Routing Systems Controller for IP (NMOS and non-NMOS) and Legacy Systems <br/> Includes optional IS-04 Registry |
-| NVIDIA <br/> (Mellanox) | [SN2000 Series](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br/> [SN3000 Series](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) | IS-04 v1.3 <br/> IS-05 v1.1 <br/> IS-07 v1.0 <br/> IS-08 v1.0 | Spectrum and Spectrum-2 Ethernet Switches <br/> Including on-switch IS-04 Registry and Controller |
+| NVIDIA <br/> (Mellanox) | [SN2000 Series](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br/> [SN3000 Series](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br/> (with [NVIDIA NMOS Docker](https://hub.docker.com/r/rhastie/nmos-cpp)) | IS-04 v1.3 <br/> IS-05 v1.1 <br/> IS-07 v1.0 <br/> IS-08 v1.0 | Spectrum and Spectrum-2 Ethernet Switches <br/> Including on-switch [containerized](https://www.nvidia.com/en-us/networking/ethernet-switching/onyx/) IS-04 Registry and Controller |
 | Nevion | [VideoIPath](https://nevion.com/videoipath/) | IS-04 v1.2 <br/> IS-05 v1.0 | Broadcast Controller & IS-04 Registry |
 | Ross | [Ultricore BCS](https://www.rossvideo.com/ultricore/) | IS-04 v1.3 <br/> IS-05 v1.1 | Broadcast controller & IS-04 Registry |
 | Sony | [PWS-110NM1](https://pro.sony/en_GB/products/ip-live-products/pws-110nm1) | IS-04 v1.3 <br/> IS-05 v1.1 <br/> BCP-002-01 v1.0 | IP Live System Manager workstation |
