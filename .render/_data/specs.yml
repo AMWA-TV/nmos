@@ -90,7 +90,7 @@
   name: Sink Metadata Processing
   status: Work In Progress
   repo_name: is-11
-  alt_repo_name: nmos-sink-metadata-processing
+  alt_repo_name: nmos-flow-compatibility-management
   repo_url: https://github.com/AMWA-TV/is-11
   releases:
   default_branch: v1.0-dev
