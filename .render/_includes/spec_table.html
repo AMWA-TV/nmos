@@ -5,11 +5,11 @@
       <th>Name</th>
       <th>Spec Status</th>
       <th>Release(s)</th>
-      <th>Repository</th>
 		</tr>
 	</thead>
 	<tbody>
-		{% for spec in site.data.specs %}
+		{% assign specs_to_show = site.data.specs | where: "show_in_index", true %}
+		{% for spec in specs_to_show %}
 		<tr>
 			<td><a href="{{ spec.url }}">{{ spec.amwa_id }}</a></td>
 			<td><a href="{{ spec.url }}">{{ spec.name }}</a></td>
@@ -22,7 +22,6 @@
 					</div>
 				{% endfor %}
 			</td>
-			<td><a href="{{ spec.repo_url }}">{{ spec.repo_name }}</a></td>
 		</tr>
 		{% endfor %}
 	</tbody>

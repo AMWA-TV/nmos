@@ -10,6 +10,7 @@
     - v1.2.2
     - v1.3.1
   default_branch: v1.3.x
+  show_in_index: true
 
 - amwa_id: IS-05
   url: https://specs.amwa.tv/is-05
@@ -22,6 +23,7 @@
     - v1.1.1
     - v1.0.2
   default_branch: v1.1.x
+  show_in_index: true
 
 - amwa_id: IS-06
   url: https://specs.amwa.tv/is-06
@@ -33,6 +35,7 @@
   releases:
     - v1.0.1
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: IS-07
   url: https://specs.amwa.tv/is-07
@@ -44,6 +47,7 @@
   releases:
     - v1.0.1
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: IS-08
   url: https://specs.amwa.tv/is-08
@@ -55,6 +59,7 @@
   releases:
     - v1.0.1
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: IS-09
   url: https://specs.amwa.tv/is-09
@@ -66,6 +71,7 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: IS-10
   url: https://specs.amwa.tv/is-10
@@ -77,6 +83,7 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: IS-11
   url: https://specs.amwa.tv/is-11
@@ -87,6 +94,7 @@
   repo_url: https://github.com/AMWA-TV/is-11
   releases:
   default_branch: v1.0-dev
+  show_in_index: true
 
 - amwa_id: MS-04
   url: https://specs.amwa.tv/ms-04
@@ -98,6 +106,7 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: MS-05-01
   url: https://specs.amwa.tv/ms-05-01
@@ -108,6 +117,17 @@
   repo_url: https://github.com/AMWA-TV/ms-05-01
   releases:  
   default_branch: v1.0-dev
+  show_in_index: true
+
+- amwa_id: BCP-002
+  url: https://specs.amwa.tv/bcp-002
+  name: Grouping Recommendations
+  status: Suite
+  repo_name: bcp-002
+  alt_repo_name: nmos-grouping
+  repo_url: https://github.com/AMWA-TV/bcp-002
+  default_branch: main
+  show_in_index: 
 
 - amwa_id: BCP-002-01
   url: https://specs.amwa.tv/bcp-002-01
@@ -119,6 +139,17 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
+
+- amwa_id: BCP-003
+  url: https://specs.amwa.tv/bcp-003
+  name: Security Recommendations
+  status: Suite
+  repo_name: bcp-003
+  alt_repo_name: nmos-security
+  repo_url: https://github.com/AMWA-TV/bcp-003
+  default_branch: main
+  show_in_index: false
 
 - amwa_id: BCP-003-01
   url: https://specs.amwa.tv/bcp-003-01
@@ -130,6 +161,7 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: BCP-003-02
   url: https://specs.amwa.tv/bcp-003-02
@@ -141,6 +173,7 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: BCP-003-03
   url: https://specs.amwa.tv/bcp-003-03
@@ -152,6 +185,7 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: BCP-004-01
   url: https://specs.amwa.tv/bcp-004-01
@@ -163,6 +197,7 @@
   releases:
     - v1.0.0
   default_branch: v1.0.x
+  show_in_index: true
 
 - amwa_id: BCP-005-01
   url: https://specs.amwa.tv/bcp-005-01
@@ -173,6 +208,7 @@
   repo_url: https://github.com/AMWA-TV/bcp-005-01
   releases:
   default_branch: v1.0-dev
+  show_in_index: true
 
 - amwa_id: BCP-006-01
   url: https://specs.amwa.tv/bcp-006-01
@@ -183,6 +219,28 @@
   repo_url: https://github.com/AMWA-TV/bcp-006-01
   releases:
   default_branch: v1.0-dev
+  show_in_index: false
+
+- amwa_id: BCP-006
+  url: https://specs.amwa.tv/bcp-006
+  name: Stream Mappings
+  status: Suite
+  repo_name: bcp-006
+  alt_repo_name: nmos-stream-mappings
+  repo_url: https://github.com/AMWA-TV/bcp-006
+  default_branch: main
+  show_in_index: false
+
+- amwa_id: BCP-006-01
+  url: https://specs.amwa.tv/bcp-006-01
+  name: NMOS With JPEG XS
+  status: Work In Progress
+  repo_name: bcp-006-01
+  alt_repo_name: nmos-jpeg-xs
+  repo_url: https://github.com/AMWA-TV/bcp-006-01
+  releases:
+  default_branch: v1.0-dev
+  show_in_index: true
 
 - amwa_id: INFO-002
   url: https://specs.amwa.tv/info-002
@@ -193,6 +251,7 @@
   repo_url: https://github.com/AMWA-TV/info-002
   releases:
   default_branch: main
+  show_in_index: true
 
 - amwa_id: INFO-003
   url: https://specs.amwa.tv/info-003
@@ -203,6 +262,7 @@
   repo_url: https://github.com/AMWA-TV/info-003
   releases:
   default_branch: main
+  show_in_index: true
 
 - amwa_id: INFO-004
   url: https://specs.amwa.tv/info-004
@@ -213,6 +273,7 @@
   repo_url: https://github.com/AMWA-TV/info-004
   releases:
   default_branch: main
+  show_in_index: true
   
 - amwa_id: NMOS-PARAMETER-REGISTERS
   url: https://specs.amwa.tv/nmos-parameter-registers
@@ -223,6 +284,7 @@
   repo_url: https://github.com/AMWA-TV/nmos-parameter-registers
   releases:
   default_branch: main
+  show_in_index: true
 
 - amwa_id: IS-TEMPLATE
   url: https://specs.amwa.tv/is-template
@@ -233,6 +295,7 @@
   repo_url: https://github.com/AMWA-TV/is-template
   releases:
   default_branch: main
+  show_in_index: false
 
 - amwa_id: INFO-TEMPLATE
   url: https://specs.amwa.tv/info-template
@@ -243,3 +306,4 @@
   repo_url: https://github.com/AMWA-TV/info-template
   releases:
   default_branch: main
+  show_in_index: false
