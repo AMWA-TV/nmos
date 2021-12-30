@@ -9,13 +9,31 @@ NMOS is a family name for specifications produced by the Advanced Media Workflow
 
 For a non-technical introduction to NMOS see AMWA's [overview page](https://www.amwa.tv/nmos-overview).
 
-The table below lists the current specifications and provides links to their documentation on [specs.amwa.tv](https://specs.amwa.tv). The "Release" links will take you to the documentation and download page (↓) for the latest release of recent versions of the specification.
+The tables below list the current specifications and provide links to their documentation on [specs.amwa.tv](https://specs.amwa.tv). The "Release" links will take you to the documentation and download page (↓) for the latest release of recent versions of the specification.
 
-> The table no longer includes direct links to the GitHub repos. These are available through the [NMOS CI Dashboard](https://specs.amwa.tv/nmos/Dashboard.html).
+> The tables no longer include direct links to the GitHub repos. These are available through the [NMOS CI Dashboard](https://specs.amwa.tv/nmos/Dashboard.html).
 
 The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the majority of these specifications.
 
-{% include spec_table.html %}
+### NMOS Interface Specifications
+
+{% include spec_table.html filter_id="IS-" show_releases=true %}
+
+### NMOS Data Model Specifications
+
+{% include spec_table.html filter_id="MS-" show_releases=true %}
+
+### NMOS Best Commmon Practices
+
+{% include spec_table.html filter_id="BCP-" show_releases=true %}
+
+### NMOS Informative Documents
+
+{% include spec_table.html filter_id="INFO-" %}
+
+### NMOS Parameter Registers
+
+{% include spec_table.html filter_id="NMOS-PARAMETER-REGISTERS" %}
 
 <!-- INTRO-END -->
 
