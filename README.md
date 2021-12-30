@@ -19,4 +19,6 @@ The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the maj
 
 <!-- INTRO-END -->
 
-> **The table of NMOS specs is at <https://specs.amwa.tv/nmos>.  It is now generated from [a data file](.render/_data/specs.yml) and no longer appears in this README.**
+> The table of NMOS specs is no longer contained in this README, but is generated on demand from YAML files in each spec repo and rendered at <https://specs.amwa.tv/nmos>:
+>
+> ![NMOS Spec Render](docs/images/nmos-spec-render.drawio.png)
