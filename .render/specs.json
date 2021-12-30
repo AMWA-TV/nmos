@@ -1,4 +1,4 @@
 ---
 ---
 
-{{ site.data.specs }}
+{{ site.data.specs | jsonify }}
