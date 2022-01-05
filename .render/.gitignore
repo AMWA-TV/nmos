@@ -19,3 +19,7 @@ releases/
 raml2html-nmos-theme/
 source-repo/
 yarn.lock
+_data/registers.json
+_data/specs.json
+_includes/registers_menu.html
+_includes/spec_menu.html

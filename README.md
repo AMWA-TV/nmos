@@ -33,7 +33,7 @@ The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the maj
 
 ### NMOS Parameter Registers
 
-{% include spec_table.html filter_id="NMOS-PARAMETER-REGISTERS" %}
+{% include registers_table.html %}
 
 <!-- INTRO-END -->
 
