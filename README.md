@@ -15,23 +15,33 @@ The tables below list the current specifications and provide links to their docu
 
 The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the majority of these specifications.
 
-### NMOS Interface Specifications
+### [NMOS Interface Specifications (IS)](is/)
+
+These specify NMOS APIs using RAML, JSON Schema and normative text, supported by examples and other text:
 
 {% include spec_table.html filter_id="IS-" show_releases=true %}
 
-### NMOS Data Model Specifications
+### [NMOS Data Model Specifications (MS)](ms/)
+
+These model the resources used in NMOS APIs:
 
 {% include spec_table.html filter_id="MS-" show_releases=true %}
 
-### NMOS Best Commmon Practices
+### [NMOS Best Common Practices (BCP)](bcp/)
+
+These specify best practice for use of NMOS APIs:
 
 {% include spec_table.html filter_id="BCP-" show_releases=true %}
 
-### NMOS Informative Documents
+### [NMOS Informative Documents (INFO)](info/)
+
+These provide NMOS implementation guides:
 
 {% include spec_table.html filter_id="INFO-" %}
 
-### NMOS Parameter Registers
+### [NMOS Parameter Registers](https://specs.amwa.tv/nmos-parameter-registers)
+
+These specify constants for many types of NMOS parameter values:
 
 {% include registers_table.html %}
 
