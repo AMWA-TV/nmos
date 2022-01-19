@@ -1,0 +1,32 @@
+<table style="text-align: center">
+	<thead>
+		<tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Spec Status</th>
+				{% if include.show_releases %}
+      <th>Release(s)</th>
+			{% endif %}
+		</tr>
+	</thead>
+	<tbody>
+		{% assign specs_to_show = site.data.specs | where_exp:"spec", "spec.amwa_id contains include.filter_id" | where: "show_in_index", true %}
+		{% for spec in specs_to_show %}
+		<tr>
+			<td><a href="{{ spec.url }}">{{ spec.amwa_id }}</a></td>
+			<td><a href="{{ spec.url }}">{{ spec.name }}</a></td>
+			<td>{{ spec.status }}</td>
+			{% if include.show_releases %}
+				<td>
+					{% for release in spec.releases %}
+						<div>
+							<a href="{{ spec.url }}/{{ release }}">{{ release }}</a>
+							<a href="{{ spec.repo_url }}/releases/tag/{{ release }}">↓</a>
+						</div>
+					{% endfor %}
+				</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

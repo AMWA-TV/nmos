@@ -1,0 +1,17 @@
+<table style="text-align: center">
+	<thead>
+		<tr>
+      <th>Id</th>
+      <th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% assign registers_to_show = site.data.registers | where: "show_in_index", true %}
+		{% for register in registers_to_show %}
+		<tr>
+			<td><a href="https://specs.amwa.tv/nmos-parameter-registers/branches/main/{{ register.id }}">{{ register.id }}</a></td>
+			<td><a href="https://specs.amwa.tv/nmos-parameter-registers/branches/main/{{ register.id }}">{{ register.name }}</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
