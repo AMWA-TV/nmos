@@ -11,7 +11,7 @@ For a non-technical introduction to NMOS see AMWA's [overview page](https://www.
 
 The tables below list the current specifications and provide links to their documentation on [specs.amwa.tv](https://specs.amwa.tv). The "Release" links will take you to the documentation and download page (↓) for the latest release of recent versions of the specification.
 
-> The tables no longer include direct links to the GitHub repos. These are available through the [NMOS CI Dashboard](https://specs.amwa.tv/nmos-dashboard/Dashboard.html).
+> The tables no longer include direct links to the GitHub repos. These are available through the [NMOS CI Dashboard](https://specs.amwa.tv/nmos-dashboard/dashboard.html).
 
 The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the majority of these specifications.
 
