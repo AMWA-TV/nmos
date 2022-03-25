@@ -227,7 +227,7 @@ This is straightforward - just click on the relevant links.
 
 [AMWA]: http://amwa.tv "Advanced Media Workflow Association"
 
-[Glossary]: https://specs.amwa.tv/nmos/branches/master/Glossary.html "Glossary"
+[Glossary]: https://specs.amwa.tv/nmos/branches/main/docs/Glossary.html "Glossary"
 
 [JT-NM]: http://jt-nm.org/ "Joint Task Force on Networked Media (JT-NM)"
 
