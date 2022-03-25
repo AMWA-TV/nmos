@@ -1,9 +1,9 @@
 ---
 name: Request to add entry to NMOS Solutions page
 about: Provides a form for the required information to list implementations
-title: 'New product request: [COMPANY]'
+title: 'New product request: \[COMPANY\]'
 labels: product
-assignees: ''
+assignees: 'peterbrightwell'
 
 ---
 
