@@ -1,13 +1,13 @@
 ---
 name: Request to add entry to NMOS Solutions page
 about: Provides a form for the required information to list implementations
-title: ''
-labels: ''
+title: 'New product request: [COMPANY]'
+labels: product
 assignees: ''
 
 ---
 
-AMWA maintains a list of NMOS-capable implementations [here](https://specs.amwa.tv/nmos/branches/main/docs/NMOS_Solutions.html).  To request an addition please complete the following information (repeat as required for multiple products)
+AMWA maintains a list of NMOS-capable implementations [here](https://specs.amwa.tv/nmos/branches/main/docs/NMOS_Solutions.html).  To request an addition please complete the following information (repeat as required for multiple products), add your company name to the issues title (as well as below), and submit the issue.
 
 **Company name**
 
