@@ -20,7 +20,7 @@ AMWA maintains a list of NMOS-capable implementations [here](https://specs.amwa.
 > Please use this form: `[Name](URL)`
 > It must be possible to find information about the supported specifications via the URL. If this is not obvious, please add a suitable comment to help
 
-**Supported specifications **
+**Supported specifications**
 
 > Must include the latest supported version, e.g. "IS-04 v1.3".
 
