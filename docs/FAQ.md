@@ -311,7 +311,7 @@ The [EBU][EBU-R-152] and [WBU][WBU-Pyramid] support the adoption of IS-04 and IS
 
 [EBU-Tech-3371]: https://tech.ebu.ch/publications/tech3371 "EBU Tech 3371: The Technology Pyramid for Media Nodes: Minimum User Requirements to build and manage an IP-Based Media Facility"
 
-[Glossary]: https://specs.amwa.tv/nmos/branches/master/Glossary.html "Glossary"
+[Glossary]: https://specs.amwa.tv/nmos/branches/main/docs/Glossary.html "Glossary"
 
 [NMOS-Solutions]: https://specs.amwa.tv/nmos/branches/master/NMOS-Solutions.html "NMOS Solutions"
 
