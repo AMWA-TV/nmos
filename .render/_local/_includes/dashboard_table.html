@@ -1,0 +1,24 @@
+<table style="text-align: center">
+	<thead>
+		<tr>
+      <th>AMWA ID<br/>(Links to spec)</th>
+      <th>Default Branch<br/>(Links to repo)</th>
+      <th>Lint<br/>(Default Branch)</th>
+      <th>Render<br/>(All)</th>
+      <th>Open<br/>Issues</th>
+      <th>Open<br/>PRs</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for spec in site.data.specs %}
+		<tr>
+			<td><a href="{{ spec.url }}">{{ spec.amwa_id }}</a></td>
+			<td><a href="{{ spec.repo_url }}">{{ spec.default_branch }}</a></td>
+			<td><a href="{{ spec.repo_url }}/actions?query=workflow%3ALint"><img src="{{ spec.repo_url }}/workflows/Lint/badge.svg" /></a></td>
+			<td><a href="{{ spec.repo_url }}/actions?query=workflow%3ARender"><img src="{{ spec.repo_url }}/workflows/Render/badge.svg" /></a></td>			
+			<td><a href="{{ spec.repo_url }}/issues">{{ spec.num_issues }}</a></td>
+			<td><a href="{{ spec.repo_url }}/pulls">{{ spec.num_pulls }}</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

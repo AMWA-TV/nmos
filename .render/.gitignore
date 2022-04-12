@@ -6,9 +6,12 @@
 .sass-cache/
 .scripts/
 Gemfile.lock
-_layouts/
+/_layouts/
+/_includes/
+/assets/
+/_data/
 _site/
-assets/
+*.json
 branches/
 index.md
 node_modules/
