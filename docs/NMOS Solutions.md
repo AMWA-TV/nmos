@@ -20,6 +20,7 @@ To have an implementation added, please submit a GitHub issue to the [NMOS repo]
 | [BBC R&D NMOS Web Router](https://github.com/bbc/nmos-web-router) | Javascript | Apache 2.0 | IS-04 and IS-05 web-based client application |
 | [BBC R&D Authorisation Server](https://github.com/bbc/nmos-auth-server) | Python | Apache 2.0 | OAuth2 Authorisation Server based on AMWA NMOS BCP-003-02 / IS-10 |
 | [NVIDIA NMOS Docker](https://hub.docker.com/r/rhastie/nmos-cpp) | N/A | Apache 2.0 | Docker container with Registry and Controller, IS-04, IS-05, IS-07, IS-08, IS-09, BCP-002-01, BCP-003-01 and BCP-004-01 |
+| [Pebble Control Free](https://www.pebble.tv/control-free/) | N/A | Freeware | IS-04, IS-05, IS-07 connection management solution for Windows with support for BCP-002-01 and BCP-004-01 |
 | [Riedel NMOS Explorer](https://myriedel.riedel.net/en/downloads/) | N/A | Freeware | IS-04 and IS-05 client application for Windows and Linux |
 | [Sony nmos-cpp](https://github.com/sony/nmos-cpp) | C++ | Apache 2.0 | Cross-platform toolkit for IS-04, IS-05, IS-07, IS-08, IS-09, BCP-002-01, BCP-003-01 and BCP-004-01, and example Registry and Node applications |
 | [Sony nmos-js](https://github.com/sony/nmos-js) | Javascript | Apache 2.0 | IS-04 and IS-05 web-based client application with support for BCP-002-01, BCP-003-01 and BCP-004-01 |
@@ -47,7 +48,7 @@ Many of these products have participated in the JT-NM Tested programme, with res
 | Nevion | [VideoIPath](https://nevion.com/videoipath/) | IS-04 v1.2 <br/> IS-05 v1.0 | Broadcast Controller & IS-04 Registry |
 | Ross | [Ultricore BCS](https://www.rossvideo.com/ultricore/) | IS-04 v1.3 <br/> IS-05 v1.1 | Broadcast controller & IS-04 Registry |
 | Sony | [PWS-110NM1](https://pro.sony/en_GB/products/ip-live-products/pws-110nm1) | IS-04 v1.3 <br/> IS-05 v1.1 <br/> BCP-002-01 v1.0 | IP Live System Manager workstation |
-| Pebble | [Pebble Control](https://www.pebble.tv/solutions/pebble-control/) | IS-04 v1.3 <br/> IS-05 v1.1 <br/> IS-07 v1.0 | IP Connection Management Solution |
+| Pebble | [Pebble Control Lite](https://www.pebble.tv/solutions/pebble-control/) <br/> [Pebble Control Enterprise](https://www.pebble.tv/solutions/pebble-control/) | IS-04 v1.3 <br/> IS-05 v1.1 <br/> IS-07 v1.0 | IP Connection Management Solution |
 
 ## Media Nodes
 
