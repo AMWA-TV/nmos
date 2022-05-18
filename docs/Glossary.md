@@ -67,6 +67,8 @@ A Registry, or Registration & Discovery Instance, is a [Server](#server) that pr
 
 A Sender makes a [Flow](#flow) available on the network.
 
+For example, a Sender could transmit an RTP stream according to a payload mapping for a specific video format, or a sequence of data [Grains](#grain) via the MQTT or WebSocket protocols.
+
 ## Server
 
 The entity that is providing an [API](#api), for example:
@@ -77,6 +79,8 @@ The entity that is providing an [API](#api), for example:
 ## Source
 
 A Source represents the _logical_ origin of one or more [Essence](#essence) [Flows](#flow).
+
+For example, a Source could generate Essence based on its [Device](#device)'s input signals, such as a camera image sensor, HDMI input signal, received RTP streams, or an internally generated test pattern or file read from storage, etc.
 
 Note that a Source is:
 
