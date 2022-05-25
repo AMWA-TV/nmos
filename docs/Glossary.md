@@ -37,15 +37,17 @@ A Device is a logical block of functionality within a networked media infrastruc
 
 A Device can have a permanent presence on its [Node](#node) (a fixed Device, e.g., a networked camera), or it can be created on demand by its Node (a virtual Device, e.g., a software-based transcoder). Nodes can dynamically create different types of Device (a dynamic Device).
 
+## Essence
+
+Essence is video, audio or other data.
+
 ## Flow
 
-In the IS-04 and IS-05 specifications a Flow refers to a sequence of video, audio or time-related data. This is a relatively high-level usage of the word, not to be confused with a low-level flow within the physical network (distinguished as a Network Flow in the [IS-06 Data Model](https://specs.amwa.tv/is-06/branches/v1.0.x/docs/Data_Model.html)).
-
-A Flow is made up of [Grains](#grain).
+In the IS-04 and IS-05 specifications a Flow refers to a sequence of [Essence](#essence) [Grains](#grain), that is video, audio or time-related data. This is a relatively high-level usage of the word, not to be confused with a low-level flow within the physical network (distinguished as a Network Flow in the [IS-06 Data Model](https://specs.amwa.tv/is-06/branches/v1.0.x/docs/Data_Model.html)).
 
 ## Grain
 
-NMOS uses Grain as a convenient way of identifying a unit of video, audio or time-related data. This helps with mapping NMOS's logical data model onto physical Specifications. For example, a video Grain could correspond to a frame of video.
+NMOS uses Grain as a convenient way of identifying a unit of [Essence](#essence), that is video, audio or time-related data. This helps with mapping NMOS's logical data model onto physical Specifications. For example, a video Grain could correspond to a frame of video.
 
 ## Node
 
@@ -65,6 +67,8 @@ A Registry, or Registration & Discovery Instance, is a [Server](#server) that pr
 
 A Sender makes a [Flow](#flow) available on the network.
 
+For example, a Sender could transmit an RTP stream according to a payload mapping for a specific video format, or a sequence of data [Grains](#grain) via the MQTT or WebSocket protocols.
+
 ## Server
 
 The entity that is providing an [API](#api), for example:
@@ -74,11 +78,13 @@ The entity that is providing an [API](#api), for example:
 
 ## Source
 
-A Source represents the _logical_ origin of one or more [Flows](#flow).
+A Source represents the _logical_ origin of one or more [Essence](#essence) [Flows](#flow).
+
+For example, a Source could generate Essence based on its [Device](#device)'s input signals, such as a camera image sensor, HDMI input signal, received RTP streams, or an internally generated test pattern or file read from storage, etc.
 
 Note that a Source is:
 
-- not a [Device](#device) from which the content originates (for example there might be video, audio and perhaps data Sources _associated with_ a camera, the camera itself is not a Source).
+- not a [Device](#device) from which the content originates (for example there might be video, audio and perhaps data Sources _associated with_ a camera, the camera itself is the Device not a Source).
 - not about the physical origin of the Flows (for example: two Flows associated with the same Source might physically originate from different hardware in distinct geographical locations).
 
 ## User
