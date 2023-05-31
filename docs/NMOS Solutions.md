@@ -16,7 +16,7 @@ To have an implementation added, please submit a GitHub issue to the [NMOS repo]
 | ---- | -------- | ------- | ----------- |
 | **[Easy-NMOS](https://github.com/rhastie/easy-nmos)** | N/A | Apache 2.0 | **Free of charge, open-source, toolkit, created to simplify and speed up the adoption of NMOS APIs, developed by NVIDIA based on open-source NMOS software from Sony, BBC R&D and other AMWA members, with a video [Getting Started](https://www.amwa.tv/easy-nmos-videos) guide.** |
 | [AMWA NMOS Testing Tool](https://github.com/AMWA-TV/nmos-testing/) | Python | Apache 2.0 | Testing of all current NMOS specifications |
-| [BBC R&D NMOS Joint RI](https://github.com/bbc/nmos-joint-ri) |  Python | Apache 2.0  | IS-04 and IS-05 registry and APIs (used as reference in AMWA workshops). |
+| [BBC R&D NMOS Joint RI](https://github.com/bbc/nmos-joint-ri) |  Python | Apache 2.0  | IS-04 and IS-05 registry and APIs (used as reference in earlier AMWA workshops). |
 | [BBC R&D NMOS Web Router](https://github.com/bbc/nmos-web-router) | Javascript | Apache 2.0 | IS-04 and IS-05 web-based client application |
 | [BBC R&D Authorisation Server](https://github.com/bbc/nmos-auth-server) | Python | Apache 2.0 | OAuth2 Authorisation Server based on AMWA NMOS BCP-003-02 / IS-10 |
 | [NVIDIA NMOS Docker](https://hub.docker.com/r/rhastie/nmos-cpp) | N/A | Apache 2.0 | Docker container with Registry and Controller, IS-04, IS-05, IS-07, IS-08, IS-09, BCP-002-01, BCP-003-01 and BCP-004-01 |
