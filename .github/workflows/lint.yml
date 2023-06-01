@@ -1,16 +1,11 @@
 name: Lint
 on: [push, pull_request, workflow_dispatch]
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
+    name: Lint
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Setup
-        run: make -C .lint distclean build-tools
-      - name: Lint
-        run: make -C .lint lint
+    - name: Use NMOS Lint
+      uses: docker://amwa/nmos-lint:latest
+      env:
+        GITHUB_BRANCH: ${{ github.ref_name }}
