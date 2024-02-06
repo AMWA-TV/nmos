@@ -75,7 +75,7 @@ For each specification, you will find:
 
 ## Where can I find products that support NMOS?
 
-[This page][NMOS-Solutions][] lists many products supporting IS-04 and IS-05 and other NMOS specifications.
+[This page][NMOS-Solutions] lists many products supporting IS-04 and IS-05 and other NMOS specifications.
 
 See also the [JT-NM Tested][] TR-1001 Catalogue.
 
@@ -313,7 +313,7 @@ The [EBU][EBU-R-152] and [WBU][WBU-Pyramid] support the adoption of IS-04 and IS
 
 [Glossary]: https://specs.amwa.tv/nmos/branches/main/docs/Glossary.html "Glossary"
 
-[NMOS-Solutions]: https://specs.amwa.tv/nmos/branches/master/NMOS-Solutions.html "NMOS Solutions"
+[NMOS-Solutions]: https://specs.amwa.tv/nmos/branches/main/docs/NMOS_Solutions.html "NMOS Solutions"
 
 [Incubator rules]: https://www.amwa.tv/bylaws-policy-documents-and-license "AMWA Networked Media Incubator rules"
 
@@ -339,7 +339,7 @@ The [EBU][EBU-R-152] and [WBU][WBU-Pyramid] support the adoption of IS-04 and IS
 
 [ST 2110]: https://www.smpte.org/smpte-st-2110-faq "ST 2110 FAQ"
 
-[Technical Overview]: https://specs.amwa.tv/nmos/branches/master/NMOS_Technical_Overview.html "NMOS Technical Overview"
+[Technical Overview]: https://specs.amwa.tv/nmos/branches/main/docs/Technical_Overview.html "NMOS Technical Overview"
 
 [TR-1001-1]: http://www.jt-nm.org/documents/JT-NM_TR-1001-1:2018_v1.0.pdf "JT-NM TR-1001: System Environment and Device Behaviors For SMPTE ST 2110 Media Nodes in Engineered Networks"
 
