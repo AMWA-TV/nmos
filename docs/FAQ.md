@@ -339,7 +339,7 @@ The [EBU][EBU-R-152] and [WBU][WBU-Pyramid] support the adoption of IS-04 and IS
 
 [ST 2110]: https://www.smpte.org/smpte-st-2110-faq "ST 2110 FAQ"
 
-[Technical Overview]: https://specs.amwa.tv/nmos/branches/master/NMOS_Technical_Overview.html "NMOS Technical Overview"
+[Technical Overview]: https://specs.amwa.tv/nmos/branches/main/docs/Technical_Overview.html "NMOS Technical Overview"
 
 [TR-1001-1]: http://www.jt-nm.org/documents/JT-NM_TR-1001-1:2018_v1.0.pdf "JT-NM TR-1001: System Environment and Device Behaviors For SMPTE ST 2110 Media Nodes in Engineered Networks"
 
