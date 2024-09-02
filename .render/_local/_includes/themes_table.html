@@ -1,0 +1,26 @@
+<table style="text-align: center">
+  <thead>
+    <tr>
+      <th>Theme</th>
+      <th>Description</th>
+      <th>Members</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for theme in site.data.themes %}
+    <tr>
+      <!-- <td><a href="{{ spec.url }}">{{ spec.name }}</a></td> -->
+      <td>{{ theme.name }}</td>
+      <td>{{ theme.description }}</td>
+      <td>
+        {% for member in theme.members %}
+            <div>
+              <!-- <a href="{{ spec.url }}/{{ member }}">{{ member }}</a> -->
+              {{ member }}
+            </div>
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

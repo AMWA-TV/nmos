@@ -1,0 +1,42 @@
+- name: RESOURCE
+  description: Resource Management 
+  members:
+  - IS-04
+  - BCP-002-01
+  - BCP-002-02
+  - IS-13
+  
+- name: CONNECTION
+  description: Connection Management
+  members:
+  - IS-05
+  - IS-08
+  - BCP-006-01
+  - BCP-006-02
+  - BCP-006-03
+  - BCP-007-01
+
+- name: CONTROL
+  description: Device Control & Monitoring
+  members:
+  - IS-07
+  - IS-12
+  - MS-05-01
+  - MS-05-02
+  - BCP-008-01
+
+- name: CONFIGURATION
+  description: Device Configuration
+  members:
+  - IS-11
+  - IS-14
+
+- name: SECURITY
+  description: Security specifications
+  members:
+  - IS-10
+  - BCP-003-01
+  - BCP-003-02
+  - BCP-003-02
+  
+
