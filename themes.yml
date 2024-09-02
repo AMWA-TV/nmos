@@ -9,6 +9,7 @@
 - name: CONNECTION
   description: Connection Management
   members:
+  - IS-04
   - IS-05
   - IS-08
   - BCP-006-01
@@ -32,11 +33,14 @@
   - IS-14
 
 - name: SECURITY
-  description: Security specifications
+  description: Security Recommendatations
   members:
   - IS-10
   - BCP-003-01
   - BCP-003-02
-  - BCP-003-02
+  - BCP-003-03
   
-
+- name: OTHER
+  description: Others (testing)
+  members:
+  - IS-04
