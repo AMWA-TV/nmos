@@ -1,6 +1,6 @@
 # NMOS Specifications by Theme
 
-The tables below are organised by theme. To see them organised by id, click [here](.)
+The tables below are organised by theme. To see them organised by id, click [here](..)
 
 {% for theme in site.data.themes %}
 
