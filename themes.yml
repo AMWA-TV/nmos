@@ -2,20 +2,23 @@
   description: Resource Management 
   members:
   - IS-04
+  - IS-13
   - BCP-002-01
   - BCP-002-02
-  - IS-13
+  - INFO-004
+  - INFO-005
   
 - name: CONNECTION
   description: Connection Management
   members:
-  - IS-04
   - IS-05
   - IS-08
   - BCP-006-01
   - BCP-006-02
   - BCP-006-03
   - BCP-007-01
+  - INFO-003
+  - INFO-005
 
 - name: CONTROL
   description: Device Control & Monitoring
@@ -31,6 +34,7 @@
   members:
   - IS-11
   - IS-14
+  - INFO-006
 
 - name: SECURITY
   description: Security Recommendatations
@@ -39,8 +43,5 @@
   - BCP-003-01
   - BCP-003-02
   - BCP-003-03
-  
-- name: OTHER
-  description: Others (testing)
-  members:
-  - IS-04
+  - INFO-002
+  - INFO-005
