@@ -3,6 +3,7 @@
   description: Specifications, recommendations and guidance concerning registration, discovery and labelling of NMOS resources
   members:
   - IS-04
+  - IS-09
   - IS-13
   - BCP-002-01
   - BCP-002-02
@@ -15,6 +16,7 @@
   members:
   - IS-05
   - IS-08
+  - BCP-004-01
   - BCP-006-01
   - BCP-006-02
   - BCP-006-03
@@ -31,6 +33,7 @@
   - MS-05-01
   - MS-05-02
   - BCP-008-01
+  - INFO-006
 
 - id: CONFIGURATION
   name: Device Configuration
@@ -38,7 +41,6 @@
   members:
   - IS-11
   - IS-14
-  - INFO-006
 
 - id: SECURITY
   name: Security Recommendatations
