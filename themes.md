@@ -2,22 +2,12 @@
 
 The tables below are organised by theme. To see them organised by id, click [here](index.html)
 
-### Resource Management
+{% for theme in site.data.themes %}
 
-{% include specs_by_theme_table.html filter_theme="RESOURCE" show_releases=true %}
+### {{ theme.name }}
 
-### Connection Management
+{{ theme.description}}
 
-{% include specs_by_theme_table.html filter_theme="CONNECTION" show_releases=true %}
+{% include specs_by_theme_table.html filter_theme=theme.id show_releases=true %}
 
-### Device Configuration
-
-{% include specs_by_theme_table.html filter_theme="CONFIGURATION" show_releases=true %}
-
-### Device Control & Monitoring
-
-{% include specs_by_theme_table.html filter_theme="CONTROL" show_releases=true %}
-
-### Security
-
-{% include specs_by_theme_table.html filter_theme="SECURITY" show_releases=true %}
+{% endfor %}
