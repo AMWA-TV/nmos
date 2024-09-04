@@ -1,0 +1,54 @@
+- id: RESOURCE
+  name: Resource Management 
+  description: Specifications, recommendations and guidance concerning registration, discovery and labelling of NMOS resources
+  members:
+  - IS-04
+  - IS-09
+  - IS-13
+  - BCP-002-01
+  - BCP-002-02
+  - INFO-004
+  - INFO-005
+  
+- id: CONNECTION
+  name: Connection Management
+  description: Specifications, recommendations and guidance concerning connection of devices, audio channel mapping and compressed streams
+  members:
+  - IS-05
+  - IS-08
+  - BCP-004-01
+  - BCP-006-01
+  - BCP-006-02
+  - BCP-006-03
+  - BCP-007-01
+  - INFO-003
+  - INFO-005
+
+- id: CONTROL
+  name: Device Control & Monitoring
+  description: Specifications, recommendations and guidance concerning device control and status monitoring
+  members:
+  - IS-07
+  - IS-12
+  - MS-05-01
+  - MS-05-02
+  - BCP-008-01
+  - INFO-006
+
+- id: CONFIGURATION
+  name: Device Configuration
+  description: Specifications, recommendations and guidance concerning device and media parameter configuration
+  members:
+  - IS-11
+  - IS-14
+
+- id: SECURITY
+  name: Security Recommendatations
+  description: Specifications, recommendations and guidance concerning encryption, authorisation and certificate provisioning
+  members:
+  - IS-10
+  - BCP-003-01
+  - BCP-003-02
+  - BCP-003-03
+  - INFO-002
+  - INFO-005
