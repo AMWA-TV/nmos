@@ -15,8 +15,6 @@ The tables below list the current specifications and provide links to their docu
 
 The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the majority of these specifications.
 
-### [NMOS Interface Specifications (IS)](is/)
-
 The tables below are organised by theme. To see them organised by document type, click [here](specs-by-type.md)
 
 {% for theme in site.data.themes %}
