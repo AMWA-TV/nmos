@@ -15,44 +15,19 @@ The tables below list the current specifications and provide links to their docu
 
 The [NMOS API Testing Tool](https://specs.amwa.tv/nmos-testing) supports the majority of these specifications.
 
-The tables below are organised by specification type. To see them organised by themes, click [here](themes.md)
-
-
 ### [NMOS Interface Specifications (IS)](is/)
 
-These specify NMOS APIs using RAML, JSON Schema and normative text, supported by examples and other text:
+The tables below are organised by theme. To see them organised by document type, click [here](specs-by-type.md)
 
-{% include spec_table.html filter_id="IS-" show_releases=true %}
+{% for theme in site.data.themes %}
 
-### [NMOS Data Model Specifications (MS)](ms/)
+### {{ theme.name }}
 
-These model the resources used in NMOS APIs:
+{{ theme.description}}
 
-{% include spec_table.html filter_id="MS-" show_releases=true %}
+{% include specs_by_theme_table.html filter_theme=theme.id show_releases=true %}
 
-### [NMOS Best Common Practices (BCP)](bcp/)
-
-These specify best practice for use of NMOS APIs:
-
-{% include spec_table.html filter_id="BCP-" show_releases=true %}
-
-### [NMOS Informative Documents (INFO)](info/)
-
-These provide NMOS implementation guides:
-
-{% include spec_table.html filter_id="INFO-" %}
-
-### [NMOS Parameter Registers](https://specs.amwa.tv/nmos-parameter-registers)
-
-These specify constants for many types of NMOS parameter values:
-
-{% include registers_table.html %}
-
-### [NMOS Control Feature Sets](https://specs.amwa.tv/nmos-control-feature-sets)
-
-These specify opt-in models for the NMOS Control Framework
-
-{% include feature_sets_table.html %}
+{% endfor %}
 
 <!-- INTRO-END -->
 
