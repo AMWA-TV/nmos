@@ -44,8 +44,8 @@
   - IS-14
 
 - id: SECURITY
-  name: Security Recommendatations
-  description: Specifications, recommendations and guidance concerning encryption, authorisation and certificate provisioning
+  name: Security Recommendations
+  description: Specifications, recommendations and guidance concerning encryption, authorization and certificate provisioning
   members:
   - IS-10
   - BCP-003-01
