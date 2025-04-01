@@ -44,6 +44,23 @@
   - IS-11
   - IS-14
 
+- id: PRO-AV
+  name: ProAV
+  description: Specifications, recommendations and guidance concerning the ProAV space. <a href="https://ipmx.io/about/">IPMX</a> relevant items are included here. See VSF <a href="https://vsf.tv/technical-recommendations/#IPMX">Technical Recommendations</a> for further details.
+  members:
+  - IS-04
+  - IS-05
+  - IS-08
+  - IS-11
+  - IS-12
+  - BCP-002-01
+  - BCP-002-02
+  - BCP-004-01
+  - BCP-005-01
+  - BCP-006-01
+  - BCP-008-01
+  - BCP-008-02
+
 - id: SECURITY
   name: Security Recommendations
   description: Specifications, recommendations and guidance concerning encryption, authorization and certificate provisioning
