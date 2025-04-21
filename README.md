@@ -5,9 +5,11 @@
 
 <!-- INTRO-START -->
 
-NMOS is a family name for specifications produced by the Advanced Media Workflow Association related to networked media for professional applications.
+NMOS is a family name for specifications produced by the [Advanced Media Workflow Association](https://www.amwa.tv) related to networked media for professional applications.
 
 For a non-technical introduction to NMOS see AMWA's [overview page](https://www.amwa.tv/nmos-overview) and [NMOS Roadmap](https://static.amwa.tv/nmos-roadmap-version-2(2023-08-07).pdf).
+
+To help contribute to the ongoing development of NMOS, you can [join AMWA](https://www.amwa.tv/join).
 
 The tables below list the current specifications and provide links to their documentation on [specs.amwa.tv](https://specs.amwa.tv). The "Release" links will take you to the documentation and download page (↓) for the latest release of recent versions of the specification.
 
