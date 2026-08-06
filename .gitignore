@@ -22,3 +22,20 @@ releases/
 raml2html-nmos-theme/
 source-repo/
 yarn.lock
+
+# Zensical / MkDocs build output (see .github/workflows/docs.yml)
+/build/
+/site/
+
+# Local Python virtualenvs used to run .docs/build_index.py
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Local-only workflow testing (nektos/act)
+.secrets
+.act/
+
+# Zensical cache (created on some runs)
+.zensical/

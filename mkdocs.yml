@@ -1,0 +1,72 @@
+# Configuration read by Zensical (which understands mkdocs.yml).
+# See https://zensical.org/compatibility/configuration/.
+
+site_name: Networked Media Open Specifications
+site_description: >-
+  Index of AMWA NMOS specifications, best practices, informative documents
+  and control feature sets.
+site_url: https://specs.amwa.tv/nmos/
+
+repo_name: AMWA-TV/nmos
+repo_url: https://github.com/AMWA-TV/nmos
+edit_uri: edit/main/
+
+# The generator writes markdown into `build/docs/` so it never clobbers the
+# hand-authored files under `docs/` in this repo. Zensical writes the built
+# site into `site/` which the workflow uploads / deploys.
+docs_dir: build/docs
+site_dir: site
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+# Grouping / sorting / filtering of the spec index is achieved by combining:
+#  * Generated section pages per theme and per type (see .docs/build_index.py)
+#  * Per-entry `tags:` front matter so the tag index doubles as a facet filter
+#  * Full-text search which indexes theme + type as ordinary tokens
+plugins:
+  - search
+  - tags:
+      tags_file: tags.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - By theme: by-theme.md
+  - By type: by-type.md
+  - Tags: tags.md
