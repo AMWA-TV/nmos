@@ -30,15 +30,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
           cache: pip
+          cache-dependency-path: .docs/requirements.txt
 
       - name: Install Zensical
         run: |
           python -m pip install --upgrade pip
-          # Zensical is the MkDocs Material successor from squidfunk.
-          # Pinning avoids surprise breakage while the project is pre-1.0.
-          python -m pip install 'zensical' 'pyyaml' 'requests'
+          python -m pip install -r .docs/requirements.txt
 
       - name: Generate specification index
         env:

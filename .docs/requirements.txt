@@ -1,0 +1,5 @@
+# Python dependencies for the Zensical-based docs workflow
+# (see .github/workflows/docs.yml and .docs/build_index.py).
+zensical
+pyyaml
+requests
