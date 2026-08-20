@@ -17,6 +17,9 @@ edit_uri: edit/main/
 docs_dir: build/docs
 site_dir: site
 
+extra_css:
+  - stylesheets/extra.css
+
 theme:
   name: material
   features:

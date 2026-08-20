@@ -21,6 +21,7 @@ Outputs (written into `docs/`):
 
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -323,9 +324,83 @@ def render_by_type(specs: dict[str, Spec]) -> str:
     return "\n".join(lines)
 
 
-def render_tags_page() -> str:
-    # Populated automatically by the Material `tags` plugin.
-    return "# Tags\n"
+def tag_anchor(tag: str) -> str:
+    return "tag-" + re.sub(r"[^a-z0-9]+", "-", tag.lower()).strip("-")
+
+
+def render_tags_page(specs: dict[str, Spec]) -> str:
+    """Render a tag cloud and explicit tag sections.
+
+    Zensical currently lists the Material `tags` plugin as a compatibility
+    backlog item, so relying on its automatic tags index leaves `tags.md`
+    empty. Generate the view directly while retaining tags in front matter
+    for search and future native tag support.
+    """
+    grouped: dict[str, list[Spec]] = {}
+    for spec in specs.values():
+        for tag in [spec.type, *spec.themes]:
+            grouped.setdefault(tag, []).append(spec)
+
+    tags = sorted(grouped)
+    if not tags:
+        return "# Tags\n\n_No tags available._\n"
+
+    largest = max(len(grouped[tag]) for tag in tags)
+    cloud = [
+        "# Tags",
+        "",
+        "Filter the specification index by document type or theme. Select a tag to see its matching specifications.",
+        "",
+        '<div class="tag-cloud" markdown>',
+    ]
+    for tag in tags:
+        # Scale the font modestly according to the number of matching specs.
+        size = 0.9 + (0.5 * len(grouped[tag]) / largest)
+        label = html.escape(tag)
+        cloud.append(
+            f'<a href="#{tag_anchor(tag)}" style="font-size: {size:.2f}rem">'
+            f"{label} <small>({len(grouped[tag])})</small></a>"
+        )
+    cloud.extend(["</div>", ""])
+
+    for tag in tags:
+        cloud.extend([
+            f"## {tag} {{ #{tag_anchor(tag)} }}",
+            "",
+        ])
+        for spec in sorted(grouped[tag], key=lambda item: _sort_key(item.slug)):
+            cloud.append(f"- [{spec.slug} &mdash; {spec.title}]({spec.link})")
+        cloud.append("")
+
+    return "\n".join(cloud)
+
+
+def render_extra_css() -> str:
+    return """/* Generated tag-cloud styling for the specification index. */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem;
+}
+
+.tag-cloud a {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.tag-cloud a:hover {
+  border-color: var(--md-primary-fg-color);
+}
+
+.tag-cloud small {
+  opacity: 0.7;
+}
+"""
 
 
 def main() -> int:
@@ -343,7 +418,10 @@ def main() -> int:
     (DOCS / "index.md").write_text(render_index(), encoding="utf-8")
     (DOCS / "by-theme.md").write_text(render_by_theme(specs, themes), encoding="utf-8")
     (DOCS / "by-type.md").write_text(render_by_type(specs), encoding="utf-8")
-    (DOCS / "tags.md").write_text(render_tags_page(), encoding="utf-8")
+    (DOCS / "tags.md").write_text(render_tags_page(specs), encoding="utf-8")
+    styles_dir = DOCS / "stylesheets"
+    styles_dir.mkdir(parents=True, exist_ok=True)
+    (styles_dir / "extra.css").write_text(render_extra_css(), encoding="utf-8")
 
     for spec in specs.values():
         (SPECS_DIR / f"{spec.slug}.md").write_text(
