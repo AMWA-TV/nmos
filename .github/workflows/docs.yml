@@ -41,9 +41,9 @@ jobs:
 
       - name: Generate specification index
         env:
-          # Where to fetch each spec's metadata (`spec.yml`) from. Overridable
-          # so forks / staging branches can be pointed at different sources.
-          NMOS_SPEC_SOURCE: "https://raw.githubusercontent.com/AMWA-TV/{slug}/main/spec.yml"
+          # Published metadata for all specs, including status, releases and
+          # default branches. Overridable for forks or staging environments.
+          NMOS_SPEC_SOURCE: "https://specs.amwa.tv/nmos/specs.json"
         run: |
           python .docs/build_index.py
 
