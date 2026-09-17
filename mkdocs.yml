@@ -19,6 +19,9 @@ site_dir: site
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/global-search.css
+extra_javascript:
+  - javascripts/global-search.js
 
 theme:
   name: material

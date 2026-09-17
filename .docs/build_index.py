@@ -21,10 +21,12 @@ Outputs (written into `docs/`):
 
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import html
 import json
 import os
 import re
+import shutil
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -139,6 +141,101 @@ def fetch_spec_metadata() -> dict[str, dict]:
         return {}
 
 
+def fetch_increment_repositories() -> dict[str, dict[str, str]]:
+    """Return Increment repositories so the NMOS index can host global search."""
+    if requests is None:
+        return {}
+    url = "https://raw.githubusercontent.com/AMWA-TV/in-index/main/index.yml"
+    try:
+        response = requests.get(url, timeout=15)
+        response.raise_for_status()
+        data = yaml.safe_load(response.text) or {}
+    except Exception as exc:  # noqa: BLE001 -- best-effort supplementary source
+        print(f"  warn: could not fetch Increment index: {exc}", file=sys.stderr)
+        return {}
+
+    repositories: dict[str, dict[str, str]] = {}
+    for document in data.get("documents", []) or []:
+        repository = str(document.get("repo", "")).split("/", 1)[-1]
+        if repository:
+            repositories[repository] = {
+                "collection": "AMWA Increments",
+                "title": str(document.get("title", repository)),
+            }
+    return repositories
+
+
+def fetch_global_manifest(repository: str) -> list[dict]:
+    if requests is None:
+        return []
+    url = f"https://specs.amwa.tv/new/{repository}/global-search.json"
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+    except Exception:
+        return []
+    documents = data.get("documents", []) if isinstance(data, dict) else []
+    return [document for document in documents if isinstance(document, dict)]
+
+
+def build_global_search(specs: dict[str, Spec]) -> dict:
+    """Merge per-repository manifests into the central static search index."""
+    if os.environ.get("AMWA_GLOBAL_SEARCH", "1") == "0":
+        return {"version": 1, "documents": []}
+
+    repositories = {
+        spec.repo_name: {"collection": "NMOS", "title": spec.title}
+        for spec in specs.values()
+        if spec.repo_name
+    }
+    repositories.update(fetch_increment_repositories())
+
+    documents: list[dict] = []
+    with ThreadPoolExecutor(max_workers=12) as executor:
+        futures = {
+            executor.submit(fetch_global_manifest, repository): repository
+            for repository in repositories
+        }
+        for future in as_completed(futures):
+            repository = futures[future]
+            collection = repositories[repository]["collection"]
+            for document in future.result():
+                if not document.get("url") or not document.get("text"):
+                    continue
+                document = dict(document)
+                document["repository"] = repository
+                document["collection"] = collection
+                documents.append(document)
+
+    unique = {document["url"]: document for document in documents}
+    return {
+        "version": 1,
+        "documents": sorted(
+            unique.values(),
+            key=lambda document: (document.get("title", "").lower(), document["url"]),
+        ),
+    }
+
+
+def render_global_search_page() -> str:
+    return """# Global AMWA documentation search
+
+Search across the published NMOS specifications, AMWA Increments, and their documentation pages.
+
+<div class="global-search" data-global-search data-index-url="../global-search.json">
+  <div class="global-search-controls">
+    <input type="search" data-global-search-input aria-label="Search AMWA documentation" placeholder="Search all AMWA documentation…" autofocus>
+    <select data-global-search-filter aria-label="Filter by repository">
+      <option value="">All repositories</option>
+    </select>
+  </div>
+  <p class="global-search-status" data-global-search-status role="status">Loading the global search index…</p>
+  <ol class="global-search-results" data-global-search-results></ol>
+</div>
+"""
+
+
 def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec]:
     # Reverse lookup: slug -> [theme id, ...] preserving themes.yml order.
     slug_to_themes: dict[str, list[str]] = {}
@@ -234,6 +331,7 @@ def render_index() -> str:
         "- [By theme](by-theme.md) &mdash; grouped by subject area\n"
         "- [By type](by-type.md) &mdash; grouped by document type\n"
         "- [Tags](tags.md) &mdash; filter by any type or theme\n"
+        "- [Global AMWA documentation search](global-search.md) &mdash; search across repositories\n"
     )
 
 
@@ -419,16 +517,32 @@ def main() -> int:
     (DOCS / "by-theme.md").write_text(render_by_theme(specs, themes), encoding="utf-8")
     (DOCS / "by-type.md").write_text(render_by_type(specs), encoding="utf-8")
     (DOCS / "tags.md").write_text(render_tags_page(specs), encoding="utf-8")
+    (DOCS / "global-search.md").write_text(render_global_search_page(), encoding="utf-8")
+    global_search = build_global_search(specs)
+    (DOCS / "global-search.json").write_text(
+        json.dumps(global_search, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     styles_dir = DOCS / "stylesheets"
     styles_dir.mkdir(parents=True, exist_ok=True)
     (styles_dir / "extra.css").write_text(render_extra_css(), encoding="utf-8")
+    shutil.copy2(
+        ROOT / ".docs" / "global-search" / "global-search.css",
+        styles_dir / "global-search.css",
+    )
+    scripts_dir = DOCS / "javascripts"
+    scripts_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(
+        ROOT / ".docs" / "global-search" / "global-search.js",
+        scripts_dir / "global-search.js",
+    )
 
     for spec in specs.values():
         (SPECS_DIR / f"{spec.slug}.md").write_text(
             render_spec_stub(spec, themes_by_id), encoding="utf-8"
         )
 
-    print(f"Wrote {len(specs)} spec pages + 4 index pages to {DOCS}.")
+    print(f"Wrote {len(specs)} spec pages + 5 index pages to {DOCS}.")
     return 0
 
 

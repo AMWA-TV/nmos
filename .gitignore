@@ -39,3 +39,4 @@ __pycache__/
 
 # Zensical cache (created on some runs)
 .zensical/
+.render-zensical/

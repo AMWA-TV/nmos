@@ -14,9 +14,15 @@ on:
     branches:
       - main
       - "publish-*"
+  schedule:
+    - cron: "17 3 * * *"
   pull_request:
     branches:
       - main
+
+concurrency:
+  group: amwa-documentation-${{ github.repository }}
+  cancel-in-progress: false
 
 jobs:
   build:
