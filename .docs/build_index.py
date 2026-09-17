@@ -168,15 +168,23 @@ def fetch_increment_repositories() -> dict[str, dict[str, str]]:
 def fetch_global_manifest(repository: str) -> list[dict]:
     if requests is None:
         return []
-    url = f"https://specs.amwa.tv/new/{repository}/global-search.json"
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        data = response.json()
-    except Exception:
-        return []
-    documents = data.get("documents", []) if isinstance(data, dict) else []
-    return [document for document in documents if isinstance(document, dict)]
+
+    # Versioned repositories publish their current manifest below latest/;
+    # fixed-version repositories may publish it at the unversioned root.
+    urls = (
+        f"https://specs.amwa.tv/new/{repository}/latest/global-search.json",
+        f"https://specs.amwa.tv/new/{repository}/global-search.json",
+    )
+    for url in urls:
+        try:
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+        except Exception:
+            continue
+        documents = data.get("documents", []) if isinstance(data, dict) else []
+        return [document for document in documents if isinstance(document, dict)]
+    return []
 
 
 def build_global_search(specs: dict[str, Spec]) -> dict:
