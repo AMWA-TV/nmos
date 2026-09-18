@@ -328,6 +328,18 @@ def populate_spec_intros(specs: dict[str, Spec]) -> None:
                 futures[future].intro = intro
 
 
+def public_spec_url(slug: str, metadata_url: str = "") -> str:
+    """Use the beta Zensical/Mike path for links from the NMOS index."""
+    url = metadata_url or f"https://specs.amwa.tv/{slug.lower()}"
+    # Beta-only routing: remove this conversion and use `url` directly when
+    # the Zensical/Mike sites move back from `/new/` to the canonical paths.
+    legacy_root = "https://specs.amwa.tv/"
+    new_root = "https://specs.amwa.tv/new/"
+    if url.startswith(legacy_root) and not url.startswith(new_root):
+        return new_root + url[len(legacy_root):].lstrip("/")
+    return url
+
+
 def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec]:
     # Reverse lookup: slug -> [theme id, ...] preserving themes.yml order.
     slug_to_themes: dict[str, list[str]] = {}
@@ -365,7 +377,7 @@ def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec
             repo_name=meta.get("repo_name") or slug.lower(),
             repo_url=meta.get("repo_url") or f"https://github.com/AMWA-TV/{slug.lower()}",
             status=meta.get("status") or "",
-            url=meta.get("url") or f"https://specs.amwa.tv/{slug.lower()}",
+            url=public_spec_url(slug, str(meta.get("url") or "")),
             releases=[str(release) for release in releases],
             default_branch=meta.get("default_branch") or "",
             show_in_index=bool(meta.get("show_in_index", True)),
