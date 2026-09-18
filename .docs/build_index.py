@@ -453,7 +453,7 @@ def spec_tooltip_html(spec: Spec, sections: list[tuple[str, list[str]]]) -> str:
 
 
 def spec_link(spec: Spec) -> str:
-    href = html.escape(spec.link, quote=True)
+    href = html.escape(spec.url, quote=True)
     label = html.escape(spec.slug)
     sections = spec_tooltip_sections(spec)
     if not sections:
