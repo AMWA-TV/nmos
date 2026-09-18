@@ -93,6 +93,7 @@ class Spec:
     default_branch: str = ""
     show_in_index: bool = True
     themes: list[str] = field(default_factory=list)
+    intro: dict[str, list[str]] = field(default_factory=dict)
 
     @property
     def type(self) -> str:
@@ -244,6 +245,44 @@ Search across the published NMOS specifications, AMWA Increments, and their docu
 """
 
 
+def fetch_spec_intro(repository: str) -> dict[str, list[str]]:
+    """Fetch README-derived intro bullets from a repository's spec.json."""
+    if requests is None or not repository:
+        return {}
+
+    urls = (
+        f"https://specs.amwa.tv/new/{repository}/latest/spec.json",
+        f"https://specs.amwa.tv/new/{repository}/spec.json",
+    )
+    for url in urls:
+        try:
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+        except Exception:
+            continue
+        intro = data.get("intro", {}) if isinstance(data, dict) else {}
+        if not isinstance(intro, dict):
+            continue
+        return {
+            str(key): [str(item) for item in values]
+            for key, values in intro.items()
+            if isinstance(values, list) and values
+        }
+    return {}
+
+
+def populate_spec_intros(specs: dict[str, Spec]) -> None:
+    with ThreadPoolExecutor(max_workers=12) as executor:
+        futures = {
+            executor.submit(fetch_spec_intro, spec.repo_name): spec
+            for spec in specs.values()
+            if spec.repo_name
+        }
+        for future in as_completed(futures):
+            futures[future].intro = future.result()
+
+
 def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec]:
     # Reverse lookup: slug -> [theme id, ...] preserving themes.yml order.
     slug_to_themes: dict[str, list[str]] = {}
@@ -286,6 +325,11 @@ def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec
             default_branch=meta.get("default_branch") or "",
             show_in_index=bool(meta.get("show_in_index", True)),
             themes=themes_for_spec,
+            intro={
+                str(key): [str(item) for item in values]
+                for key, values in (meta.get("intro", {}) or {}).items()
+                if isinstance(values, list) and values
+            },
         )
     return specs
 
@@ -299,6 +343,75 @@ def _sort_key(slug: str) -> tuple:
     """Natural-ish sort so IS-04 comes before IS-10 and BCP-002-01 before -02."""
     parts = re.split(r"[-_]", slug)
     return tuple((0, int(p)) if p.isdigit() else (1, p) for p in parts)
+
+
+def spec_tooltip_sections(spec: Spec) -> list[tuple[str, list[str]]]:
+    labels = (
+        ("What does it do?", "what_does_it_do"),
+        ("Why does it matter?", "why_does_it_matter"),
+        ("How does it work?", "how_does_it_work"),
+    )
+    sections = []
+    for heading, key in labels:
+        bullets = [
+            str(value).strip()
+            for value in spec.intro.get(key, [])
+            if str(value).strip()
+        ]
+        if bullets:
+            sections.append((heading, bullets))
+    return sections
+
+
+def spec_tooltip_text(spec: Spec, sections: list[tuple[str, list[str]]]) -> str:
+    lines = [spec.title]
+    for heading, bullets in sections:
+        lines.extend(["", heading])
+        lines.extend(f"• {bullet}" for bullet in bullets)
+    return "\n".join(lines)
+
+
+def plain_text(value: str) -> str:
+    """Remove Markdown syntax before placing text in an HTML attribute."""
+    value = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", value)
+    return re.sub(r"`([^`]+)`", r"\1", value)
+
+
+def spec_tooltip_html(spec: Spec, sections: list[tuple[str, list[str]]]) -> str:
+    def safe(value: str) -> str:
+        # A pipe can otherwise be interpreted as a Markdown table delimiter.
+        return html.escape(value).replace("|", "&#124;")
+
+    parts = [f'<span class="in-index-tooltip-title">{safe(spec.title)}</span>']
+    for heading, bullets in sections:
+        parts.append(
+            f'<span class="in-index-tooltip-heading">{safe(heading)}</span>'
+        )
+        parts.extend(
+            f'<span class="in-index-tooltip-item">• {safe(bullet)}</span>'
+            for bullet in bullets
+        )
+    return "".join(parts)
+
+
+def spec_link(spec: Spec) -> str:
+    href = html.escape(spec.link, quote=True)
+    label = html.escape(spec.slug)
+    sections = spec_tooltip_sections(spec)
+    if not sections:
+        return f'<a href="{href}">{label}</a>'
+
+    tooltip_text = html.escape(
+        plain_text(spec_tooltip_text(spec, sections)).replace("\n", " | "),
+        quote=True,
+    ).replace("|", "&#124;")
+    tooltip_markup = spec_tooltip_html(spec, sections)
+    return (
+        '<span class="in-index-entry">'
+        f'<a href="{href}" aria-label="{tooltip_text}">{label}</a>'
+        f'<span class="in-index-tooltip" role="tooltip">{tooltip_markup}</span>'
+        "</span>"
+    )
 
 
 def render_spec_stub(spec: Spec, themes_by_id: dict[str, dict]) -> str:
@@ -354,6 +467,42 @@ def release_links(spec: Spec) -> str:
     )
 
 
+def release_html(spec: Spec) -> str:
+    if not spec.releases:
+        return "&mdash;"
+    return "<br>".join(
+        f'<a href="{html.escape(spec.url.rstrip("/") + "/" + release, quote=True)}">'
+        f"{html.escape(release)}</a> "
+        f'<a href="{html.escape(spec.repo_url + "/releases/tag/" + release, quote=True)}">'
+        "↓</a>"
+        for release in spec.releases
+    )
+
+
+def render_spec_table(headers: list[str], rows: list[list[str]]) -> list[str]:
+    lines = [
+        '<table class="in-index-table">',
+        "<thead>",
+        "<tr>" + "".join(f"<th>{html.escape(header)}</th>" for header in headers) + "</tr>",
+        "</thead>",
+        "<tbody>",
+    ]
+    for row in rows:
+        lines.append("<tr>")
+        lines.extend(f"<td>{cell}</td>" for cell in row)
+        lines.append("</tr>")
+    lines.extend(["</tbody>", "</table>"])
+    return lines
+
+
+def branch_html(spec: Spec) -> str:
+    return (
+        f"<code>{html.escape(spec.default_branch)}</code>"
+        if spec.default_branch
+        else "&mdash;"
+    )
+
+
 def render_by_theme(specs: dict[str, Spec], themes: list[dict]) -> str:
     lines = ["# Specifications by theme", ""]
     for theme in themes:
@@ -369,15 +518,21 @@ def render_by_theme(specs: dict[str, Spec], themes: list[dict]) -> str:
         if description:
             lines.append(description)
             lines.append("")
-        lines.append("| Spec | Title | Type | Status | Default branch | Release(s) |")
-        lines.append("| --- | --- | --- | --- | --- | --- |")
+        rows = []
         for slug in members:
-            s = specs[slug]
-            lines.append(
-                f"| [{s.slug}]({s.link}) | {s.title} | {s.type} | "
-                f"{s.status or '&mdash;'} | `{s.default_branch or '&mdash;'}` | "
-                f"{release_links(s)} |"
-            )
+            spec = specs[slug]
+            rows.append([
+                spec_link(spec),
+                html.escape(spec.title),
+                html.escape(spec.type),
+                html.escape(spec.status) if spec.status else "&mdash;",
+                branch_html(spec),
+                release_html(spec),
+            ])
+        lines.extend(render_spec_table(
+            ["Spec", "Title", "Type", "Status", "Default branch", "Release(s)"],
+            rows,
+        ))
         lines.append("")
     return "\n".join(lines)
 
@@ -398,15 +553,20 @@ def render_by_type(specs: dict[str, Spec]) -> str:
         lines.append("")
         lines.append(blurb)
         lines.append("")
-        lines.append("| Spec | Title | Themes | Status | Default branch | Release(s) |")
-        lines.append("| --- | --- | --- | --- | --- | --- |")
-        for s in entries:
-            theme_list = ", ".join(s.themes) if s.themes else "&mdash;"
-            lines.append(
-                f"| [{s.slug}]({s.link}) | {s.title} | {theme_list} | "
-                f"{s.status or '&mdash;'} | `{s.default_branch or '&mdash;'}` | "
-                f"{release_links(s)} |"
-            )
+        rows = []
+        for spec in entries:
+            rows.append([
+                spec_link(spec),
+                html.escape(spec.title),
+                html.escape(", ".join(spec.themes)) if spec.themes else "&mdash;",
+                html.escape(spec.status) if spec.status else "&mdash;",
+                branch_html(spec),
+                release_html(spec),
+            ])
+        lines.extend(render_spec_table(
+            ["Spec", "Title", "Themes", "Status", "Default branch", "Release(s)"],
+            rows,
+        ))
         lines.append("")
 
     # Anything unclassified.
@@ -417,15 +577,20 @@ def render_by_type(specs: dict[str, Spec]) -> str:
     if other:
         lines.append("## Other")
         lines.append("")
-        lines.append("| Spec | Title | Themes | Status | Default branch | Release(s) |")
-        lines.append("| --- | --- | --- | --- | --- | --- |")
-        for s in other:
-            theme_list = ", ".join(s.themes) if s.themes else "&mdash;"
-            lines.append(
-                f"| [{s.slug}]({s.link}) | {s.title} | {theme_list} | "
-                f"{s.status or '&mdash;'} | `{s.default_branch or '&mdash;'}` | "
-                f"{release_links(s)} |"
-            )
+        rows = []
+        for spec in other:
+            rows.append([
+                spec_link(spec),
+                html.escape(spec.title),
+                html.escape(", ".join(spec.themes)) if spec.themes else "&mdash;",
+                html.escape(spec.status) if spec.status else "&mdash;",
+                branch_html(spec),
+                release_html(spec),
+            ])
+        lines.extend(render_spec_table(
+            ["Spec", "Title", "Themes", "Status", "Default branch", "Release(s)"],
+            rows,
+        ))
         lines.append("")
     return "\n".join(lines)
 
@@ -475,14 +640,91 @@ def render_tags_page(specs: dict[str, Spec]) -> str:
             "",
         ])
         for spec in sorted(grouped[tag], key=lambda item: _sort_key(item.slug)):
-            cloud.append(f"- [{spec.slug} &mdash; {spec.title}]({spec.link})")
+            cloud.append(f"- {spec_link(spec)} &mdash; {html.escape(spec.title)}")
         cloud.append("")
 
     return "\n".join(cloud)
 
 
 def render_extra_css() -> str:
-    return """/* Generated tag-cloud styling for the specification index. */
+    return """/* Structured hover/focus popup for README intro bullets. */
+.in-index-entry {
+  cursor: help;
+  display: inline-block;
+  position: relative;
+  text-decoration: underline dotted;
+}
+
+.in-index-tooltip {
+  background: var(--md-default-bg-color);
+  border: 0.05rem solid var(--md-default-fg-color--light);
+  border-radius: 0.3rem;
+  box-shadow: var(--md-shadow-z2);
+  color: var(--md-default-fg-color);
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  left: 0;
+  line-height: 1.45;
+  max-width: min(34rem, calc(100vw - 2rem));
+  opacity: 0;
+  padding: 0.75rem 1rem;
+  pointer-events: none;
+  position: absolute;
+  text-align: left;
+  top: calc(100% + 0.5rem);
+  transform: translateY(-0.25rem);
+  transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+  visibility: hidden;
+  white-space: normal;
+  width: max-content;
+  overflow-wrap: anywhere;
+  z-index: 100;
+}
+
+.in-index-entry:hover .in-index-tooltip,
+.in-index-entry:focus .in-index-tooltip,
+.in-index-entry:focus-within .in-index-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.in-index-tooltip-title,
+.in-index-tooltip-heading,
+.in-index-tooltip-item {
+  display: block;
+}
+
+.in-index-tooltip-title {
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.in-index-tooltip-heading {
+  font-weight: 700;
+  margin-top: 0.45rem;
+}
+
+.in-index-tooltip-item {
+  font-weight: 400;
+}
+
+/* Keep the specification index tables expanded, as on the Increment index. */
+.md-typeset table.in-index-table {
+  display: table !important;
+  max-width: none !important;
+  overflow: visible !important;
+  table-layout: fixed;
+  width: 100% !important;
+}
+
+.md-typeset table.in-index-table th,
+.md-typeset table.in-index-table td {
+  overflow-wrap: anywhere;
+}
+
+/* Generated tag-cloud styling for the specification index. */
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
@@ -517,6 +759,7 @@ def main() -> int:
     print(f"Loaded {len(spec_slugs)} specs across {len(themes)} themes.")
 
     specs = build_specs(spec_slugs, themes)
+    populate_spec_intros(specs)
 
     DOCS.mkdir(parents=True, exist_ok=True)
     SPECS_DIR.mkdir(parents=True, exist_ok=True)
