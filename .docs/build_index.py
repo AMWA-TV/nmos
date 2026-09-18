@@ -245,8 +245,38 @@ Search across the published NMOS specifications, AMWA Increments, and their docu
 """
 
 
-def fetch_spec_intro(repository: str) -> dict[str, list[str]]:
-    """Fetch README-derived intro bullets from a repository's spec.json."""
+INTRO_HEADINGS = {
+    "What does it do?": "what_does_it_do",
+    "Why does it matter?": "why_does_it_matter",
+    "How does it work?": "how_does_it_work",
+}
+
+
+def readme_intro(text: str) -> dict[str, list[str]]:
+    """Extract the standard intro bullet lists from a repository README."""
+    if "<!-- INTRO-START -->" in text:
+        text = text.split("<!-- INTRO-START -->", 1)[1]
+    if "<!-- INTRO-END -->" in text:
+        text = text.split("<!-- INTRO-END -->", 1)[0]
+
+    intro: dict[str, list[str]] = {}
+    current: str | None = None
+    for line in text.splitlines():
+        heading = re.match(r"^#{2,3}\s+(.+?)\s*$", line)
+        if heading:
+            current = INTRO_HEADINGS.get(heading.group(1))
+            if current:
+                intro[current] = []
+            continue
+        bullet = re.match(r"^\s*-\s+(.+?)\s*$", line)
+        if current and bullet:
+            intro[current].append(bullet.group(1))
+
+    return {key: values for key, values in intro.items() if values}
+
+
+def fetch_spec_intro(repository: str, default_branch: str = "") -> dict[str, list[str]]:
+    """Fetch intro metadata, falling back to the repository README."""
     if requests is None or not repository:
         return {}
 
@@ -262,25 +292,40 @@ def fetch_spec_intro(repository: str) -> dict[str, list[str]]:
         except Exception:
             continue
         intro = data.get("intro", {}) if isinstance(data, dict) else {}
-        if not isinstance(intro, dict):
+        if isinstance(intro, dict):
+            result = {
+                str(key): [str(item) for item in values]
+                for key, values in intro.items()
+                if isinstance(values, list) and values
+            }
+            if result:
+                return result
+
+    branches = list(dict.fromkeys(filter(None, (default_branch, "main", "master"))))
+    for branch in branches:
+        url = f"https://raw.githubusercontent.com/AMWA-TV/{repository}/{branch}/README.md"
+        try:
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+        except Exception:
             continue
-        return {
-            str(key): [str(item) for item in values]
-            for key, values in intro.items()
-            if isinstance(values, list) and values
-        }
+        intro = readme_intro(response.text)
+        if intro:
+            return intro
     return {}
 
 
 def populate_spec_intros(specs: dict[str, Spec]) -> None:
     with ThreadPoolExecutor(max_workers=12) as executor:
         futures = {
-            executor.submit(fetch_spec_intro, spec.repo_name): spec
+            executor.submit(fetch_spec_intro, spec.repo_name, spec.default_branch): spec
             for spec in specs.values()
             if spec.repo_name
         }
         for future in as_completed(futures):
-            futures[future].intro = future.result()
+            intro = future.result()
+            if intro:
+                futures[future].intro = intro
 
 
 def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec]:
@@ -353,11 +398,11 @@ def spec_tooltip_sections(spec: Spec) -> list[tuple[str, list[str]]]:
     )
     sections = []
     for heading, key in labels:
-        bullets = [
-            str(value).strip()
-            for value in spec.intro.get(key, [])
-            if str(value).strip()
-        ]
+        bullets = []
+        for value in spec.intro.get(key, []):
+            cleaned = plain_text(str(value).strip())
+            if cleaned:
+                bullets.append(cleaned)
         if bullets:
             sections.append((heading, bullets))
     return sections
@@ -372,8 +417,9 @@ def spec_tooltip_text(spec: Spec, sections: list[tuple[str, list[str]]]) -> str:
 
 
 def plain_text(value: str) -> str:
-    """Remove Markdown syntax before placing text in an HTML attribute."""
+    """Remove Markdown syntax before rendering the popup or an HTML attribute."""
     value = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", value)
+    value = re.sub(r"``([^`]+)``", r"\1", value)
     return re.sub(r"`([^`]+)`", r"\1", value)
 
 
