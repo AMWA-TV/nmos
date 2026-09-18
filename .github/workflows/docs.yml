@@ -33,6 +33,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v5
 
+      - name: Check out shared AMWA documentation toolkit
+        uses: actions/checkout@v5
+        with:
+          repository: AMWA-TV/amwa-spec-docs
+          ref: main
+          path: .amwa-spec-docs
+          fetch-depth: 1
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -52,6 +60,13 @@ jobs:
           NMOS_SPEC_SOURCE: "https://specs.amwa.tv/nmos/specs.json"
         run: |
           python .docs/build_index.py
+
+      - name: Apply shared AMWA/NMOS branding
+        env:
+          GITHUB_REPOSITORY: AMWA-TV/nmos
+          TOOLKIT_DIR: .amwa-spec-docs
+          DOCS_DIR: build/docs
+        run: bash .amwa-spec-docs/scripts/apply-branding.sh
 
       - name: Build site
         run: |
