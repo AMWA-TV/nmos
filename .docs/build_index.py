@@ -571,6 +571,11 @@ def branch_html(spec: Spec) -> str:
     )
 
 
+def has_release_column(entries: Iterable[Spec]) -> bool:
+    """Return whether a table section contains any versioned specification."""
+    return any(spec.releases for spec in entries)
+
+
 def render_by_theme(specs: dict[str, Spec], themes: list[dict]) -> str:
     lines = ["# Specifications by theme", ""]
     for theme in themes:
@@ -586,21 +591,24 @@ def render_by_theme(specs: dict[str, Spec], themes: list[dict]) -> str:
         if description:
             lines.append(description)
             lines.append("")
+        entries = [specs[slug] for slug in members]
+        include_releases = has_release_column(entries)
         rows = []
-        for slug in members:
-            spec = specs[slug]
-            rows.append([
+        for spec in entries:
+            row = [
                 spec_link(spec),
                 html.escape(spec.title),
                 html.escape(spec.type),
                 html.escape(spec.status) if spec.status else "&mdash;",
                 branch_html(spec),
-                release_html(spec),
-            ])
-        lines.extend(render_spec_table(
-            ["Spec", "Title", "Type", "Status", "Default branch", "Release(s)"],
-            rows,
-        ))
+            ]
+            if include_releases:
+                row.append(release_html(spec))
+            rows.append(row)
+        headers = ["Spec", "Title", "Type", "Status", "Default branch"]
+        if include_releases:
+            headers.append("Release(s)")
+        lines.extend(render_spec_table(headers, rows))
         lines.append("")
     return "\n".join(lines)
 
@@ -621,20 +629,23 @@ def render_by_type(specs: dict[str, Spec]) -> str:
         lines.append("")
         lines.append(blurb)
         lines.append("")
+        include_releases = has_release_column(entries)
         rows = []
         for spec in entries:
-            rows.append([
+            row = [
                 spec_link(spec),
                 html.escape(spec.title),
                 html.escape(", ".join(spec.themes)) if spec.themes else "&mdash;",
                 html.escape(spec.status) if spec.status else "&mdash;",
                 branch_html(spec),
-                release_html(spec),
-            ])
-        lines.extend(render_spec_table(
-            ["Spec", "Title", "Themes", "Status", "Default branch", "Release(s)"],
-            rows,
-        ))
+            ]
+            if include_releases:
+                row.append(release_html(spec))
+            rows.append(row)
+        headers = ["Spec", "Title", "Themes", "Status", "Default branch"]
+        if include_releases:
+            headers.append("Release(s)")
+        lines.extend(render_spec_table(headers, rows))
         lines.append("")
 
     # Anything unclassified.
@@ -645,20 +656,23 @@ def render_by_type(specs: dict[str, Spec]) -> str:
     if other:
         lines.append("## Other")
         lines.append("")
+        include_releases = has_release_column(other)
         rows = []
         for spec in other:
-            rows.append([
+            row = [
                 spec_link(spec),
                 html.escape(spec.title),
                 html.escape(", ".join(spec.themes)) if spec.themes else "&mdash;",
                 html.escape(spec.status) if spec.status else "&mdash;",
                 branch_html(spec),
-                release_html(spec),
-            ])
-        lines.extend(render_spec_table(
-            ["Spec", "Title", "Themes", "Status", "Default branch", "Release(s)"],
-            rows,
-        ))
+            ]
+            if include_releases:
+                row.append(release_html(spec))
+            rows.append(row)
+        headers = ["Spec", "Title", "Themes", "Status", "Default branch"]
+        if include_releases:
+            headers.append("Release(s)")
+        lines.extend(render_spec_table(headers, rows))
         lines.append("")
     return "\n".join(lines)
 
