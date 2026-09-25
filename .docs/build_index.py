@@ -56,6 +56,12 @@ SPEC_SOURCE = os.environ.get(
 
 # Ordering + display names for the document-type facet. Anything not matched
 # here falls into "Other" so nothing silently disappears from the index.
+# These entries are maintained in the local NMOS list but the legacy published
+# metadata still marks the control feature-set register as hidden. The Zensical
+# index is the migration target, so explicitly include it here.
+FORCE_ZENSICAL_INCLUDE = {"NMOS-CONTROL-FEATURE-SETS"}
+
+
 TYPE_ORDER: list[tuple[str, str, str]] = [
     (
         "IS",
@@ -353,7 +359,11 @@ def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec
         meta = metadata.get(slug.upper(), {})
         # Keep the local list as the allow-list, but respect the published
         # index's visibility flag for suite/template entries.
-        if meta and not bool(meta.get("show_in_index", True)):
+        if (
+            meta
+            and not bool(meta.get("show_in_index", True))
+            and slug.upper() not in FORCE_ZENSICAL_INCLUDE
+        ):
             continue
         # `name` is the human-friendly title in specs.json; `title` remains
         # supported for compatibility with alternate metadata sources.
