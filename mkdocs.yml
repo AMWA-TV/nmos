@@ -9,7 +9,6 @@ site_url: https://specs.amwa.tv/nmos/
 
 repo_name: AMWA-TV/nmos
 repo_url: https://github.com/AMWA-TV/nmos
-edit_uri: edit/main/
 
 # The generator writes markdown into `build/docs/` so it never clobbers the
 # hand-authored files under `docs/` in this repo. Zensical writes the built
@@ -30,7 +29,7 @@ theme:
     - navigation.sections
     - navigation.top
     - navigation.indexes
-    - content.action.edit
+
     - search.suggest
     - search.highlight
     - toc.follow
