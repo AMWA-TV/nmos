@@ -57,9 +57,21 @@ SPEC_SOURCE = os.environ.get(
 # Ordering + display names for the document-type facet. Anything not matched
 # here falls into "Other" so nothing silently disappears from the index.
 # These entries are maintained in the local NMOS list but the legacy published
-# metadata still marks the control feature-set register as hidden. The Zensical
-# index is the migration target, so explicitly include it here.
+# metadata can mark suite/template entries as hidden. The Zensical index is the
+# migration target, so explicitly include the control feature-set register and
+# numeric BCP suites where needed.
 FORCE_ZENSICAL_INCLUDE = {"NMOS-CONTROL-FEATURE-SETS"}
+
+
+def is_bcp_suite_slug(slug: str) -> bool:
+    """Return whether *slug* names a numeric BCP suite, not a recommendation."""
+    return bool(re.fullmatch(r"BCP-\d{3}", slug.upper()))
+
+
+def bcp_suite_slug(slug: str) -> str | None:
+    """Return the parent suite slug for a BCP suite or recommendation."""
+    match = re.fullmatch(r"(BCP-\d{3})(?:-\d{2})?", slug.upper())
+    return match.group(1) if match else None
 
 
 TYPE_ORDER: list[tuple[str, str, str]] = [
@@ -363,6 +375,7 @@ def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec
             meta
             and not bool(meta.get("show_in_index", True))
             and slug.upper() not in FORCE_ZENSICAL_INCLUDE
+            and not is_bcp_suite_slug(slug)
         ):
             continue
         # `name` is the human-friendly title in specs.json; `title` remains
@@ -510,13 +523,55 @@ def render_spec_stub(spec: Spec, themes_by_id: dict[str, dict]) -> str:
     return "\n".join(front_matter + body)
 
 
-def render_index() -> str:
+def render_bcp_suites(specs: dict[str, Spec]) -> str:
+    """Render numeric BCP suites with collapsible recommendation lists."""
+    suites = sorted(
+        (spec for spec in specs.values() if is_bcp_suite_slug(spec.slug)),
+        key=lambda spec: _sort_key(spec.slug),
+    )
+    sections: list[str] = []
+    for suite in suites:
+        children = sorted(
+            (
+                spec
+                for spec in specs.values()
+                if spec.slug != suite.slug and bcp_suite_slug(spec.slug) == suite.slug
+            ),
+            key=lambda spec: _sort_key(spec.slug),
+        )
+        if not children:
+            continue
+
+        suite_href = html.escape(suite.url, quote=True)
+        sections.extend(
+            [
+                '<details class="bcp-suite">',
+                "  <summary>"
+                f'<a href="{suite_href}">{html.escape(suite.slug)}</a>'
+                f" &mdash; {html.escape(suite.title)}</summary>",
+                "  <ul>",
+            ]
+        )
+        sections.extend(
+            f"    <li>{spec_link(child)} &mdash; {html.escape(child.title)}</li>"
+            for child in children
+        )
+        sections.extend(["  </ul>", "</details>", ""])
+
+    if not sections:
+        return ""
+    return "## NMOS Best Common Practice suites\n\n" + "\n".join(sections)
+
+
+def render_index(specs: dict[str, Spec]) -> str:
     return (
         "# Networked Media Open Specifications\n\n"
         "The tables on the following pages list the current NMOS "
         "specifications, best practices and informative documents. "
         "Use the search box or the tag index to filter by document "
         "type or theme.\n\n"
+        + render_bcp_suites(specs)
+        + "\n"
         "- [By theme](by-theme.md) &mdash; grouped by subject area\n"
         "- [By type](by-type.md) &mdash; grouped by document type\n"
         "- [Tags](tags.md) &mdash; filter by any type or theme\n"
@@ -792,6 +847,33 @@ def render_extra_css() -> str:
   font-weight: 400;
 }
 
+/* Compact, editor-like disclosure rows for BCP suite recommendations. */
+.md-typeset details.bcp-suite {
+  border: 0;
+  margin: 0.15rem 0;
+  padding: 0;
+}
+
+.md-typeset details.bcp-suite > summary {
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: list-item;
+  padding: 0.2rem 0.4rem;
+}
+
+.md-typeset details.bcp-suite > summary:hover,
+.md-typeset details.bcp-suite > summary:focus-visible {
+  background: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset details.bcp-suite > summary::marker {
+  color: var(--md-primary-fg-color);
+}
+
+.md-typeset details.bcp-suite > ul {
+  margin: 0.15rem 0 0.5rem 1.8rem;
+}
+
 /* Keep the specification index tables expanded, as on the Increment index. */
 .md-typeset table.in-index-table {
   display: table !important;
@@ -846,7 +928,7 @@ def main() -> int:
     DOCS.mkdir(parents=True, exist_ok=True)
     SPECS_DIR.mkdir(parents=True, exist_ok=True)
 
-    (DOCS / "index.md").write_text(render_index(), encoding="utf-8")
+    (DOCS / "index.md").write_text(render_index(specs), encoding="utf-8")
     (DOCS / "by-theme.md").write_text(render_by_theme(specs, themes), encoding="utf-8")
     (DOCS / "by-type.md").write_text(render_by_type(specs), encoding="utf-8")
     (DOCS / "tags.md").write_text(render_tags_page(specs), encoding="utf-8")
