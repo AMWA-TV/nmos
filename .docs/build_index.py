@@ -62,6 +62,14 @@ SPEC_SOURCE = os.environ.get(
 # numeric BCP suites where needed.
 FORCE_ZENSICAL_INCLUDE = {"NMOS-CONTROL-FEATURE-SETS"}
 
+# Suite repositories use these descriptive names, even when the published
+# index metadata still exposes only the numeric BCP slug.
+BCP_SUITE_TITLES = {
+    "BCP-004": "NMOS Capabilities",
+    "BCP-005": "NMOS Capability Mappings",
+    "BCP-008": "NMOS Status Monitoring",
+}
+
 
 def is_bcp_suite_slug(slug: str) -> bool:
     """Return whether *slug* names a numeric BCP suite, not a recommendation."""
@@ -381,6 +389,7 @@ def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec
         # `name` is the human-friendly title in specs.json; `title` remains
         # supported for compatibility with alternate metadata sources.
         title = meta.get("name") or meta.get("title") or slug
+        title = BCP_SUITE_TITLES.get(slug.upper(), title)
         releases = meta.get("releases") or []
         # specs.json uses either a single string or a list depending on the
         # spec. Normalize both forms before rendering.
@@ -523,8 +532,8 @@ def render_spec_stub(spec: Spec, themes_by_id: dict[str, dict]) -> str:
     return "\n".join(front_matter + body)
 
 
-def render_bcp_suites(specs: dict[str, Spec]) -> str:
-    """Render numeric BCP suites with collapsible recommendation lists."""
+def render_bcp_suite_sections(specs: dict[str, Spec]) -> list[str]:
+    """Render numeric BCP suites as collapsible recommendation lists."""
     suites = sorted(
         (spec for spec in specs.values() if is_bcp_suite_slug(spec.slug)),
         key=lambda spec: _sort_key(spec.slug),
@@ -546,9 +555,11 @@ def render_bcp_suites(specs: dict[str, Spec]) -> str:
         sections.extend(
             [
                 '<details class="bcp-suite">',
-                "  <summary>"
-                f'<a href="{suite_href}">{html.escape(suite.slug)}</a>'
-                f" &mdash; {html.escape(suite.title)}</summary>",
+                (
+                    "  <summary>"
+                    f'<a href="{suite_href}">{html.escape(suite.slug)}</a>'
+                    f" &mdash; {html.escape(suite.title)}</summary>"
+                ),
                 "  <ul>",
             ]
         )
@@ -558,9 +569,7 @@ def render_bcp_suites(specs: dict[str, Spec]) -> str:
         )
         sections.extend(["  </ul>", "</details>", ""])
 
-    if not sections:
-        return ""
-    return "## NMOS Best Common Practice suites\n\n" + "\n".join(sections)
+    return sections
 
 
 def render_index(specs: dict[str, Spec]) -> str:
@@ -570,8 +579,6 @@ def render_index(specs: dict[str, Spec]) -> str:
         "specifications, best practices and informative documents. "
         "Use the search box or the tag index to filter by document "
         "type or theme.\n\n"
-        + render_bcp_suites(specs)
-        + "\n"
         "- [By theme](by-theme.md) &mdash; grouped by subject area\n"
         "- [By type](by-type.md) &mdash; grouped by document type\n"
         "- [Tags](tags.md) &mdash; filter by any type or theme\n"
@@ -640,12 +647,7 @@ def render_by_theme(specs: dict[str, Spec], themes: list[dict]) -> str:
         )
         if not members:
             continue
-        lines.append(f"## {theme['name']}")
-        lines.append("")
-        description = theme.get("description")
-        if description:
-            lines.append(description)
-            lines.append("")
+
         entries = [specs[slug] for slug in members]
         include_releases = has_release_column(entries)
         rows = []
@@ -663,8 +665,18 @@ def render_by_theme(specs: dict[str, Spec], themes: list[dict]) -> str:
         headers = ["Spec", "Title", "Type", "Status", "Default branch"]
         if include_releases:
             headers.append("Release(s)")
-        lines.extend(render_spec_table(headers, rows))
-        lines.append("")
+
+        lines.extend(
+            [
+                '<details class="spec-theme">',
+                f"  <summary>{html.escape(theme['name'])}</summary>",
+            ]
+        )
+        description = theme.get("description")
+        if description:
+            lines.append(f"  <p>{description}</p>")
+        lines.extend(f"  {line}" for line in render_spec_table(headers, rows))
+        lines.extend(["</details>", ""])
     return "\n".join(lines)
 
 
@@ -673,17 +685,7 @@ def render_by_type(specs: dict[str, Spec]) -> str:
     for spec in specs.values():
         buckets.setdefault(spec.type, []).append(spec)
 
-    lines = ["# Specifications by type", ""]
-    seen: set[str] = set()
-    for key, heading, blurb in TYPE_ORDER:
-        entries = sorted(buckets.get(key, []), key=lambda s: _sort_key(s.slug))
-        if not entries:
-            continue
-        seen.add(key)
-        lines.append(f"## {heading}")
-        lines.append("")
-        lines.append(blurb)
-        lines.append("")
+    def render_type_table(entries: list[Spec]) -> list[str]:
         include_releases = has_release_column(entries)
         rows = []
         for spec in entries:
@@ -700,8 +702,57 @@ def render_by_type(specs: dict[str, Spec]) -> str:
         headers = ["Spec", "Title", "Themes", "Status", "Default branch"]
         if include_releases:
             headers.append("Release(s)")
-        lines.extend(render_spec_table(headers, rows))
-        lines.append("")
+        return render_spec_table(headers, rows)
+
+    def append_section(
+        title: str,
+        blurb: str,
+        entries: list[Spec],
+        *,
+        nest_bcp_suites: bool = False,
+    ) -> None:
+        lines.extend(
+            [
+                '<details class="spec-type">',
+                f"  <summary>{html.escape(title)}</summary>",
+                f"  <p>{blurb}</p>",
+            ]
+        )
+        if nest_bcp_suites:
+            suite_slugs = {
+                suite.slug
+                for suite in entries
+                if is_bcp_suite_slug(suite.slug)
+                and any(
+                    child.slug != suite.slug
+                    and bcp_suite_slug(child.slug) == suite.slug
+                    for child in entries
+                )
+            }
+            suite_specs = {spec.slug: spec for spec in entries}
+            lines.extend(
+                f"  {line}" for line in render_bcp_suite_sections(suite_specs)
+            )
+            remaining = [
+                spec
+                for spec in entries
+                if spec.slug not in suite_slugs
+                and bcp_suite_slug(spec.slug) not in suite_slugs
+            ]
+            if remaining:
+                lines.extend(f"  {line}" for line in render_type_table(remaining))
+        else:
+            lines.extend(f"  {line}" for line in render_type_table(entries))
+        lines.extend(["</details>", ""])
+
+    lines = ["# Specifications by type", ""]
+    seen: set[str] = set()
+    for key, heading, blurb in TYPE_ORDER:
+        entries = sorted(buckets.get(key, []), key=lambda s: _sort_key(s.slug))
+        if not entries:
+            continue
+        seen.add(key)
+        append_section(heading, blurb, entries, nest_bcp_suites=key == "BCP")
 
     # Anything unclassified.
     other = sorted(
@@ -709,26 +760,7 @@ def render_by_type(specs: dict[str, Spec]) -> str:
         key=lambda s: _sort_key(s.slug),
     )
     if other:
-        lines.append("## Other")
-        lines.append("")
-        include_releases = has_release_column(other)
-        rows = []
-        for spec in other:
-            row = [
-                spec_link(spec),
-                html.escape(spec.title),
-                html.escape(", ".join(spec.themes)) if spec.themes else "&mdash;",
-                html.escape(spec.status) if spec.status else "&mdash;",
-                branch_html(spec),
-            ]
-            if include_releases:
-                row.append(release_html(spec))
-            rows.append(row)
-        headers = ["Spec", "Title", "Themes", "Status", "Default branch"]
-        if include_releases:
-            headers.append("Release(s)")
-        lines.extend(render_spec_table(headers, rows))
-        lines.append("")
+        append_section("Other", "Other indexed documents.", other)
     return "\n".join(lines)
 
 
@@ -847,31 +879,95 @@ def render_extra_css() -> str:
   font-weight: 400;
 }
 
-/* Compact, editor-like disclosure rows for BCP suite recommendations. */
-.md-typeset details.bcp-suite {
+/* Compact, editor-like disclosure rows for suites, themes, and types. */
+.md-typeset details.bcp-suite,
+.md-typeset details.spec-theme,
+.md-typeset details.spec-type {
+  background: transparent !important;
   border: 0;
+  box-shadow: none !important;
   margin: 0.15rem 0;
   padding: 0;
 }
 
-.md-typeset details.bcp-suite > summary {
+.md-typeset details.bcp-suite > summary,
+.md-typeset details.spec-theme > summary,
+.md-typeset details.spec-type > summary {
+  background: transparent !important;
+  border: 0;
   border-radius: 0.2rem;
   cursor: pointer;
   display: list-item;
-  padding: 0.2rem 0.4rem;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0.2rem 0.4rem !important;
+}
+
+.md-typeset details.bcp-suite > summary::after,
+.md-typeset details.spec-theme > summary::after,
+.md-typeset details.spec-type > summary::after {
+  content: none !important;
+  display: none !important;
+}
+
+.md-typeset details.bcp-suite > summary::before,
+.md-typeset details.spec-theme > summary::before,
+.md-typeset details.spec-type > summary::before {
+  background: transparent !important;
+  border-bottom: 0.3rem solid transparent !important;
+  border-left: 0.4rem solid var(--md-primary-fg-color) !important;
+  border-top: 0.3rem solid transparent !important;
+  content: "" !important;
+  display: inline-block !important;
+  height: 0 !important;
+  margin-right: 0.45rem;
+  mask-image: none !important;
+  position: static !important;
+  transform-origin: 25% 50%;
+  transition: transform 120ms ease;
+  vertical-align: -0.05rem;
+  width: 0 !important;
+}
+
+.md-typeset details.bcp-suite[open] > summary::before,
+.md-typeset details.spec-theme[open] > summary::before,
+.md-typeset details.spec-type[open] > summary::before {
+  transform: rotate(90deg);
 }
 
 .md-typeset details.bcp-suite > summary:hover,
-.md-typeset details.bcp-suite > summary:focus-visible {
+.md-typeset details.bcp-suite > summary:focus-visible,
+.md-typeset details.spec-theme > summary:hover,
+.md-typeset details.spec-theme > summary:focus-visible,
+.md-typeset details.spec-type > summary:hover,
+.md-typeset details.spec-type > summary:focus-visible {
   background: var(--md-default-fg-color--lightest);
 }
 
-.md-typeset details.bcp-suite > summary::marker {
+.md-typeset details.bcp-suite > summary::marker,
+.md-typeset details.spec-theme > summary::marker,
+.md-typeset details.spec-type > summary::marker {
   color: var(--md-primary-fg-color);
+  content: "▸ ";
+}
+
+.md-typeset details.bcp-suite[open] > summary::marker,
+.md-typeset details.spec-theme[open] > summary::marker,
+.md-typeset details.spec-type[open] > summary::marker {
+  content: "▾ ";
 }
 
 .md-typeset details.bcp-suite > ul {
   margin: 0.15rem 0 0.5rem 1.8rem;
+}
+
+.md-typeset details.spec-type > details.bcp-suite {
+  margin-left: 0.8rem;
+}
+
+.md-typeset details.spec-theme > p,
+.md-typeset details.spec-type > p {
+  margin: 0.75rem 0.4rem;
 }
 
 /* Keep the specification index tables expanded, as on the Increment index. */
