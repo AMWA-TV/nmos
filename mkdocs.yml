@@ -19,8 +19,10 @@ site_dir: site
 extra_css:
   - stylesheets/extra.css
   - stylesheets/global-search.css
+  - stylesheets/amwa-branding.css
 extra_javascript:
   - javascripts/global-search.js
+  - javascripts/amwa-branding.js
 
 theme:
   name: material
