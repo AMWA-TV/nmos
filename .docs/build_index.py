@@ -203,6 +203,9 @@ def fetch_global_manifest(repository: str) -> list[dict]:
     # Versioned repositories publish their current manifest below latest/;
     # fixed-version repositories may publish it at the unversioned root.
     urls = (
+        f"https://specs.amwa.tv/{repository}/latest/global-search.json",
+        f"https://specs.amwa.tv/{repository}/global-search.json",
+        # Keep the temporary path as a fallback while repositories migrate.
         f"https://specs.amwa.tv/new/{repository}/latest/global-search.json",
         f"https://specs.amwa.tv/new/{repository}/global-search.json",
     )
@@ -243,6 +246,7 @@ def build_global_search(specs: dict[str, Spec]) -> dict:
                 if not document.get("url") or not document.get("text"):
                     continue
                 document = dict(document)
+                document["url"] = canonical_public_url(str(document["url"]))
                 document["repository"] = repository
                 document["collection"] = collection
                 documents.append(document)
@@ -311,6 +315,9 @@ def fetch_spec_intro(repository: str, default_branch: str = "") -> dict[str, lis
         return {}
 
     urls = (
+        f"https://specs.amwa.tv/{repository}/latest/spec.json",
+        f"https://specs.amwa.tv/{repository}/spec.json",
+        # Keep the temporary path as a fallback while repositories migrate.
         f"https://specs.amwa.tv/new/{repository}/latest/spec.json",
         f"https://specs.amwa.tv/new/{repository}/spec.json",
     )
@@ -358,16 +365,19 @@ def populate_spec_intros(specs: dict[str, Spec]) -> None:
                 futures[future].intro = intro
 
 
-def public_spec_url(slug: str, metadata_url: str = "") -> str:
-    """Use the beta Zensical/Mike path for links from the NMOS index."""
-    url = metadata_url or f"https://specs.amwa.tv/{slug.lower()}"
-    # Beta-only routing: remove this conversion and use `url` directly when
-    # the Zensical/Mike sites move back from `/new/` to the canonical paths.
-    legacy_root = "https://specs.amwa.tv/"
-    new_root = "https://specs.amwa.tv/new/"
-    if url.startswith(legacy_root) and not url.startswith(new_root):
-        return new_root + url[len(legacy_root):].lstrip("/")
+def canonical_public_url(url: str) -> str:
+    """Move temporary specs.amwa.tv URLs back to their canonical paths."""
+    temporary_root = "https://specs.amwa.tv/new/"
+    canonical_root = "https://specs.amwa.tv/"
+    if url.startswith(temporary_root):
+        return canonical_root + url[len(temporary_root) :]
     return url
+
+
+def public_spec_url(slug: str, metadata_url: str = "") -> str:
+    """Return the canonical public URL used by the NMOS index."""
+    url = metadata_url or f"https://specs.amwa.tv/{slug.lower()}"
+    return canonical_public_url(url)
 
 
 def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec]:
