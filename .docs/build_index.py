@@ -65,8 +65,12 @@ FORCE_ZENSICAL_INCLUDE = {"NMOS-CONTROL-FEATURE-SETS"}
 # Suite repositories use these descriptive names, even when the published
 # index metadata still exposes only the numeric BCP slug.
 BCP_SUITE_TITLES = {
+    "BCP-002": "NMOS Resource Annotation",
+    "BCP-003": "NMOS API Security Recommendations",
     "BCP-004": "NMOS Capabilities",
     "BCP-005": "NMOS Capability Mappings",
+    "BCP-006": "NMOS Format Mappings",
+    "BCP-007": "NMOS Transport Mappings",
     "BCP-008": "NMOS Status Monitoring",
 }
 
