@@ -61,6 +61,12 @@ jobs:
         run: |
           python .docs/build_index.py
 
+      - name: Stage NMOS documentation
+        run: |
+          mkdir -p build/docs/Documentation
+          cp -R docs/. build/docs/Documentation/
+          mv build/docs/Documentation/README.md build/docs/Documentation/index.md
+
       - name: Apply shared AMWA/NMOS branding
         env:
           GITHUB_REPOSITORY: AMWA-TV/nmos
@@ -71,6 +77,19 @@ jobs:
       - name: Build site
         run: |
           zensical build --strict
+
+      - name: Preserve legacy NMOS documentation paths
+        run: |
+          python .amwa-spec-docs/scripts/copy_legacy_assets.py \
+            --csv .docs/legacy-mappings.csv \
+            --site site \
+            --source-prefix /nmos/ \
+            --target-prefix https://specs.amwa.tv/nmos/
+          python .amwa-spec-docs/scripts/generate_html_bridges.py \
+            --csv .docs/legacy-mappings.csv \
+            --output site \
+            --source-prefix /nmos/ \
+            --target-prefix https://specs.amwa.tv/nmos/
 
       - name: Upload site artifact
         uses: actions/upload-artifact@v7
@@ -108,11 +127,8 @@ jobs:
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          # Matches the layout used by the existing nmos-render deployment:
-          # everything for this repo lives under `/nmos` on the server.
-          # Staging path so the new Zensical-rendered site doesn't overwrite
-          # the existing nmos-render output at /var/www/specs.amwa.tv/nmos.
-          REMOTE_PATH: "/var/www/specs.amwa.tv/new/nmos"
+          # The canonical NMOS site lives directly under /nmos.
+          REMOTE_PATH: "/var/www/specs.amwa.tv/nmos"
         run: |
           rsync -az --delete \
             -e 'ssh -o StrictHostKeyChecking=yes' \

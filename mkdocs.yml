@@ -78,3 +78,10 @@ nav:
   - By type: by-type.md
   - Tags: tags.md
   - Global search: global-search.md
+  - Documentation:
+      - Overview: Documentation/index.md
+      - Introduction: Documentation/Introduction.md
+      - Technical Overview: Documentation/Technical Overview.md
+      - FAQ: Documentation/FAQ.md
+      - Glossary: Documentation/Glossary.md
+      - NMOS Solutions: Documentation/NMOS Solutions.md

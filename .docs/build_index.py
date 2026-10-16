@@ -590,13 +590,12 @@ def render_index(specs: dict[str, Spec]) -> str:
     return (
         "# Networked Media Open Specifications\n\n"
         "The tables on the following pages list the current NMOS "
-        "specifications, best practices and informative documents. "
-        "Use the search box or the tag index to filter by document "
-        "type or theme.\n\n"
-        "- [By theme](by-theme.md) &mdash; grouped by subject area\n"
-        "- [By type](by-type.md) &mdash; grouped by document type\n"
-        "- [Tags](tags.md) &mdash; filter by any type or theme\n"
-        "- [Global AMWA documentation search](global-search.md) &mdash; search across repositories\n"
+        "specifications, best practices and informative documents.\n\n"
+        "- [Sort by Theme](by-theme.md) &mdash; grouped by subject area\n"
+        "- [Sort by Type](by-type.md) &mdash; grouped by document type\n"
+        "- [Filter by Tags](tags.md) &mdash; filter by any type or theme\n\n\n"
+        "[General NMOS Documentation](Documentation/index.md) &mdash; introduction, technical overview, FAQ, glossary and solutions\n\n"
+        "[Global Search](global-search.md) &mdash; search across repositories\n"
     )
 
 
