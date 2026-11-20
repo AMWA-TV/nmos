@@ -2,10 +2,4 @@ name: Lint
 on: [push, pull_request, workflow_dispatch]
 jobs:
   lint:
-    runs-on: ubuntu-latest
-    name: Lint
-    steps:
-    - name: Use NMOS Lint
-      uses: docker://amwa/nmos-lint:latest
-      env:
-        GITHUB_BRANCH: ${{ github.ref_name }}
+    uses: AMWA-TV/amwa-spec-docs/.github/workflows/lint.yml@main
