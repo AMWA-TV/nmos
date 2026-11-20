@@ -1,0 +1,88 @@
+[project]
+site_name = "Networked Media Open Specifications"
+site_description = "Index of AMWA NMOS specifications, best practices, informative documents and control feature sets."
+site_url = "https://specs.amwa.tv/nmos/"
+
+repo_name = "AMWA-TV/nmos"
+repo_url = "https://github.com/AMWA-TV/nmos"
+
+# The generator writes markdown into `build/docs/` so it never clobbers the
+# hand-authored files under `docs/` in this repo. Zensical writes the built
+# site into `site/` which the workflow uploads / deploys.
+docs_dir = "build/docs"
+site_dir = "site"
+
+extra_css = [
+  "stylesheets/extra.css",
+  "stylesheets/global-search.css",
+  "stylesheets/amwa-branding.css",
+  "stylesheets/fixed-navigation.css",
+]
+extra_javascript = [
+  "javascripts/global-search.js",
+  "javascripts/amwa-branding.js",
+]
+
+nav = [
+  { Home = "index.md" },
+  { "By theme" = "by-theme.md" },
+  { "By type" = "by-type.md" },
+  { Tags = "tags.md" },
+  { "Global search" = "global-search.md" },
+  { Documentation = [
+    { Overview = "Documentation/index.md" },
+    { Introduction = "Documentation/Introduction.md" },
+    { "Technical Overview" = "Documentation/Technical Overview.md" },
+    { FAQ = "Documentation/FAQ.md" },
+    { Glossary = "Documentation/Glossary.md" },
+    { "NMOS Solutions" = "Documentation/NMOS Solutions.md" },
+  ] },
+]
+
+[project.theme]
+features = [
+  "navigation.tabs",
+  "navigation.sections",
+  "navigation.top",
+  "navigation.indexes",
+  "navigation.footer",
+  "search.suggest",
+  "search.highlight",
+  "toc.follow",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "indigo"
+accent = "indigo"
+[project.theme.palette.toggle]
+icon = "material/weather-night"
+name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "indigo"
+accent = "indigo"
+[project.theme.palette.toggle]
+icon = "material/weather-sunny"
+name = "Switch to light mode"
+
+[project.plugins.search]
+
+[project.plugins.tags]
+tags_file = "tags.md"
+
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.md_in_html]
+[project.markdown_extensions.tables]
+
+[project.markdown_extensions.toc]
+permalink = false
+
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.superfences]
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
