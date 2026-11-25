@@ -27,6 +27,7 @@ nav = [
   { Home = "index.md" },
   { "By theme" = "by-theme.md" },
   { "By type" = "by-type.md" },
+  { "Historical" = "historical.md" },
   { Tags = "tags.md" },
   { "Global search" = "global-search.md" },
   { Documentation = [

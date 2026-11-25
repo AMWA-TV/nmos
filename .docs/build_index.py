@@ -14,8 +14,10 @@ stub entries so the build still succeeds.
 Outputs (written into `docs/`):
   - index.md      : landing page, links to both facets
   - by-theme.md   : specs grouped by theme, sorted within each group
-  - by-type.md    : specs grouped by document type (IS / MS / BCP / INFO)
-  - tags.md       : Material 'tags' plugin index page
+  - by-type.md    : active specs grouped by document type (IS / MS / BCP / INFO)
+  - historical.md : deprecated or archived specifications and
+                     information documents
+  - tags.md       : Material 'tags' plugin index page for active specs
   - specs/<slug>.md : one stub per spec, front-matter-tagged with its
                      type + theme(s) so search/tags act as filters
 """
@@ -90,6 +92,22 @@ def bcp_suite_slug(slug: str) -> str | None:
     """Return the parent suite slug for a BCP suite or recommendation."""
     match = re.fullmatch(r"(BCP-\d{3})(?:-\d{2})?", slug.upper())
     return match.group(1) if match else None
+
+
+HISTORICAL_STATUS_LABELS = ("archived", "deprecated")
+
+
+def status_category(status: str) -> str | None:
+    """Return the historical category represented by a published status."""
+    normalized = str(status or "").strip().casefold()
+    for category in HISTORICAL_STATUS_LABELS:
+        if re.search(rf"\b{category}\b", normalized):
+            return category
+    return None
+
+
+def is_historical_status(status: str) -> bool:
+    return status_category(status) is not None
 
 
 TYPE_ORDER: list[tuple[str, str, str]] = [
@@ -457,11 +475,15 @@ def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec
     specs: dict[str, Spec] = {}
     for slug in spec_slugs:
         meta = metadata.get(slug.upper(), {})
+        status = str(meta.get("status") or "")
         # Keep the local list as the allow-list, but respect the published
-        # index's visibility flag for suite/template entries.
+        # index's visibility flag for suite/template entries. Historical
+        # documents are retained even when hidden from the active index so
+        # they can be exposed on the dedicated historical-status pages.
         if (
             meta
             and not bool(meta.get("show_in_index", True))
+            and not is_historical_status(status)
             and slug.upper() not in FORCE_ZENSICAL_INCLUDE
             and not is_bcp_suite_slug(slug)
         ):
@@ -488,7 +510,7 @@ def build_specs(spec_slugs: Iterable[str], themes: list[dict]) -> dict[str, Spec
             title=title,
             repo_name=meta.get("repo_name") or slug.lower(),
             repo_url=meta.get("repo_url") or f"https://github.com/AMWA-TV/{slug.lower()}",
-            status=meta.get("status") or "",
+            status=status,
             url=public_spec_url(slug, str(meta.get("url") or "")),
             releases=[str(release) for release in releases],
             default_branch=meta.get("default_branch") or "",
@@ -659,7 +681,8 @@ def render_index(specs: dict[str, Spec]) -> str:
         "specifications, best practices and informative documents.\n\n"
         "- [Sort by Theme](by-theme.md) &mdash; grouped by subject area\n"
         "- [Sort by Type](by-type.md) &mdash; grouped by document type\n"
-        "- [Filter by Tags](tags.md) &mdash; filter by any type or theme\n\n\n"
+        "- [Filter by Tags](tags.md) &mdash; filter by any type or theme\n"
+        "- [Historical](historical.md) &mdash; Deprecated Specifications and Archived Works in Progress\n\n\n"
         "[General NMOS Documentation](Documentation/index.md) &mdash; introduction, technical overview, FAQ, glossary and solutions\n\n"
         "[Global Search](global-search.md) &mdash; search across repositories\n"
     )
@@ -759,7 +782,12 @@ def render_by_theme(specs: dict[str, Spec], themes: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def render_by_type(specs: dict[str, Spec]) -> str:
+def render_by_type(
+    specs: dict[str, Spec],
+    *,
+    page_title: str = "Specifications by type",
+    page_intro: str = "",
+) -> str:
     buckets: dict[str, list[Spec]] = {}
     for spec in specs.values():
         buckets.setdefault(spec.type, []).append(spec)
@@ -824,7 +852,9 @@ def render_by_type(specs: dict[str, Spec]) -> str:
             lines.extend(f"  {line}" for line in render_type_table(entries))
         lines.extend(["</details>", ""])
 
-    lines = ["# Specifications by type", ""]
+    lines = [f"# {page_title}", ""]
+    if page_intro:
+        lines.extend([page_intro, ""])
     seen: set[str] = set()
     for key, heading, blurb in TYPE_ORDER:
         entries = sorted(buckets.get(key, []), key=lambda s: _sort_key(s.slug))
@@ -845,6 +875,22 @@ def render_by_type(specs: dict[str, Spec]) -> str:
 
 def tag_anchor(tag: str) -> str:
     return "tag-" + re.sub(r"[^a-z0-9]+", "-", tag.lower()).strip("-")
+
+
+def render_historical_page(specs: dict[str, Spec]) -> str:
+    """Render the combined deprecated-or-archived specification view."""
+    entries = {
+        slug: spec
+        for slug, spec in specs.items()
+        if is_historical_status(spec.status)
+    }
+    return render_by_type(
+        entries,
+        page_title="Deprecated Specificatons and Archived Works in Progress",
+        page_intro=(
+            "This page lists published Specifications and Informative Documents that have been **Deprecated** and unpublished Works In Progress that have been **Archived**."
+        ),
+    )
 
 
 def render_tags_page(specs: dict[str, Spec]) -> str:
@@ -1099,14 +1145,29 @@ def main() -> int:
 
     specs = build_specs(spec_slugs, themes)
     populate_spec_intros(specs)
+    active_specs = {
+        slug: spec
+        for slug, spec in specs.items()
+        if not is_historical_status(spec.status)
+    }
 
     DOCS.mkdir(parents=True, exist_ok=True)
     SPECS_DIR.mkdir(parents=True, exist_ok=True)
 
-    (DOCS / "index.md").write_text(render_index(specs), encoding="utf-8")
-    (DOCS / "by-theme.md").write_text(render_by_theme(specs, themes), encoding="utf-8")
-    (DOCS / "by-type.md").write_text(render_by_type(specs), encoding="utf-8")
-    (DOCS / "tags.md").write_text(render_tags_page(specs), encoding="utf-8")
+    (DOCS / "index.md").write_text(render_index(active_specs), encoding="utf-8")
+    (DOCS / "by-theme.md").write_text(
+        render_by_theme(active_specs, themes), encoding="utf-8"
+    )
+    (DOCS / "by-type.md").write_text(
+        render_by_type(active_specs), encoding="utf-8"
+    )
+    (DOCS / "historical.md").write_text(
+        render_historical_page(specs), encoding="utf-8"
+    )
+    # Remove pages generated by earlier versions of this index.
+    (DOCS / "archived.md").unlink(missing_ok=True)
+    (DOCS / "deprecated.md").unlink(missing_ok=True)
+    (DOCS / "tags.md").write_text(render_tags_page(active_specs), encoding="utf-8")
     (DOCS / "global-search.md").write_text(render_global_search_page(), encoding="utf-8")
     global_search = build_global_search(specs)
     (DOCS / "global-search.json").write_text(
@@ -1132,7 +1193,7 @@ def main() -> int:
             render_spec_stub(spec, themes_by_id), encoding="utf-8"
         )
 
-    print(f"Wrote {len(specs)} spec pages + 5 index pages to {DOCS}.")
+    print(f"Wrote {len(specs)} spec pages + 6 index pages to {DOCS}.")
     return 0
 
 
